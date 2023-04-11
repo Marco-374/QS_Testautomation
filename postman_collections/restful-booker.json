@@ -8,7 +8,7 @@
 	"item": [
 		{
 			"name": "/ping - HealthCheck",
-			"_postman_id": "2a5d3cd1-de4c-473d-9800-276c869868ab",
+			"id": "2a5d3cd1-de4c-473d-9800-276c869868ab",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -22,7 +22,7 @@
 		},
 		{
 			"name": "/booking - GetBookingIds (Query all IDs)",
-			"_postman_id": "c5d78c4d-ecaa-4014-8f75-05f4d1842b3f",
+			"id": "c5d78c4d-ecaa-4014-8f75-05f4d1842b3f",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -36,7 +36,7 @@
 		},
 		{
 			"name": "/booking - GetBookingIds (Filter by name)",
-			"_postman_id": "b9dc92d0-3bfc-4113-bac7-57ad5f75c22a",
+			"id": "b9dc92d0-3bfc-4113-bac7-57ad5f75c22a",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -68,7 +68,7 @@
 		},
 		{
 			"name": "/booking - GetBookingIds (Filter by date)",
-			"_postman_id": "e24f6a3f-5022-4754-9c23-5d44ac9e6629",
+			"id": "e24f6a3f-5022-4754-9c23-5d44ac9e6629",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -100,7 +100,7 @@
 		},
 		{
 			"name": "/booking/:id - GetBooking",
-			"_postman_id": "5666caf6-9e57-465a-bb4e-11311c3cab60",
+			"id": "5666caf6-9e57-465a-bb4e-11311c3cab60",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -114,7 +114,7 @@
 		},
 		{
 			"name": "/booking - CreateBooking (JSON)",
-			"_postman_id": "4752668a-2685-44d2-820f-6b5d2fb0304b",
+			"id": "4752668a-2685-44d2-820f-6b5d2fb0304b",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -128,8 +128,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"firstname\" : \"Jim\",\n    \"lastname\" : \"Brown\",\n    \"totalprice\" : 111,\n    \"depositpaid\" : true,\n    \"bookingdates\" : {\n        \"checkin\" : \"2022-01-01\",\n        \"checkout\" : \"2022-01-10\"\n    },\n    \"additionalneeds\" : \"Breakfast\"\n}",
-					"options": {}
+					"raw": "{\n    \"firstname\" : \"Jim\",\n    \"lastname\" : \"Brown\",\n    \"totalprice\" : 111,\n    \"depositpaid\" : true,\n    \"bookingdates\" : {\n        \"checkin\" : \"2022-01-01\",\n        \"checkout\" : \"2022-01-10\"\n    },\n    \"additionalneeds\" : \"Breakfast\"\n}"
 				},
 				"url": "{{host}}/booking",
 				"description": "Request that allows you to create a Booking within the API. This request creates the booking using JSON."
@@ -138,7 +137,7 @@
 		},
 		{
 			"name": "/booking - CreateBooking (XML)",
-			"_postman_id": "3bd52893-19ff-4053-9a31-616e5f4c9d72",
+			"id": "3bd52893-19ff-4053-9a31-616e5f4c9d72",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -157,8 +156,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "<booking>\n    <firstname>Jim</firstname>\n    <lastname>Brown</lastname>\n    <totalprice>111</totalprice>\n    <depositpaid>true</depositpaid>\n    <bookingdates>\n      <checkin>2018-01-01</checkin>\n      <checkout>2019-01-01</checkout>\n    </bookingdates>\n    <additionalneeds>Breakfast</additionalneeds>\n  </booking>",
-					"options": {}
+					"raw": "<booking>\n    <firstname>Jim</firstname>\n    <lastname>Brown</lastname>\n    <totalprice>111</totalprice>\n    <depositpaid>true</depositpaid>\n    <bookingdates>\n      <checkin>2018-01-01</checkin>\n      <checkout>2019-01-01</checkout>\n    </bookingdates>\n    <additionalneeds>Breakfast</additionalneeds>\n  </booking>"
 				},
 				"url": "{{host}}/booking",
 				"description": "Request that allows you to create a Booking within the API. This request creates the booking using XML."
@@ -167,7 +165,7 @@
 		},
 		{
 			"name": "/booking - CreateBooking (URL)",
-			"_postman_id": "38c72576-e166-40a0-aa47-e47f6aee25a7",
+			"id": "38c72576-e166-40a0-aa47-e47f6aee25a7",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -217,8 +215,7 @@
 							"value": "2018-01-02",
 							"type": "text"
 						}
-					],
-					"options": {}
+					]
 				},
 				"url": "{{host}}/booking",
 				"description": "Request that allows you to create a Booking within the API. This request creates the booking using urlencoded."
@@ -227,7 +224,7 @@
 		},
 		{
 			"name": "/auth - CreateToken",
-			"_postman_id": "f0937860-1da1-47d6-b8f7-0274a070dc83",
+			"id": "f0937860-1da1-47d6-b8f7-0274a070dc83",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -241,8 +238,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\" : \"admin\",\n    \"password\" : \"password123\"\n}",
-					"options": {}
+					"raw": "{\n    \"username\" : \"admin\",\n    \"password\" : \"password123\"\n}"
 				},
 				"url": "{{host}}/auth",
 				"description": "Sending a request to this endpoint will generate a token that can be used in the Cookie header for PUT /booking/{id} and DELETE /booking/{id}"
@@ -251,7 +247,7 @@
 		},
 		{
 			"name": "/booking/:id - UpdateBooking (JSON)",
-			"_postman_id": "f403693e-5396-4191-946b-4f753107da07",
+			"id": "f403693e-5396-4191-946b-4f753107da07",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -281,8 +277,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"firstname\" : \"James\",\n    \"lastname\" : \"Brown\",\n    \"totalprice\" : 111,\n    \"depositpaid\" : true,\n    \"bookingdates\" : {\n        \"checkin\" : \"2018-01-01\",\n        \"checkout\" : \"2019-01-01\"\n    },\n    \"additionalneeds\" : \"Breakfast\"\n}",
-					"options": {}
+					"raw": "{\n    \"firstname\" : \"James\",\n    \"lastname\" : \"Brown\",\n    \"totalprice\" : 111,\n    \"depositpaid\" : true,\n    \"bookingdates\" : {\n        \"checkin\" : \"2018-01-01\",\n        \"checkout\" : \"2019-01-01\"\n    },\n    \"additionalneeds\" : \"Breakfast\"\n}"
 				},
 				"url": "{{host}}/booking/1",
 				"description": "Request that allows you to update a complete Booking within the API. This request updates the booking using JSON.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
@@ -291,7 +286,7 @@
 		},
 		{
 			"name": "/booking/:id - UpdateBooking (XML)",
-			"_postman_id": "4ed909f1-3859-45c3-97ce-26543104cb93",
+			"id": "4ed909f1-3859-45c3-97ce-26543104cb93",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -322,8 +317,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "<booking>\n    <firstname>James</firstname>\n    <lastname>Brown</lastname>\n    <totalprice>111</totalprice>\n    <depositpaid>true</depositpaid>\n    <bookingdates>\n      <checkin>2018-01-01</checkin>\n      <checkout>2019-01-01</checkout>\n    </bookingdates>\n    <additionalneeds>Breakfast</additionalneeds>\n  </booking>",
-					"options": {}
+					"raw": "<booking>\n    <firstname>James</firstname>\n    <lastname>Brown</lastname>\n    <totalprice>111</totalprice>\n    <depositpaid>true</depositpaid>\n    <bookingdates>\n      <checkin>2018-01-01</checkin>\n      <checkout>2019-01-01</checkout>\n    </bookingdates>\n    <additionalneeds>Breakfast</additionalneeds>\n  </booking>"
 				},
 				"url": "{{host}}/booking/1",
 				"description": "Request that allows you to update a complete Booking within the API. This request updates the booking using XML.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
@@ -332,7 +326,7 @@
 		},
 		{
 			"name": "/booking/:id - UpdateBooking (URL)",
-			"_postman_id": "84c6e9a9-6be1-4bb7-94af-dd63acd991c0",
+			"id": "84c6e9a9-6be1-4bb7-94af-dd63acd991c0",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -394,8 +388,7 @@
 							"value": "2018-01-02",
 							"type": "text"
 						}
-					],
-					"options": {}
+					]
 				},
 				"url": "{{host}}/booking/1",
 				"description": "Request that allows you to update a complete Booking within the API. This request updates the booking using URL.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
@@ -404,7 +397,7 @@
 		},
 		{
 			"name": "/booking/:id - PartialUpdateBooking (JSON)",
-			"_postman_id": "ee3aa7fb-31c0-4551-8fac-ed5a29e73522",
+			"id": "ee3aa7fb-31c0-4551-8fac-ed5a29e73522",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -434,8 +427,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"firstname\" : \"James\",\n    \"lastname\" : \"Brown\"\n}",
-					"options": {}
+					"raw": "{\n    \"firstname\" : \"James\",\n    \"lastname\" : \"Brown\"\n}"
 				},
 				"url": "{{host}}/booking/1",
 				"description": "Request that allows you to update a partial section of a Booking within the API. This request updates the booking using JSON.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
@@ -444,7 +436,7 @@
 		},
 		{
 			"name": "/booking/:id - PartialUpdateBooking (XML)",
-			"_postman_id": "5fc5762d-9a85-4429-88ec-101fce99aaae",
+			"id": "5fc5762d-9a85-4429-88ec-101fce99aaae",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -475,8 +467,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "<booking>\n    <firstname>James</firstname>\n    <lastname>Brown</lastname>\n  </booking>",
-					"options": {}
+					"raw": "<booking>\n    <firstname>James</firstname>\n    <lastname>Brown</lastname>\n  </booking>"
 				},
 				"url": "{{host}}/booking/1",
 				"description": "Request that allows you to update a partial section of a Booking within the API. This request updates the booking using XML.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
@@ -485,7 +476,7 @@
 		},
 		{
 			"name": "/booking/:id - PartialUpdateBooking (URL)",
-			"_postman_id": "534c6e05-0ffc-4afc-a1fd-69075d9e33b3",
+			"id": "534c6e05-0ffc-4afc-a1fd-69075d9e33b3",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -527,8 +518,7 @@
 							"value": "Brown",
 							"type": "text"
 						}
-					],
-					"options": {}
+					]
 				},
 				"url": "{{host}}/booking/1",
 				"description": "Request that allows you to update a partial section of a Booking within the API. This request updates the booking using URL.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
@@ -537,7 +527,7 @@
 		},
 		{
 			"name": "/booking/:id - DeleteBooking",
-			"_postman_id": "5f39fd47-b68f-48fc-95a0-48ad47817f90",
+			"id": "5f39fd47-b68f-48fc-95a0-48ad47817f90",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -557,6 +547,13 @@
 				"description": "Request that allows you to delete a Booking within the API.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
 			},
 			"response": []
+		}
+	],
+	"variable": [
+		{
+			"id": "82f526f0-130a-4ba2-880a-8e566248f4a6",
+			"key": "host",
+			"value": "https://restful-booker.herokuapp.com"
 		}
 	]
 }
