@@ -129,7 +129,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "{{host}}/booking/{{id}}",
+				"url": "{{host}}/booking/{{booking_id}}",
 				"description": "Requests a specific booking that exists within the API. To get a list of valid booking IDs using GetBookingIds calls."
 			},
 			"response": []
@@ -662,17 +662,17 @@
 	],
 	"variable": [
 		{
-			"id": "0365b1d2-46dc-4aef-8dc5-cea1878e7e9b",
+			"id": "5f3ca6a2-a602-46b7-84e5-d5d075ddb956",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "1adf3222-f652-423e-8d25-da0240fd9cd8",
+			"id": "4dfa5789-c56a-4e15-8d50-8226f9d3da80",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "a969cf1f-b32d-4118-be46-06399ac409f0",
+			"id": "af747000-f802-447a-a498-95fffe694c27",
 			"key": "new_booking",
 			"value": "{\"firstname\":\"Max\",\"lastname\":\"Mustermann\",\"totalprice\":111,\"depositpaid\":true,\"bookingdates\":{\"checkin\":\"2022-01-01\",\"checkout\":\"2022-01-10\"},\"additionalneeds\":\"Breakfast\"}",
 			"type": "string"
