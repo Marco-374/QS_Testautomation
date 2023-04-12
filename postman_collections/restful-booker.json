@@ -72,7 +72,7 @@
 							"\r",
 							"pm.test(\"Response array elements have values have to be numbers\", function () {\r",
 							"    for(const element of pm.response.json()){\r",
-							"        pm.expect(element).to.have.property('bookingid');\r",
+							"        pm.expect(element.bookingid).to.be.a('number');\r",
 							"    }    \r",
 							"});\r",
 							""
@@ -737,17 +737,17 @@
 	],
 	"variable": [
 		{
-			"id": "c124a071-3b7c-4694-b67b-6ccc9f9c85d4",
+			"id": "84091d9d-9c96-463e-9bfa-36da37c1c268",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "7fd478d1-628f-4146-a3f7-6211bf7d7b83",
+			"id": "36fa4ddc-cc3e-4ed0-8fc9-3af31ff95870",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "6f224c41-0e85-42dd-aa27-4367f92017e4",
+			"id": "b3b489f5-7436-404e-b0ad-eb06564a6fb3",
 			"key": "new_booking",
 			"value": ""
 		}
