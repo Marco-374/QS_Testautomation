@@ -575,17 +575,6 @@
 						"id": "ffdb0a20-47f2-4f09-b960-d76bb93d179b",
 						"exec": [
 							"// create the base booking\r",
-							"var booking = {\r",
-							"    \"firstname\" : \"Max\",\r",
-							"    \"lastname\" : \"Mustermann\",\r",
-							"    \"totalprice\" : 111,\r",
-							"    \"depositpaid\" : true,\r",
-							"    \"bookingdates\" : {\r",
-							"        \"checkin\" : \"2022-01-01\",\r",
-							"        \"checkout\" : \"2022-01-10\"\r",
-							"    },\r",
-							"    \"additionalneeds\" : \"Breakfast\"\r",
-							"}\r",
 							"const createBooking = {\r",
 							"  url: pm.collectionVariables.get(\"host\") + \"/booking\",\r",
 							"  method: 'POST',\r",
@@ -673,12 +662,12 @@
 	],
 	"variable": [
 		{
-			"id": "be6fff69-1d19-4a09-b30a-6e6eaccec628",
+			"id": "53a046b8-9ecb-4429-8a3a-d69cf73c4aca",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "e894be02-d344-4302-9af6-7cda571e258e",
+			"id": "4e082828-0616-46f1-844a-93461cd7e40b",
 			"key": "booking_id",
 			"value": "1"
 		}
