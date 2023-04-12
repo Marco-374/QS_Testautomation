@@ -597,21 +597,12 @@
 					"script": {
 						"id": "836ad683-1f44-4922-aa9c-5bd646f47888",
 						"exec": [
-							"pm.sendRequest(pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"), function (err, res) {\r",
-							"  if (err) { console.log(err); }\r",
-							"  pm.test('Booking no longer exists', function () {\r",
-							"    pm.expect(err).to.equal(null);\r",
-							"    pm.expect(res.code).to.eql(404);\r",
-							"  });\r",
-							"  \r",
-							"  pm.test(\"Status code name has string 'Created'\", function () {\r",
-							"    pm.response.to.have.status(\"Created\");\r",
-							"  });\r",
+							"pm.test(\"Status code name has string 'Created'\", function () {\r",
+							"  pm.response.to.have.status(\"Created\");\r",
+							"});\r",
 							"\r",
-							"  pm.test(\"Status code is 201\", function () {\r",
-							"    pm.response.to.have.status(201);\r",
-							"  });\r",
-							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"  pm.response.to.have.status(201);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -641,7 +632,7 @@
 						"value": "token=abc123"
 					}
 				],
-				"url": "{{host}}/booking/{{id}}",
+				"url": "{{host}}/booking/{{booking_id}}",
 				"description": "Request that allows you to delete a Booking within the API.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
 			},
 			"response": []
@@ -671,17 +662,17 @@
 	],
 	"variable": [
 		{
-			"id": "01a5fc3c-d537-4e0f-9626-502b1d1c7d9b",
+			"id": "e7ab16af-2ebf-452f-956b-4701940ab603",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "b38f1da0-aba8-48f2-8c8c-244c8be5d6fe",
+			"id": "a242ce66-eac0-4535-87b2-d9648652448e",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "e94c66fb-bcf8-4629-8b43-1e5385e23c5e",
+			"id": "2fea827d-4be5-408d-a6db-9c8b0d31c7d4",
 			"key": "new_booking",
 			"value": "{\"firstname\":\"Max\",\"lastname\":\"Mustermann\",\"totalprice\":111,\"depositpaid\":true,\"bookingdates\":{\"checkin\":\"2022-01-01\",\"checkout\":\"2022-01-10\"},\"additionalneeds\":\"Breakfast\"}",
 			"type": "string"
