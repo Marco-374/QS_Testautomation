@@ -19,9 +19,11 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Status code name has string\", function () {\r",
-							"    pm.response.to.have.status(\"Creaed\");\r",
+							"    pm.response.to.have.status(\"Created\");\r",
 							"});\r",
-							""
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -589,7 +591,7 @@
 	],
 	"variable": [
 		{
-			"id": "5f89ab6c-06b8-48f6-afa1-67e671d6e527",
+			"id": "347dcb5c-5e0c-4a34-a5c4-54c4a72b4cf9",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		}
