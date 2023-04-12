@@ -244,6 +244,28 @@
 		},
 		{
 			"name": "/booking/:id - GetBooking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "644db54b-1929-4bc9-a15e-9419e09ff2bb",
+						"exec": [
+							"pm.test(\"Response has to be status 200\", function () {\r",
+							"    pm.response.to.be.success;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has to be json\", function () {\r",
+							"    pm.response.to.be.success;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "5666caf6-9e57-465a-bb4e-11311c3cab60",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -251,7 +273,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "{{host}}/booking/{{booking_id}}",
+				"url": "{{host}}/booking/3197",
 				"description": "Requests a specific booking that exists within the API. To get a list of valid booking IDs using GetBookingIds calls."
 			},
 			"response": []
@@ -827,17 +849,17 @@
 	],
 	"variable": [
 		{
-			"id": "b5fd0e0d-f2ec-41c7-b7fe-3c24cf89c35a",
+			"id": "d388da4c-431c-48a1-8f53-26e5360fb43a",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "4cf8d26f-effd-48a4-bcea-3106a28e2d79",
+			"id": "7b53654a-2ef8-4ab9-8481-da4ee54ee4bd",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "29f65fe5-e9d8-4dac-a756-61189f14ac88",
+			"id": "cc1527d0-d439-47f7-926e-31d0f4c6a7c8",
 			"key": "new_booking",
 			"value": ""
 		}
