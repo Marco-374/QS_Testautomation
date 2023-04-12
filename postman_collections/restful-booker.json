@@ -176,7 +176,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{{new_booking}}"
+					"raw": "{\n    \"test\": {{new_booking}}\n}"
 				},
 				"url": "{{host}}/booking",
 				"description": "Request that allows you to create a Booking within the API. This request creates the booking using JSON."
@@ -699,17 +699,17 @@
 	],
 	"variable": [
 		{
-			"id": "19e6494e-1f8c-4dc0-86a2-3b01b967150b",
+			"id": "f4d022e6-5cfe-4434-af88-21437309be6b",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "dc867712-bfa1-488f-b92d-a879953f0889",
+			"id": "4408e84f-136b-4737-9ef6-f7eedd4147f2",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "f175047b-bce2-47e7-9cb5-5219ac133351",
+			"id": "5f7915d9-0d4f-4427-8a55-9d648f1d2c24",
 			"key": "new_booking",
 			"value": ""
 		}
