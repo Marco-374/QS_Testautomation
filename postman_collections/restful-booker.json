@@ -576,8 +576,8 @@
 						"exec": [
 							"// create the base booking\r",
 							"var booking = {\r",
-							"    \"firstname\" : \"Jim\",\r",
-							"    \"lastname\" : \"Brown\",\r",
+							"    \"firstname\" : \"Max\",\r",
+							"    \"lastname\" : \"Mustermann\",\r",
 							"    \"totalprice\" : 111,\r",
 							"    \"depositpaid\" : true,\r",
 							"    \"bookingdates\" : {\r",
@@ -673,12 +673,12 @@
 	],
 	"variable": [
 		{
-			"id": "a35ca568-0239-46cb-ba5d-dc37f599ec90",
+			"id": "e1b54f4c-403a-4726-976e-c09ad8c764e3",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "eeb438e8-98ea-49fa-9c2a-7a0b177c0f0e",
+			"id": "1ca4877d-7239-40ce-8a4c-6d1f6e7cea21",
 			"key": "booking_id",
 			"value": "1"
 		}
