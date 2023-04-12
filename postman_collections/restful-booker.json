@@ -19,7 +19,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Status code name has string\", function () {\r",
-							"    pm.response.to.have.status(\"Created\");\r",
+							"    pm.response.to.have.status(\"Creaed\");\r",
 							"});\r",
 							""
 						],
@@ -589,7 +589,7 @@
 	],
 	"variable": [
 		{
-			"id": "f29d26f0-98ee-426e-888b-47d845141459",
+			"id": "5f89ab6c-06b8-48f6-afa1-67e671d6e527",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		}
