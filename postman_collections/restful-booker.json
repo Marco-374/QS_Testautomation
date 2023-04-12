@@ -673,12 +673,12 @@
 	],
 	"variable": [
 		{
-			"id": "0bb320c5-d454-43e2-9b38-262f2e1aa816",
+			"id": "be6fff69-1d19-4a09-b30a-6e6eaccec628",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "b93282e8-11d6-438b-9571-00557b21de5f",
+			"id": "e894be02-d344-4302-9af6-7cda571e258e",
 			"key": "booking_id",
 			"value": "1"
 		}
