@@ -44,6 +44,20 @@
 		},
 		{
 			"name": "/booking - GetBookingIds (Query all IDs)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ee56ad3e-f360-42af-a248-1a018af354dd",
+						"exec": [
+							"pm.test(\"Answer is an array\", function () {\r",
+							"    pm.response.to.be.success;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "c5d78c4d-ecaa-4014-8f75-05f4d1842b3f",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -700,17 +714,17 @@
 	],
 	"variable": [
 		{
-			"id": "89c437da-3078-47a0-8a97-50e58c9cc91b",
+			"id": "f22d6acc-89e2-4315-9385-5d46d0c9c007",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "350b59d1-6298-4e6c-91a8-d6858ac16b58",
+			"id": "890e46dd-bcad-47d1-94c4-169dc22ec444",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "bba8230e-7677-4256-bb1d-a5d542950cfc",
+			"id": "9d9af459-b926-4693-978b-58f8e9f3bebe",
 			"key": "new_booking",
 			"value": ""
 		}
