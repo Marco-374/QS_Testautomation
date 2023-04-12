@@ -129,7 +129,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "{{host}}/booking/1",
+				"url": "{{host}}/booking/{{id}}",
 				"description": "Requests a specific booking that exists within the API. To get a list of valid booking IDs using GetBookingIds calls."
 			},
 			"response": []
@@ -592,12 +592,12 @@
 	],
 	"variable": [
 		{
-			"id": "94e03528-7782-455a-9a05-55ca9eb4acfd",
+			"id": "b0561cd2-4dc7-4f36-bd98-b097a51248e2",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "3deb6249-5105-46d3-83a3-b7092de1f4ab",
+			"id": "d9fbb83b-5083-408f-b0a9-513c8615191d",
 			"key": "id",
 			"value": "1"
 		}
