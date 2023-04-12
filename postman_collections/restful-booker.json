@@ -236,7 +236,7 @@
 							"\r",
 							"pm.test(\"Response contains token\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData).to.have.property(\"token\");\r",
+							"    pm.expect(jsonData).to.have.property(\"toke\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -570,7 +570,7 @@
 	],
 	"variable": [
 		{
-			"id": "7aebe29a-15c2-4bee-9efc-c5034bd7ba2c",
+			"id": "bcd96567-34d1-44c6-9eca-51c54eaf4aa9",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		}
