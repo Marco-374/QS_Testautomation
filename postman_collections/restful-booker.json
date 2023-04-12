@@ -158,7 +158,7 @@
 							"    }    \r",
 							"});\r",
 							"\r",
-							"pm.test(\"Response array elements have values have to be numbers\", function () {\r",
+							"pm.test(\"Response array elements have to have corresponding bookings with data 'Harry Potter'\", function () {\r",
 							"    for(const element of pm.response.json()){\r",
 							"        pm.expect(element.bookingid).to.be.a('number');\r",
 							"    }    \r",
@@ -815,17 +815,17 @@
 	],
 	"variable": [
 		{
-			"id": "4dc54242-eabd-4a3c-9769-dbdedea16fdb",
+			"id": "59f57812-bd48-40e8-86b3-6ca46be30230",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "aa4771cd-a1bf-479e-a614-31d043ec7472",
+			"id": "22cb6640-3459-4a27-8158-e79bcfa79caa",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "f58e00f7-3d96-48fe-b0dd-ea68158babba",
+			"id": "73150871-c37e-4d8d-b13b-3ac5c786a532",
 			"key": "new_booking",
 			"value": ""
 		}
