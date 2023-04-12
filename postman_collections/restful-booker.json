@@ -597,12 +597,21 @@
 					"script": {
 						"id": "836ad683-1f44-4922-aa9c-5bd646f47888",
 						"exec": [
-							"pm.sendRequest(pm.environment.get(\"rb_url\") + \"/booking/\" + pm.variables.get(\"booking_id\"), function (err, res) {\r",
+							"pm.sendRequest(pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"), function (err, res) {\r",
 							"  if (err) { console.log(err); }\r",
 							"  pm.test('Booking no longer exists', function () {\r",
 							"    pm.expect(err).to.equal(null);\r",
 							"    pm.expect(res.code).to.eql(404);\r",
 							"  });\r",
+							"  \r",
+							"  pm.test(\"Status code name has string 'Created'\", function () {\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"  });\r",
+							"\r",
+							"  pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"  });\r",
+							"\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -662,17 +671,17 @@
 	],
 	"variable": [
 		{
-			"id": "5f3ca6a2-a602-46b7-84e5-d5d075ddb956",
+			"id": "01a5fc3c-d537-4e0f-9626-502b1d1c7d9b",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "4dfa5789-c56a-4e15-8d50-8226f9d3da80",
+			"id": "b38f1da0-aba8-48f2-8c8c-244c8be5d6fe",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "af747000-f802-447a-a498-95fffe694c27",
+			"id": "e94c66fb-bcf8-4629-8b43-1e5385e23c5e",
 			"key": "new_booking",
 			"value": "{\"firstname\":\"Max\",\"lastname\":\"Mustermann\",\"totalprice\":111,\"depositpaid\":true,\"bookingdates\":{\"checkin\":\"2022-01-01\",\"checkout\":\"2022-01-10\"},\"additionalneeds\":\"Breakfast\"}",
 			"type": "string"
