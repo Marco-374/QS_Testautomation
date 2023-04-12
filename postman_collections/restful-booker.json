@@ -17,6 +17,10 @@
 							"pm.test(\"Ping is successful\", function () {\r",
 							"    pm.response.to.be.success;\r",
 							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string\", function () {\r",
+							"    pm.response.to.have.status(\"Created\");\r",
+							"});\r",
 							""
 						],
 						"type": "text/javascript"
@@ -585,7 +589,7 @@
 	],
 	"variable": [
 		{
-			"id": "71294d88-47c3-4f17-91b6-ca599b2db56d",
+			"id": "f29d26f0-98ee-426e-888b-47d845141459",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		}
