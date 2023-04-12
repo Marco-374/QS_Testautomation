@@ -568,6 +568,47 @@
 		},
 		{
 			"name": "/booking/:id - DeleteBooking",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ffdb0a20-47f2-4f09-b960-d76bb93d179b",
+						"exec": [
+							"// create the base booking\r",
+							"const createBooking = {\r",
+							"  url: pm.collectionVariables.get(\"host\") + \"/booking\",\r",
+							"  method: 'POST',\r",
+							"  header: 'Content-Type:application/json',\r",
+							"  body: {\r",
+							"    mode: 'raw',\r",
+							"    raw: JSON.stringify(pm.collectionVariables.get(\"new_booking\"))\r",
+							"  }\r",
+							"};\r",
+							"pm.sendRequest(createBooking, function (err, res) {\r",
+							"    pm.expect(err).is.null;\r",
+							"    pm.collectionVariables.set(\"booking_id\", res.json().bookingid)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "836ad683-1f44-4922-aa9c-5bd646f47888",
+						"exec": [
+							"pm.sendRequest(pm.environment.get(\"rb_url\") + \"/booking/\" + pm.variables.get(\"booking_id\"), function (err, res) {\r",
+							"  if (err) { console.log(err); }\r",
+							"  pm.test('Booking no longer exists', function () {\r",
+							"    pm.expect(err).to.equal(null);\r",
+							"    pm.expect(res.code).to.eql(404);\r",
+							"  });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "5f39fd47-b68f-48fc-95a0-48ad47817f90",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -599,12 +640,12 @@
 	],
 	"variable": [
 		{
-			"id": "8629896e-1dfb-49c9-a3a9-e64d44f560b5",
+			"id": "6b9a2a2e-09df-461a-a275-5b06ab5647a3",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "a6c28c1d-0e92-4524-a459-382fb99078b1",
+			"id": "2a94475c-446e-4405-a9f3-dc791c67a54f",
 			"key": "id",
 			"value": "1"
 		}
