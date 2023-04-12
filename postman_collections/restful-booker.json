@@ -136,6 +136,32 @@
 		},
 		{
 			"name": "/booking - CreateBooking (JSON)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4e88d35e-d9b8-4e57-83f7-c913ffa858ab",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response booking is correct\", function () {\r",
+							"    var data = pm.response.json();\r",
+							"    pm.expect(data.bookingid).to.be.a(\"number\");\r",
+							"    pm.expect(data.booking.firstname).to.eql(pm.collectionVariables.get(\"new_booking\").firstname);\r",
+							"    pm.expect(data.booking.lastname).to.eql(pm.collectionVariables.get(\"new_booking\").lastname);\r",
+							"    pm.expect(data.booking.totalprice).to.eql(pm.collectionVariables.get(\"new_booking\").totalprice);\r",
+							"    pm.expect(data.booking.depositpaid).to.eql(pm.collectionVariables.get(\"new_booking\").depositpaid);\r",
+							"    pm.expect(data.booking.bookingdates.checkin).to.eql(pm.collectionVariables.get(\"new_booking\").bookingdates.checkin);\r",
+							"    pm.expect(data.booking.bookingdates.checkout).to.eql(pm.collectionVariables.get(\"new_booking\").bookingdates.checkout);\r",
+							"    pm.expect(data.booking.additionalneeds).to.eql(pm.collectionVariables.get(\"new_booking\").additionalneeds);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "4752668a-2685-44d2-820f-6b5d2fb0304b",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -150,7 +176,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"firstname\" : \"Jim\",\n    \"lastname\" : \"Brown\",\n    \"totalprice\" : 111,\n    \"depositpaid\" : true,\n    \"bookingdates\" : {\n        \"checkin\" : \"2022-01-01\",\n        \"checkout\" : \"2022-01-10\"\n    },\n    \"additionalneeds\" : \"Breakfast\"\n}"
+					"raw": "{\n    \"firstname\" : \"Max\",\n    \"lastname\" : \"Mustermann\",\n    \"totalprice\" : 111,\n    \"depositpaid\" : true,\n    \"bookingdates\" : {\n        \"checkin\" : \"2022-01-01\",\n        \"checkout\" : \"2022-01-10\"\n    },\n    \"additionalneeds\" : \"Breakfast\"\n}"
 				},
 				"url": "{{host}}/booking",
 				"description": "Request that allows you to create a Booking within the API. This request creates the booking using JSON."
@@ -673,17 +699,17 @@
 	],
 	"variable": [
 		{
-			"id": "f4241534-8d82-49c3-b95a-88ef7feda35b",
+			"id": "c0c863ec-67c0-4331-8127-0223743cca86",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "7e0a4da8-53c2-421a-8ff6-ad13a865579d",
+			"id": "1c7c326a-7477-4698-8e3c-f1e50d8485ba",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "4ed5436b-0279-4934-90ea-48626b52ec3c",
+			"id": "c59610ca-176d-4a0f-8b43-14f5e0ad6249",
 			"key": "new_booking",
 			"value": ""
 		}
