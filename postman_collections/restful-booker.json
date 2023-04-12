@@ -95,6 +95,60 @@
 		},
 		{
 			"name": "/booking - GetBookingIds (Filter by name)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "3770e31f-3bc4-4af0-be45-15842c9957f4",
+						"exec": [
+							"pm.sendRequest({\r",
+							"    url: '{{host}}/booking',\r",
+							"    method: 'POST',\r",
+							"     header: {\r",
+							"        'Content-Type': 'application/json',\r",
+							"          },\r",
+							"}, function (err, response) {\r",
+							"    console.log(response.json());\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1a1585c0-5534-46ec-91c1-658e1bb50ae8",
+						"exec": [
+							"pm.test(\"Response has to be status 200\", function () {\r",
+							"    pm.response.to.be.success;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has to be an array\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response array elements have to inlcude only one key\", function () {\r",
+							"    for(const element of pm.response.json()){\r",
+							"        pm.expect(Object.keys(element).length).to.be.equal(1);\r",
+							"    }    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response array elements have to inlcude the key bookingid\", function () {\r",
+							"    for(const element of pm.response.json()){\r",
+							"        pm.expect(element).to.have.property('bookingid');\r",
+							"    }    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response array elements have values have to be numbers\", function () {\r",
+							"    for(const element of pm.response.json()){\r",
+							"        pm.expect(element.bookingid).to.be.a('number');\r",
+							"    }    \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "b9dc92d0-3bfc-4113-bac7-57ad5f75c22a",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -103,7 +157,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{host}}/booking?firstname={{$randomFirstName}}&lastname={{$randomLastName}}",
+					"raw": "{{host}}/booking",
 					"host": [
 						"{{host}}"
 					],
@@ -113,11 +167,13 @@
 					"query": [
 						{
 							"key": "firstname",
-							"value": "{{$randomFirstName}}"
+							"value": "*",
+							"disabled": true
 						},
 						{
 							"key": "lastname",
-							"value": "{{$randomLastName}}"
+							"value": "*",
+							"disabled": true
 						}
 					]
 				},
@@ -737,17 +793,17 @@
 	],
 	"variable": [
 		{
-			"id": "9ccde590-dad2-44bf-abbb-46248e7a5d1d",
+			"id": "496cc8b9-18dc-4d62-ba38-e2bf939d2f43",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "3ad3c5e4-c310-4dc3-89cc-224f5a9eb899",
+			"id": "66c4f544-ca03-4641-af5c-93a3b24f1ddc",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "76770def-738b-4c52-9918-a0a40fe842ca",
+			"id": "53c093fb-e271-4cf1-8640-85a0b3db583d",
 			"key": "new_booking",
 			"value": ""
 		}
