@@ -162,25 +162,15 @@
 							"    for(const element of pm.response.json()){\r",
 							"        pm.sendRequest({\r",
 							"    url: 'https://restful-booker.herokuapp.com/booking/:' + element.bookingid,\r",
-							"    method: 'POST',\r",
+							"    method: 'GET',\r",
 							"    header: {\r",
 							"        'Content-Type': 'application/json',\r",
 							"          },\r",
-							"    body: {\r",
-							"        mode: 'raw',\r",
-							"        raw: JSON.stringify({    \"firstname\": \"Harry\",\r",
-							"    \"lastname\": \"Potter\",\r",
-							"    \"totalprice\": 999,\r",
-							"    \"depositpaid\": true,\r",
-							"    \"bookingdates\": {\r",
-							"      \"checkin\": \"2018-01-01\",\r",
-							"      \"checkout\": \"2019-01-01\"\r",
-							"    },\r",
-							"    \"additionalneeds\": \"Winkelgasse\"})\r",
-							"    }    \r",
+							"    body: {}    \r",
 							"}, function (err, response) {\r",
 							"    //console.error(err);\r",
-							"    console.log(response.json());\r",
+							"    p.expect((response.json()).firstname).to.be.equal(\"Harry\");\r",
+							"    p.expect((response.json()).lastname).to.be.equal(\"Potter\");\r",
 							"})\r",
 							"    }    \r",
 							"});"
@@ -836,17 +826,17 @@
 	],
 	"variable": [
 		{
-			"id": "f9b09d9f-e916-4e15-9bed-7338877f8ce7",
+			"id": "9a0b57c6-a7b9-4984-9a8b-8c8714661d50",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "01a7bc07-b3e7-4290-8cc9-d47e465c15b8",
+			"id": "2c51f3e6-b400-4c2b-ac61-fbdafd7345d5",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "2d507e2f-1936-43f3-9db0-12dbfdac3448",
+			"id": "b68da56b-1f71-4215-baa1-a3f6c2f77b73",
 			"key": "new_booking",
 			"value": ""
 		}
