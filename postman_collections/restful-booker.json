@@ -285,7 +285,12 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{{new_booking}}"
+					"raw": "      \r\n  \"booking\": {\r\n    \"firstname\": \"Harry\",\r\n    \"lastname\": \"Potter\",\r\n    \"totalprice\": 999,\r\n    \"depositpaid\": true,\r\n    \"bookingdates\": {\r\n      \"checkin\": \"2018-01-01\",\r\n      \"checkout\": \"2019-01-01\"\r\n    },\r\n    \"additionalneeds\": \"Winkelgasse\"",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": "{{host}}/booking",
 				"description": "Request that allows you to create a Booking within the API. This request creates the booking using JSON."
@@ -808,17 +813,17 @@
 	],
 	"variable": [
 		{
-			"id": "99058fab-c5e4-4add-bd8e-b6e561f9e9f9",
+			"id": "0f4f791b-7b20-4931-ae22-19dd5c7aa61c",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "37a399a4-a5bf-4921-8954-26d42f761bbb",
+			"id": "80b373e6-ec5b-4fa7-8ad0-746e456b5cf1",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "19c5a55d-011b-46ff-bcf4-d35ec13e26d9",
+			"id": "563d8165-531f-4c14-b325-c0835835cdcf",
 			"key": "new_booking",
 			"value": ""
 		}
