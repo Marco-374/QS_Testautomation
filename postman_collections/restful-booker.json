@@ -108,8 +108,6 @@
 							"        'Content-Type': 'application/json',\r",
 							"          },\r",
 							"    body: {\r",
-							"        \r",
-							"  \"booking\": {\r",
 							"    \"firstname\": \"Harry\",\r",
 							"    \"lastname\": \"Potter\",\r",
 							"    \"totalprice\": 999,\r",
@@ -119,8 +117,6 @@
 							"      \"checkout\": \"2019-01-01\"\r",
 							"    },\r",
 							"    \"additionalneeds\": \"Winkelgasse\"\r",
-							"  \r",
-							"}\r",
 							"    }    \r",
 							"}, function (err, response) {\r",
 							"    console.log(response.json());\r",
@@ -813,17 +809,17 @@
 	],
 	"variable": [
 		{
-			"id": "a61f75d4-a2c3-4f3a-af5d-41f61748926c",
+			"id": "1b5049fc-7bbc-4dfd-bf8c-522fd050b599",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "b9de38d9-16ad-4903-9065-61f1c51c5687",
+			"id": "df73cb5d-d633-4ab6-b3b7-2036b63d0a97",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "75050f4a-dc7c-4184-815a-ffbc3db52218",
+			"id": "70efba2a-de9c-4dbe-9dd8-b72df0bb7705",
 			"key": "new_booking",
 			"value": ""
 		}
