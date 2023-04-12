@@ -149,13 +149,14 @@
 							"pm.test(\"Response booking is correct\", function () {\r",
 							"    var data = pm.response.json();\r",
 							"    pm.expect(data.bookingid).to.be.a(\"number\");\r",
-							"    pm.expect(data.booking.firstname).to.eql(pm.collectionVariables.get(\"new_booking\").firstname);\r",
-							"    pm.expect(data.booking.lastname).to.eql(pm.collectionVariables.get(\"new_booking\").lastname);\r",
-							"    pm.expect(data.booking.totalprice).to.eql(pm.collectionVariables.get(\"new_booking\").totalprice);\r",
-							"    pm.expect(data.booking.depositpaid).to.eql(pm.collectionVariables.get(\"new_booking\").depositpaid);\r",
-							"    pm.expect(data.booking.bookingdates.checkin).to.eql(pm.collectionVariables.get(\"new_booking\").bookingdates.checkin);\r",
-							"    pm.expect(data.booking.bookingdates.checkout).to.eql(pm.collectionVariables.get(\"new_booking\").bookingdates.checkout);\r",
-							"    pm.expect(data.booking.additionalneeds).to.eql(pm.collectionVariables.get(\"new_booking\").additionalneeds);\r",
+							"    var expectedBooking = JSON.parse(pm.collectionVariables.get(\"new_booking\"));\r",
+							"    pm.expect(data.booking.firstname).to.eql(expectedBooking.firstname);\r",
+							"    pm.expect(data.booking.lastname).to.eql(expectedBooking.lastname);\r",
+							"    pm.expect(data.booking.totalprice).to.eql(expectedBooking.totalprice);\r",
+							"    pm.expect(data.booking.depositpaid).to.eql(expectedBooking.depositpaid);\r",
+							"    pm.expect(data.booking.bookingdates.checkin).to.eql(expectedBooking.bookingdates.checkin);\r",
+							"    pm.expect(data.booking.bookingdates.checkout).to.eql(expectedBooking.bookingdates.checkout);\r",
+							"    pm.expect(data.booking.additionalneeds).to.eql(expectedBooking.additionalneeds);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -176,7 +177,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"test\": {{new_booking}}\n}"
+					"raw": "{{new_booking}}"
 				},
 				"url": "{{host}}/booking",
 				"description": "Request that allows you to create a Booking within the API. This request creates the booking using JSON."
@@ -699,17 +700,17 @@
 	],
 	"variable": [
 		{
-			"id": "cd452853-2c85-4723-a4af-083c46e133c2",
+			"id": "dad2541c-54ab-4e33-bf4f-fad9c7266036",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "0552ac38-9156-4537-9a5b-fd539aecfade",
+			"id": "ff06d48e-fd2c-4622-ab29-b15b5c701349",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "96b8f0b5-8166-462b-80ac-c2758944281c",
+			"id": "102de98d-9b1c-44b4-87e0-9149f5110503",
 			"key": "new_booking",
 			"value": ""
 		}
