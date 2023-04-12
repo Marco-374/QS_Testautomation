@@ -8,6 +8,21 @@
 	"item": [
 		{
 			"name": "/ping - HealthCheck",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "84101e73-eca2-4e88-b25c-7d2b97e1d97e",
+						"exec": [
+							"pm.test(\"Ping is successful\", function () {\r",
+							"    pm.response.to.be.success;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "2a5d3cd1-de4c-473d-9800-276c869868ab",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -570,7 +585,7 @@
 	],
 	"variable": [
 		{
-			"id": "c36db4c3-f265-4789-b040-aa8f6c1143eb",
+			"id": "71294d88-47c3-4f17-91b6-ca599b2db56d",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		}
