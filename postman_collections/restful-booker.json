@@ -668,7 +668,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "2f96b5df-888a-4dae-bd46-92b74ef58d88",
+				"id": "f613683c-99ce-4aaf-a3de-d14fdb555a09",
 				"type": "text/javascript",
 				"exec": [
 					"var booking = {",
@@ -682,14 +682,14 @@
 					"    },",
 					"    \"additionalneeds\" : \"Breakfast\"",
 					"};",
-					"pm.collectionVariables.set(\"new_booking\", booking);"
+					"pm.collectionVariables.set(\"new_booking\", JSON.stringify(booking));"
 				]
 			}
 		},
 		{
 			"listen": "test",
 			"script": {
-				"id": "38ad0fee-b4ef-4041-97d9-ca405242a33a",
+				"id": "0a1e0557-9586-45f5-8849-bc78d8551524",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -699,17 +699,17 @@
 	],
 	"variable": [
 		{
-			"id": "32ec34e9-ba6c-423b-8f10-024139c6e8b4",
+			"id": "19e6494e-1f8c-4dc0-86a2-3b01b967150b",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "8d22ad9b-6fd9-4cd5-8c9f-ea95a3f2b85c",
+			"id": "dc867712-bfa1-488f-b92d-a879953f0889",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "ed7d99a5-da88-4de4-894f-de5814764ee6",
+			"id": "f175047b-bce2-47e7-9cb5-5219ac133351",
 			"key": "new_booking",
 			"value": ""
 		}
