@@ -224,6 +224,25 @@
 		},
 		{
 			"name": "/auth - CreateToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7c95eb4d-be9e-4ea0-b656-ecefa07ab78b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response contains token\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"token\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "f0937860-1da1-47d6-b8f7-0274a070dc83",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -551,7 +570,7 @@
 	],
 	"variable": [
 		{
-			"id": "82f526f0-130a-4ba2-880a-8e566248f4a6",
+			"id": "7aebe29a-15c2-4bee-9efc-c5034bd7ba2c",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		}
