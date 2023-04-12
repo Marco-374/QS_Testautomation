@@ -642,7 +642,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "c6e13a6e-9a7b-4914-a134-e703cc3de7a5",
+				"id": "cc7901c9-5a55-48d7-9894-769cbe855752",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -652,7 +652,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "0f753538-fb40-42cb-bd79-38434ed3848c",
+				"id": "99b87f09-5ad0-4ff4-bf2d-e1f6ff63ffae",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -662,17 +662,17 @@
 	],
 	"variable": [
 		{
-			"id": "023d03e2-1790-4a65-be64-982976723ff3",
+			"id": "35078aa5-ce96-4f74-a2c4-9f3df9c353dd",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "a9ada842-7b89-4765-8da8-b772279af7aa",
+			"id": "08a786fa-5897-4ef8-9799-32a55ba3e5cd",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "6dce37d8-d79f-4643-bc4e-d07eaac29a65",
+			"id": "1e5fd566-4a7f-48f5-97be-7fa82e1d9747",
 			"key": "new_booking",
 			"value": "'{\"firstname\":\"Max\",\"lastname\":\"Mustermann\",\"totalprice\":111,\"depositpaid\":true,\"bookingdates\":{\"checkin\":\"2022-01-01\",\"checkout\":\"2022-01-10\"},\"additionalneeds\":\"Breakfast\"}'",
 			"type": "string"
