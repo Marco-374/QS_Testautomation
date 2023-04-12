@@ -156,6 +156,12 @@
 							"    for(const element of pm.response.json()){\r",
 							"        pm.expect(element.bookingid).to.be.a('number');\r",
 							"    }    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response array elements have values have to be numbers\", function () {\r",
+							"    for(const element of pm.response.json()){\r",
+							"        pm.expect(element.bookingid).to.be.a('number');\r",
+							"    }    \r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -170,7 +176,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{host}}/booking",
+					"raw": "{{host}}/booking?firstname=Harry&lastname=Potter",
 					"host": [
 						"{{host}}"
 					],
@@ -180,13 +186,11 @@
 					"query": [
 						{
 							"key": "firstname",
-							"value": "*",
-							"disabled": true
+							"value": "Harry"
 						},
 						{
 							"key": "lastname",
-							"value": "*",
-							"disabled": true
+							"value": "Potter"
 						}
 					]
 				},
@@ -811,17 +815,17 @@
 	],
 	"variable": [
 		{
-			"id": "bca087dc-8f37-4b99-aa8a-8a58bdfc6d34",
+			"id": "b7008ca2-5cf0-479e-a62a-8d9364dae898",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "fc244fc0-e7f2-4ea8-b1c5-d0d6ed551cec",
+			"id": "9597f2ad-8fdf-4b66-9e55-8b3efe4d20dc",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "438a2f5f-8ef1-4e96-bd81-e7a8224ffa8c",
+			"id": "801f1f79-d7c9-43d4-9cbb-a0522a885691",
 			"key": "new_booking",
 			"value": ""
 		}
