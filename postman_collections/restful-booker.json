@@ -158,9 +158,30 @@
 							"    }    \r",
 							"});\r",
 							"\r",
-							"pm.test(\"Response array elements have to have corresponding bookings with data 'Harry Potter'\", function () {\r",
+							"pm.test(\"Response array elements have to have corresponding bookings with data 'Harry Potter'\", function () {    \r",
 							"    for(const element of pm.response.json()){\r",
-							"        pm.expect(element.bookingid).to.be.a('number');\r",
+							"        pm.sendRequest({\r",
+							"    url: 'https://restful-booker.herokuapp.com/booking/:' + element.bookingid,\r",
+							"    method: 'POST',\r",
+							"    header: {\r",
+							"        'Content-Type': 'application/json',\r",
+							"          },\r",
+							"    body: {\r",
+							"        mode: 'raw',\r",
+							"        raw: JSON.stringify({    \"firstname\": \"Harry\",\r",
+							"    \"lastname\": \"Potter\",\r",
+							"    \"totalprice\": 999,\r",
+							"    \"depositpaid\": true,\r",
+							"    \"bookingdates\": {\r",
+							"      \"checkin\": \"2018-01-01\",\r",
+							"      \"checkout\": \"2019-01-01\"\r",
+							"    },\r",
+							"    \"additionalneeds\": \"Winkelgasse\"})\r",
+							"    }    \r",
+							"}, function (err, response) {\r",
+							"    //console.error(err);\r",
+							"    console.log(response.json());\r",
+							"})\r",
 							"    }    \r",
 							"});"
 						],
@@ -815,17 +836,17 @@
 	],
 	"variable": [
 		{
-			"id": "59f57812-bd48-40e8-86b3-6ca46be30230",
+			"id": "f9b09d9f-e916-4e15-9bed-7338877f8ce7",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "22cb6640-3459-4a27-8158-e79bcfa79caa",
+			"id": "01a7bc07-b3e7-4290-8cc9-d47e465c15b8",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "73150871-c37e-4d8d-b13b-3ac5c786a532",
+			"id": "2d507e2f-1936-43f3-9db0-12dbfdac3448",
 			"key": "new_booking",
 			"value": ""
 		}
