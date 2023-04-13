@@ -733,6 +733,7 @@
 							"});\r",
 							"\r",
 							"\r",
+							"// ToDO: url + method mit reinnehmen\r",
 							"// try updating with missing paraneter\r",
 							"const updatedBookingMissingParams = {\r",
 							"    \"firstname\": \"Kevin\",\r",
@@ -1246,17 +1247,17 @@
 	],
 	"variable": [
 		{
-			"id": "50671b4b-3c10-43d3-b247-5ba91dfc724c",
+			"id": "e7cdf4e7-9fc2-495c-90ef-5ae608a6de0c",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "d738b0ab-66c3-4d29-9bdf-e07e9a291a21",
+			"id": "183c1a71-148e-4622-8330-c21d44bfab5f",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "39678580-8092-4639-8060-664ddd3dd6cf",
+			"id": "61605f67-9038-4eca-952e-bc55671044d0",
 			"key": "new_booking",
 			"value": ""
 		}
