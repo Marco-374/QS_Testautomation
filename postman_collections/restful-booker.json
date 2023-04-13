@@ -89,6 +89,7 @@
 							"    pm.expect((response.json()).firstname).to.be.equal(\"Harry\");\r",
 							"    pm.expect((response.json()).lastname).to.be.equal(\"Potter\");\r",
 							"})\r",
+							"}\r",
 							"});\r",
 							""
 						],
@@ -980,17 +981,17 @@
 	],
 	"variable": [
 		{
-			"id": "0be9951c-7d93-4f62-896e-826b8b22f8f5",
+			"id": "084f3e63-0de3-4327-b9d5-639ae789a32c",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "752b1323-5fd1-4d5e-bcf6-b46459f9755f",
+			"id": "47905240-e8f6-497c-b512-25e16bd9ee1c",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "27bc7757-02ce-47aa-bb53-291ee65fc50a",
+			"id": "98e0db16-a8b8-4d9f-bc12-de06278e6cfc",
 			"key": "new_booking",
 			"value": ""
 		}
