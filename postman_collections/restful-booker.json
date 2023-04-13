@@ -792,6 +792,61 @@
 		},
 		{
 			"name": "/booking/:id - PartialUpdateBooking (JSON)",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "579fbc47-542e-468b-a45c-f42791c7ef66",
+						"exec": [
+							"const createBooking = {\r",
+							"  url: pm.collectionVariables.get(\"host\") + \"/booking\",\r",
+							"  method: 'POST',\r",
+							"  header: 'Content-Type:application/json',\r",
+							"  body: {\r",
+							"    mode: 'raw',\r",
+							"    raw: pm.collectionVariables.get(\"new_booking\")\r",
+							"  }\r",
+							"};\r",
+							"pm.sendRequest(createBooking, function (err, res) {\r",
+							"    pm.expect(err).is.null;\r",
+							"    pm.collectionVariables.set(\"booking_id\", res.json().bookingid);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "2a6c4156-1a6a-4842-bdfc-48c79fe48ace",
+						"exec": [
+							"const updatedBooking = {\r",
+							"    \"firstname\": \"Erika\",\r",
+							"    \"lastname\": \"Musterfrau\",    \r",
+							"};\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response booking is correct\", function () {\r",
+							"    var data = pm.response.json();\r",
+							"    var expectedBooking = updatedBooking;\r",
+							"    pm.expect(data.firstname).to.eql(expectedBooking.firstname);\r",
+							"    pm.expect(data.lastname).to.eql(expectedBooking.lastname);\r",
+							"    expectedBooking = JSON.parse(pm.collectionVariables.get(\"new_booking\"));\r",
+							"    pm.expect(data.totalprice).to.eql(expectedBooking.totalprice);\r",
+							"    pm.expect(data.depositpaid).to.eql(expectedBooking.depositpaid);\r",
+							"    pm.expect(data.bookingdates.checkin).to.eql(expectedBooking.bookingdates.checkin);\r",
+							"    pm.expect(data.bookingdates.checkout).to.eql(expectedBooking.bookingdates.checkout);\r",
+							"    pm.expect(data.additionalneeds).to.eql(expectedBooking.additionalneeds);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "ee3aa7fb-31c0-4551-8fac-ed5a29e73522",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -800,8 +855,8 @@
 				"auth": {
 					"type": "basic",
 					"basic": {
-						"password": "",
-						"username": ""
+						"password": "password123",
+						"username": "admin"
 					}
 				},
 				"method": "PATCH",
@@ -816,15 +871,14 @@
 					},
 					{
 						"key": "Cookie",
-						"value": "token=abc123",
-						"disabled": true
+						"value": "token=abc123"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"firstname\" : \"James\",\n    \"lastname\" : \"Brown\"\n}"
+					"raw": "{\n    \"firstname\" : \"Erika\",\n    \"lastname\" : \"Musterfrau\"\n}"
 				},
-				"url": "{{host}}/booking/1",
+				"url": "{{host}}/booking/{{booking_id}}",
 				"description": "Request that allows you to update a partial section of a Booking within the API. This request updates the booking using JSON.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
 			},
 			"response": []
@@ -1068,17 +1122,17 @@
 	],
 	"variable": [
 		{
-			"id": "d2b76f22-4a99-4c3a-8f76-8dd77daadbfb",
+			"id": "d10f2625-e9fc-451d-be6a-8e1da03af85a",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "98f6632d-114e-4fb6-ba65-fed1dcd6ba16",
+			"id": "b5cde96e-7856-49fb-9f8d-e4fa3eee088f",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "f3034404-b12e-4121-bacc-9690c76d6971",
+			"id": "89eacf1d-fdf4-4cab-9095-71da1cc30a72",
 			"key": "new_booking",
 			"value": ""
 		}
