@@ -1209,18 +1209,6 @@
 				"description": "Request that allows you to delete a Booking within the API.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
 			},
 			"response": []
-		},
-		{
-			"name": "New Request",
-			"id": "36463fb0-15e3-4f5e-945e-3b91a4222a59",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
 		}
 	],
 	"event": [
@@ -1258,17 +1246,17 @@
 	],
 	"variable": [
 		{
-			"id": "536880bb-6b11-4771-9a60-728b2fc72288",
+			"id": "50671b4b-3c10-43d3-b247-5ba91dfc724c",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "e1e38e11-4ab7-46dd-86fa-690a5582635a",
+			"id": "d738b0ab-66c3-4d29-9bdf-e07e9a291a21",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "0132c392-5ce8-4cd7-b7e5-ab19ddf0a8b9",
+			"id": "39678580-8092-4639-8060-664ddd3dd6cf",
 			"key": "new_booking",
 			"value": ""
 		}
