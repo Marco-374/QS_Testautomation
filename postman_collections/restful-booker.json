@@ -185,8 +185,7 @@
 							"pm.test(\"Response array elements have to have corresponding bookings with data 'Harry Potter'\", function () {    \r",
 							"    for(const element of pm.response.json()){\r",
 							"        console.log(element.bookingid);\r",
-							"        pm.sendRequest({\r",
-							"            \r",
+							"        pm.sendRequest({            \r",
 							"    url: 'https://restful-booker.herokuapp.com/booking/' + element.bookingid,\r",
 							"    method: 'GET',\r",
 							"    header: {\r",
@@ -989,17 +988,17 @@
 	],
 	"variable": [
 		{
-			"id": "ac744319-4441-4bf9-b695-116de382b00b",
+			"id": "746cbfc3-5702-4fc2-a2e9-d8b33f9bac70",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "22599cc4-2f13-4df0-bd95-4e536491e2f3",
+			"id": "4017051b-ddd6-44fd-9801-458831b57bed",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "56a7ba18-a23e-43c5-a708-c2f0e57dfe13",
+			"id": "69e40bfd-2682-4499-8c86-26e836ef746d",
 			"key": "new_booking",
 			"value": ""
 		}
