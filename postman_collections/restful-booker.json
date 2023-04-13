@@ -1013,6 +1013,7 @@
 							"  pm.response.to.have.status(201);\r",
 							"});\r",
 							"\r",
+							"// try to GET deleted booking\r",
 							"const getBooking = {\r",
 							"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
 							"  method: 'GET',\r",
@@ -1122,17 +1123,17 @@
 	],
 	"variable": [
 		{
-			"id": "d10f2625-e9fc-451d-be6a-8e1da03af85a",
+			"id": "9ec2b00c-4112-48e5-bb4f-e0cca894c340",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "b5cde96e-7856-49fb-9f8d-e4fa3eee088f",
+			"id": "6b1119ce-06e7-48d4-81fe-2ef977cac258",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "89eacf1d-fdf4-4cab-9095-71da1cc30a72",
+			"id": "5b6586a6-ffe7-4889-a8a6-4815a308574e",
 			"key": "new_booking",
 			"value": ""
 		}
