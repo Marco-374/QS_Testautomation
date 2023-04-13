@@ -906,7 +906,6 @@
 							"  pm.response.to.have.status(201);\r",
 							"});\r",
 							"\r",
-							"// \r",
 							"const getBooking = {\r",
 							"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
 							"  method: 'GET',\r",
@@ -941,7 +940,7 @@
 							"};\r",
 							"\r",
 							"pm.sendRequest(deleteBookingWithoutAuth, function (err, response) {\r",
-							"    pm.test(\"Delete without authorization\", function () {\r",
+							"    pm.test(\"Delete without authorization returns 403\", function () {\r",
 							"        pm.expect(response.code).to.be.equal(403);\r",
 							"        pm.expect(response.status).to.be.equal(\"Forbidden\")\r",
 							"    });\r",
@@ -1016,17 +1015,17 @@
 	],
 	"variable": [
 		{
-			"id": "d204ec7d-2a7b-45ff-9beb-1e2bf987baaa",
+			"id": "8ca3a29f-c3c9-47a2-a1c3-9f20d7b8cf7c",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "5aa8ad73-3f47-49dc-834c-adc581911994",
+			"id": "a2c68cfb-cb5c-4f37-88c8-21c151e67cbe",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "df5ff447-b02a-4423-8403-1ef6b58432a0",
+			"id": "e2ac4943-bd7d-42a6-9a31-96233ddac6f4",
 			"key": "new_booking",
 			"value": ""
 		}
