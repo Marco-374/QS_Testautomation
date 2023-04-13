@@ -422,6 +422,21 @@
 							"    pm.expect(data.booking.bookingdates.checkin).to.eql(expectedBooking.bookingdates.checkin);\r",
 							"    pm.expect(data.booking.bookingdates.checkout).to.eql(expectedBooking.bookingdates.checkout);\r",
 							"    pm.expect(data.booking.additionalneeds).to.eql(expectedBooking.additionalneeds);\r",
+							"});\r",
+							"\r",
+							"// try to create empty booking \r",
+							"const createEmptyBooking = {\r",
+							"  url: pm.collectionVariables.get(\"host\") + \"/booking\",\r",
+							"  method: 'POST',\r",
+							"  header: 'Content-Type:application/json',\r",
+							"  body: {} \r",
+							"};\r",
+							"\r",
+							"pm.sendRequest(createEmptyBooking, function (err, response) {\r",
+							"    pm.test(\"Create empty booking returns 500\", function () {\r",
+							"        pm.expect(response.code).to.be.equal(500);\r",
+							"        pm.expect(response.status).to.be.equal(\"Internal Server Error\")\r",
+							"    });\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -1127,17 +1142,17 @@
 	],
 	"variable": [
 		{
-			"id": "69f832c0-3660-4429-b55a-05d7b680e305",
+			"id": "73eaf58e-b61a-4729-9ed9-43aaf6bc9915",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "76eb41bb-1a5a-4262-a772-6cfe3d59c2d1",
+			"id": "62344e89-dd1d-4d58-b76a-757eab1cb3a7",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "13f49b45-2e27-42eb-bbda-082e990ba5a0",
+			"id": "baa35802-5b1b-4df0-8556-df9e187a4a56",
 			"key": "new_booking",
 			"value": ""
 		}
