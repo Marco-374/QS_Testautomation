@@ -337,7 +337,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "4e88d35e-d9b8-4e57-83f7-c913ffa858ab",
+						"id": "a1085f03-344b-49ae-9504-04db92170763",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
@@ -916,17 +916,17 @@
 	],
 	"variable": [
 		{
-			"id": "67c7ce5e-8370-4e35-a73b-b02dd1424b4b",
+			"id": "1ba6b407-bc47-4f28-b769-2e81c3eae5ed",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "e0e1253f-f007-4eb4-8ab9-8780f9919c79",
+			"id": "b0769ca1-9dd3-4892-8e40-6871505bc0d1",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "ed04600c-2ced-42ee-863d-bf3b6900e3c3",
+			"id": "e0fcb7b9-96c4-4205-945e-9130b1a2be0a",
 			"key": "new_booking",
 			"value": ""
 		}
