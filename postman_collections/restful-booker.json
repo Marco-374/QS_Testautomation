@@ -235,6 +235,59 @@
 		},
 		{
 			"name": "/booking - GetBookingIds (Filter by date)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3ee8ea25-4a14-4df5-bf5b-7c4132cb53f8",
+						"exec": [
+							"pm.test(\"Response has to be status 200\", function () {\r",
+							"    pm.response.to.be.success;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response has to be an array\", function () {\r",
+							"    pm.expect(pm.response.json()).to.be.an('array');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response array elements have to inlcude only one key\", function () {\r",
+							"    for(const element of pm.response.json()){\r",
+							"        pm.expect(Object.keys(element).length).to.be.equal(1);\r",
+							"    }    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response array elements have to inlcude the key bookingid\", function () {\r",
+							"    for(const element of pm.response.json()){\r",
+							"        pm.expect(element).to.have.property('bookingid');\r",
+							"    }    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response array elements have values have to be numbers\", function () {\r",
+							"    for(const element of pm.response.json()){\r",
+							"        pm.expect(element.bookingid).to.be.a('number');\r",
+							"    }    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response array elements have to have corresponding bookings with data 'Harry Potter'\", function () {    \r",
+							"    for(const element of pm.response.json()){\r",
+							"        console.log(element.bookingid);\r",
+							"        pm.sendRequest({            \r",
+							"    url: 'https://restful-booker.herokuapp.com/booking/' + element.bookingid,\r",
+							"    method: 'GET',\r",
+							"    header: {\r",
+							"        'Content-Type': 'application/json',\r",
+							"          },\r",
+							"    body: {}    \r",
+							"}, function (err, response) {    \r",
+							"    pm.expect((response.json()).firstname).to.be.equal(\"Harry\");\r",
+							"    pm.expect((response.json()).lastname).to.be.equal(\"Potter\");\r",
+							"})\r",
+							"    }    \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"id": "e24f6a3f-5022-4754-9c23-5d44ac9e6629",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -1015,17 +1068,17 @@
 	],
 	"variable": [
 		{
-			"id": "c6701870-839e-40e2-aa68-89e30551201b",
+			"id": "1418c64e-f08f-4031-adbc-9de999fd60c3",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "05835746-de82-49b6-a7e1-587fa7638597",
+			"id": "60a088e3-8a23-4b2d-8ecd-b21b3f137e86",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "3756f001-ad68-45cb-88cf-dd9ab5728639",
+			"id": "d804b6b4-b404-4fa6-a346-7b16403e344f",
 			"key": "new_booking",
 			"value": ""
 		}
