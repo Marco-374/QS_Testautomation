@@ -820,7 +820,25 @@
 							"\r",
 							"pm.test(\"Status code is 201\", function () {\r",
 							"  pm.response.to.have.status(201);\r",
-							"});"
+							"});\r",
+							"\r",
+							"const getBooking = {\r",
+							"  url: pm.collectionVariables.get(\"host\") + \"/booking\" + pm.collectionVariables.get(\"booking_id\"),\r",
+							"  method: 'GET',\r",
+							"  header: 'Content-Type:application/json'\r",
+							"};\r",
+							"\r",
+							"pm.sendRequest(getBooking, function (err, response) {\r",
+							"\r",
+							"    pm.test(\"Status code is 404\", function () {\r",
+							"        pm.response.to.have.status(404);\r",
+							"    });\r",
+							"\r",
+							"    pm.test(\"Status code name has string 'Not Found'\", function () {\r",
+							"        pm.response.to.have.status(\"Not Found\");\r",
+							"    });\r",
+							"});\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -890,17 +908,17 @@
 	],
 	"variable": [
 		{
-			"id": "57e17e73-727f-426c-9c35-7ea9926d1e65",
+			"id": "b58400d3-c95b-4c81-90c8-e0e26606ac0c",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "be381b9f-1308-433c-98c1-fc23a0f89847",
+			"id": "346282d5-c0fa-4ba5-bd5d-cadf3c268024",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "ca219181-5d4b-482e-b1d0-d05ea4a37868",
+			"id": "acfe3e8f-290b-4b81-89cd-0d90497de9a7",
 			"key": "new_booking",
 			"value": ""
 		}
