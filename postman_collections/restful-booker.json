@@ -202,7 +202,41 @@
 							"    pm.expect((response.json()).lastname).to.be.equal(\"Potter\");\r",
 							"})\r",
 							"    }    \r",
-							"});"
+							"});\r",
+							"\r",
+							"pm.test(\"Response array has to be empty\", ()=>{\r",
+							"    pm.sendRequest({            \r",
+							"            url: 'https://restful-booker.herokuapp.com/booking,\r",
+							"            method: 'GET',\r",
+							"            header: {\r",
+							"                'Content-Type': 'application/json',\r",
+							"                },\r",
+							"            body: {}    \r",
+							"        }, function (err, response) { \r",
+							"  for(const element of pm.response.json()){\r",
+							"        pm.sendRequest({            \r",
+							"            url: 'https://restful-booker.herokuapp.com/booking/' + element.bookingid,\r",
+							"            method: 'DELETE',\r",
+							"            header: {\r",
+							"                'Content-Type': 'application/json',\r",
+							"                },\r",
+							"            body: {}    \r",
+							"        }, function (err, response) {    \r",
+							"           \r",
+							"        })\r",
+							"    }})\r",
+							"     pm.sendRequest({            \r",
+							"                url: 'https://restful-booker.herokuapp.com/booking',\r",
+							"                method: 'GET',\r",
+							"                header: {\r",
+							"                    'Content-Type': 'application/json',\r",
+							"                    },\r",
+							"                body: {}    \r",
+							"            }, function (err, response) {    \r",
+							"                pm.expect(response.json().length).to.be.eq(0)\r",
+							"            })\r",
+							"});\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -1211,17 +1245,17 @@
 	],
 	"variable": [
 		{
-			"id": "75c33b54-6d12-45f8-8139-914c00caf68a",
+			"id": "f5711378-6a10-42b6-944b-3fc9b231f70a",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "0bab1cfd-3ea1-4af8-95c7-ad1e961957cd",
+			"id": "6a21e261-a074-49e8-8827-f4f4eeb2fd13",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "2eae8a48-af62-4656-a5a6-6a842f7d4a0a",
+			"id": "a30a2ceb-b182-4350-bf7d-8338dafcfaab",
 			"key": "new_booking",
 			"value": ""
 		}
