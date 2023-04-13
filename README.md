@@ -5,25 +5,41 @@
  * Timo Max
  * Robin Wollenschläger
 
-## Scope
+## Testscope
+https://restful-booker.herokuapp.com/apidoc/index.html
  * User <--> PC <--> System <--> DB
  * Scope <--> System <--> DB
 
+Wir haben uns darauf festgelegt, nur die Endpunkte zu testen, bei denen Daten im JSON-Format ausgetauscht werden. Die XML-Datenübertragung wird nicht getestet. 
+
 ## Testziele
-Funktionalität der REST-API Endpunkte testen
+Qualitätsziele nach ISO25010:
+- Funktionalität der REST-API Endpunkte testen 
+- Verlässlichkeit der REST-API Endpunkte testen (Was passiert bei falschen Eingaben?)
+
+Es gibt neben diesen beiden funktionalen Tests auch noch nicht-funktionale Tests (z.B. Performancetests), welche für uns allerdings nicht relevant sind.  
 
 ## Teststufen
-Wahrscheinlich Systemtest
+Wir betrachten hier ein Einzelsystem beziehungsweise Schnittstellen zwischen Komponenten, deshalb handelt es sich um einen *Systemtest*.
 
 ## Testobjekte
-Jeder Endpunkt ein Testobjekt
+Jeder Endpunkt (z.B. *create booking via POST*) stellt ein eigenes Testobjekt dar, zu welchem dann die entsprechenden Testfälle geschrieben werden.
+Testobjekte lassen sich nach folgenden Ansätzen bilden:
+- funktionale Struktur
+- prozessuale Struktur
+- Schnittstellen 
 
-## Risiko
- * Kriterien => Auswirkung auf den Kunden, (Anzahl Betroffene), Innen(Wirkung) auf Unternehmen, existiert Workaround (nur für Update vorhanden - delete + create)
- * Health Check von Scope ausschließen (keine Relevanz für Funktionalität) => kaum fachliches Risiko, sehr niedrige Komplexität
- * Auth höchstes fachl. Risiko (sehr hoch), hohe Komplexität
- * Get Endpoint (niedriges Risiko), niedrige Komplexität
- * Create, Update, Delete hohes Risiko (hohes Risiko), niedriges Komplexität
+In unserem Fall haben wir die Testobjekte nach der **funktionalen Struktur** (fachlicher Bezug) gebildet. 
+
+## Risikomanagement 
+Das Risikomanagement stellt eine Methode dar, um die Reihenfolge der Ausführung der Testfälle festzulegen, wobei immer ein Bezug zu den Testobjekten (hier: API-Endpunkte) besteht.
+
+Für die Risikoanalyse betrachtet man einerseits das **fachliche Risiko** und andererseits die **technische Komplexität**, wobei dazu die Kriterien *Auswirkung auf den Kunden*, *exisitert ein Workaround?* und *Anzahl der beteiligten Klassen* herangezogen werden können. Es wird folgende Abstufung verwendet: **sehr hoch - hoch - niedrig - sehr niedrig**
+
+- Es wäre möglich den Health-Check vom Scope auszuschließen, da dieser keine direkte Relevanz für die Funktionalität hat. Es besteht somit kaum ein fachliches Risiko und eine sehr geringe technische Komplexität. 
+- Der Auth-Endpunkt hat das höchste fachliche Risiko (sehr hoch) und eine hohe Komplexität.
+- Die Get-Endpunkte haben ein niedriges Risiko und eine niedrige Komplexität. 
+- Create, Update und Delete haben wiederum ein hohes Risiko und eine niedrige Komplexität. Der Update-Endpunkt ist der einzige für den ein Workaround existiert. Man kann eine Buchung aktualisieren, indem man sie löscht und neu anlegt. 
 
 ## Toolauswahl
 * **Postman**
@@ -34,9 +50,9 @@ Jeder Endpunkt ein Testobjekt
 * für funktionale Tests geeignet
 
 ## Framework
-* TF-Design
-* Ausführung (TEX)
+* TF-Design erfolgt mitostman 
+* Ausführung (TEX) erfolgt in Postman 
 * Testreporting mit Postman
-* Testdatenmngmt. wahrscheinlich auch
+* Testdatenmanagement erfolgt mit Postman
 * Toolsetup: Konfigurationsmanagement mit Postman + Github Integration (Versionsverwaltung)
 
