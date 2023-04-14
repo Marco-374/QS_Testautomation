@@ -1616,40 +1616,40 @@
 	],
 	"variable": [
 		{
-			"id": "6b1aba7e-b4b0-48f9-b7af-360d0f3db28b",
+			"id": "3af0f58f-fb64-45a5-a900-9e913308c702",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "7a6936da-70ca-4210-8b9e-be845c36e71c",
+			"id": "38dcb889-d8d3-44d7-97df-25b280585181",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "63cbc06d-5b7b-402a-a477-1ae13dea574f",
+			"id": "e930fe12-28f5-4da8-a1c4-1d0be39c9621",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "609644a2-4555-4b8f-bddc-94c259e51148",
+			"id": "a9a4a7bb-85e8-41b7-9376-14815058b81a",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "850c7098-0d6f-4d8f-b26c-77f5e28d0d66",
+			"id": "59519894-9290-4793-af8a-ebc2ccc8cb8b",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "dfd7f9b9-d47b-4a78-a9b3-56d4487b99f9",
+			"id": "82d4ad44-3410-4e61-a66e-18ca991c8861",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
 		},
 		{
-			"id": "0a4a1094-cce4-449a-a71f-d365a7f0a4fd",
+			"id": "a38b273e-2e7c-489c-9511-3641a18bddaf",
 			"key": "wrong_booking",
 			"value": ""
 		}
