@@ -664,6 +664,232 @@
 						"description": "Request that allows you to delete a Booking within the API.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
 					},
 					"response": []
+				},
+				{
+					"name": "/booking/:id - DeleteBooking with already deleted booking",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ffdb0a20-47f2-4f09-b960-d76bb93d179b",
+								"exec": [
+									"// create the base booking\r",
+									"const createBooking = {\r",
+									"  url: pm.collectionVariables.get(\"host\") + \"/booking\",\r",
+									"  method: 'POST',\r",
+									"  header: 'Content-Type:application/json',\r",
+									"  body: {\r",
+									"    mode: 'raw',\r",
+									"    raw: pm.collectionVariables.get(\"new_booking\")\r",
+									"  }\r",
+									"};\r",
+									"pm.sendRequest(createBooking, function (err, res) {\r",
+									"    pm.expect(err).is.null;\r",
+									"    pm.collectionVariables.set(\"booking_id\", res.json().bookingid);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "836ad683-1f44-4922-aa9c-5bd646f47888",
+								"exec": [
+									"pm.test(\"Status code name has string 'Created'\", function () {\r",
+									"  pm.response.to.have.status(\"Created\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"  pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"// try to GET deleted booking\r",
+									"const getBooking = {\r",
+									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
+									"  method: 'GET',\r",
+									"  header: 'Content-Type:application/json'\r",
+									"};\r",
+									"\r",
+									"pm.sendRequest(getBooking, function (err, response) {\r",
+									"    pm.test(\"Get request with deleted bookingId returns 404\", function () {\r",
+									"        pm.expect(response.code).to.be.equal(404);\r",
+									"        pm.expect(response.status).to.be.equal(\"Not Found\")\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"// try to delete a non existing booking \r",
+									"const deleteBooking = {\r",
+									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
+									"  method: 'DELETE',\r",
+									"  header: 'Authorization: Basic ' + btoa('admin:password123')\r",
+									"};\r",
+									"\r",
+									"pm.sendRequest(deleteBooking, function (err, response) {\r",
+									"    pm.test(\"Delete non existing booking returns 405\", function () {\r",
+									"        pm.expect(response.code).to.be.equal(405);\r",
+									"        pm.expect(response.status).to.be.equal(\"Method Not Allowed\")\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"// try to delete without authorization\r",
+									"const deleteBookingWithoutAuth = {\r",
+									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
+									"  method: 'DELETE'\r",
+									"};\r",
+									"\r",
+									"pm.sendRequest(deleteBookingWithoutAuth, function (err, response) {\r",
+									"    pm.test(\"Delete without authorization returns 403\", function () {\r",
+									"        pm.expect(response.code).to.be.equal(403);\r",
+									"        pm.expect(response.status).to.be.equal(\"Forbidden\")\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "506fbb5f-28bf-49c7-b0a7-e092ea03f75e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "admin",
+								"password": "password123"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token=abc123"
+							}
+						],
+						"url": "{{host}}/booking/{{booking_id}}",
+						"description": "Request that allows you to delete a Booking within the API.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
+					},
+					"response": []
+				},
+				{
+					"name": "/booking/:id - DeleteBooking Copy",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ffdb0a20-47f2-4f09-b960-d76bb93d179b",
+								"exec": [
+									"// create the base booking\r",
+									"const createBooking = {\r",
+									"  url: pm.collectionVariables.get(\"host\") + \"/booking\",\r",
+									"  method: 'POST',\r",
+									"  header: 'Content-Type:application/json',\r",
+									"  body: {\r",
+									"    mode: 'raw',\r",
+									"    raw: pm.collectionVariables.get(\"new_booking\")\r",
+									"  }\r",
+									"};\r",
+									"pm.sendRequest(createBooking, function (err, res) {\r",
+									"    pm.expect(err).is.null;\r",
+									"    pm.collectionVariables.set(\"booking_id\", res.json().bookingid);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "836ad683-1f44-4922-aa9c-5bd646f47888",
+								"exec": [
+									"pm.test(\"Status code name has string 'Created'\", function () {\r",
+									"  pm.response.to.have.status(\"Created\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"  pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"// try to GET deleted booking\r",
+									"const getBooking = {\r",
+									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
+									"  method: 'GET',\r",
+									"  header: 'Content-Type:application/json'\r",
+									"};\r",
+									"\r",
+									"pm.sendRequest(getBooking, function (err, response) {\r",
+									"    pm.test(\"Get request with deleted bookingId returns 404\", function () {\r",
+									"        pm.expect(response.code).to.be.equal(404);\r",
+									"        pm.expect(response.status).to.be.equal(\"Not Found\")\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"// try to delete a non existing booking \r",
+									"const deleteBooking = {\r",
+									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
+									"  method: 'DELETE',\r",
+									"  header: 'Authorization: Basic ' + btoa('admin:password123')\r",
+									"};\r",
+									"\r",
+									"pm.sendRequest(deleteBooking, function (err, response) {\r",
+									"    pm.test(\"Delete non existing booking returns 405\", function () {\r",
+									"        pm.expect(response.code).to.be.equal(405);\r",
+									"        pm.expect(response.status).to.be.equal(\"Method Not Allowed\")\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"// try to delete without authorization\r",
+									"const deleteBookingWithoutAuth = {\r",
+									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
+									"  method: 'DELETE'\r",
+									"};\r",
+									"\r",
+									"pm.sendRequest(deleteBookingWithoutAuth, function (err, response) {\r",
+									"    pm.test(\"Delete without authorization returns 403\", function () {\r",
+									"        pm.expect(response.code).to.be.equal(403);\r",
+									"        pm.expect(response.status).to.be.equal(\"Forbidden\")\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "309b3ce6-8a88-4d0d-be4f-b1c7233f2586",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"username": "admin",
+								"password": "password123"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token=abc123"
+							}
+						],
+						"url": "{{host}}/booking/{{booking_id}}",
+						"description": "Request that allows you to delete a Booking within the API.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
+					},
+					"response": []
 				}
 			],
 			"id": "1342371a-25af-4a15-a327-86fc9ce94d51"
@@ -1515,40 +1741,40 @@
 	],
 	"variable": [
 		{
-			"id": "78652ffb-b982-4b45-ae1f-52b0ffd08fcc",
+			"id": "e49eb559-9489-45b1-b872-dc667263c496",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "90518225-a8be-4323-a473-dcdd50f7f744",
+			"id": "1ab82be6-c509-44b8-8926-7e29ebccbca0",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "98938f5e-80e0-45e7-804c-d060ae93f457",
+			"id": "3dcf36ea-d81c-44b7-ae08-eaee86af2021",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "65b8f7be-efc3-49ff-a938-486628733961",
+			"id": "1c361dcd-3494-4037-bd5d-68e3ac890876",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "cad8da1b-680f-4077-989f-d12d39892ed5",
+			"id": "8f8d9703-13dd-487e-8bea-d91247250653",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "a485ceb5-d7e3-4a16-96a3-5f920e3ec1ad",
+			"id": "25dbf9bd-58ac-43ae-bc55-a4009b1ce139",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
 		},
 		{
-			"id": "6c46175b-1a76-4bfb-93fb-65cf6e6b3f1f",
+			"id": "55243f3c-5c76-4fb9-90da-5f550717c449",
 			"key": "wrong_booking",
 			"value": ""
 		}
