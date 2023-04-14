@@ -141,20 +141,9 @@
 							"script": {
 								"id": "2a6c4156-1a6a-4842-bdfc-48c79fe48ace",
 								"exec": [
-									"const updatedBooking = {\r",
-									"    \"firstname\": \"Erika\",\r",
-									"    \"lastname\": \"Musterfrau\",\r",
-									"    \"totalprice\": 111,\r",
-									"    \"depositpaid\": true,\r",
-									"    \"bookingdates\": {\r",
-									"        \"checkin\":\"2022-01-01\",\r",
-									"        \"checkout\":\"2022-01-10\"  \r",
-									"    },\r",
-									"    \"additionalneeds\": \"Breakfast\"\r",
-									"};\r",
 									"\r",
 									"// try updating with wrong parameter\r",
-									"pm.test(\"Update with wrong parameters to be forbidden\", function () {    \r",
+									"pm.test(\"Update with wrong parameters is working\", function () {    \r",
 									"\r",
 									"        pm.sendRequest({\r",
 									"            url: `https://restful-booker.herokuapp.com/booking/${pm.collectionVariables.get(\"booking_id\")}`,\r",
@@ -170,8 +159,6 @@
 									"            pm.expect(data.firstname).to.eql(expectedBooking.firstname);\r",
 									"            pm.expect(data.lastname).to.eql(expectedBooking.lastname);\r",
 									"            pm.expect(data.totalprice).to.eql(expectedBooking.totalprice);\r",
-									"\r",
-									"            expectedBooking = JSON.parse(pm.collectionVariables.get(\"new_booking\"));\r",
 									"            pm.expect(data.depositpaid).to.eql(expectedBooking.depositpaid);\r",
 									"            pm.expect(data.bookingdates.checkin).to.eql(expectedBooking.bookingdates.checkin);\r",
 									"            pm.expect(data.bookingdates.checkout).to.eql(expectedBooking.bookingdates.checkout);\r",
@@ -215,7 +202,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"firstname\": \"Erika\",\n    \"lastname\": \"Musterfrau\",\n    \"totalprice\": 333,        \n    \"wrongParam\": \"xyz\"\n}"
+							"raw": "{\n    \"firstname\": \"Erika\",\n    \"totalprice\": 333,        \n    \"wrongParam\": \"xyz\",\n    \"lastname\": \"Musterfrau\"\n}"
 						},
 						"url": "{{host}}/booking/{{booking_id}}",
 						"description": "Request that allows you to update a partial section of a Booking within the API. This request updates the booking using JSON.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
@@ -1777,40 +1764,40 @@
 	],
 	"variable": [
 		{
-			"id": "462c7f09-c5e9-48fc-ba02-5b680f51300f",
+			"id": "f1ef1375-8aeb-4f4e-b707-6bed3320f6b4",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "417ff784-9564-4e1a-adc9-20583377f232",
+			"id": "8b6d3110-fd04-4f85-98da-8974f14cb258",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "7e53d554-5c82-4051-8b10-4f1af4931579",
+			"id": "030e780b-eded-4d00-b846-8f56826a6245",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "128eefc7-241d-4ebc-90f5-3a6fb6f9987a",
+			"id": "0f77184f-8231-4f10-bbda-e266b01f2084",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "a156e52a-6c0c-4da1-a9a6-5c7b1a492964",
+			"id": "a9a1592b-013e-4e50-9972-d97633724a67",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "3df5c4e1-e243-4efb-b846-cc1b6c0ad34d",
+			"id": "24f791d4-f0cc-4d1f-8b2e-fd663c2ae58b",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
 		},
 		{
-			"id": "aa46c29b-0636-4198-916c-1521a2139bda",
+			"id": "c4dfc9d2-7cb0-48bf-8cb8-d454c89b70ef",
 			"key": "wrong_booking",
 			"value": ""
 		}
