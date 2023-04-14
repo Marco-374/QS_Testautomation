@@ -222,6 +222,76 @@
 						"url": "{{host}}/booking/{{booking_id}}"
 					},
 					"response": []
+				},
+				{
+					"name": "/booking/:id - Update deleted without Auth",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b90bf07c-c29f-4d9f-b08a-65c4cae9d859",
+								"exec": [
+									"// delete booking if exists\r",
+									"const deleteBooking = {\r",
+									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
+									"  method: 'DELETE',\r",
+									"  header: 'Authorization: Basic ' + btoa('admin:password123')\r",
+									"};\r",
+									"\r",
+									"pm.sendRequest(deleteBooking, function (err, response) {\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "b14747b0-9c87-49d3-9feb-da8507ed5f15",
+								"exec": [
+									"\r",
+									"pm.test(\"Update non existing booking returns 405\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(405);\r",
+									"    pm.expect(pm.response.status).to.be.equal(\"Method Not Allowed\")\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "355e61fb-25ed-4251-88a5-a5cd6d7140c7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "{{password}}",
+								"username": "{{username}}"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\": \"Erika\",\r\n    \"lastname\": \"Musterfrau\",\r\n    \"totalprice\": 222,\r\n    \"depositpaid\": false,\r\n    \"bookingdates\": {\r\n      \"checkin\": \"2023-01-01\",\r\n      \"checkout\": \"2023-01-10\"\r\n    },\r\n    \"additionalneeds\": \"Fastbreak\"     \r\n}"
+						},
+						"url": "{{host}}/booking/{{booking_id}}"
+					},
+					"response": []
 				}
 			],
 			"id": "c774f320-1888-46d7-9d44-ef6096e2339e"
@@ -1253,34 +1323,34 @@
 	],
 	"variable": [
 		{
-			"id": "5df03ab1-b7c8-427b-8cd8-8144fda1494e",
+			"id": "d3a3be88-47b7-44af-be3b-f8f3024f5243",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "12f2e857-9f6d-4a61-9653-35291684be70",
+			"id": "f58e75da-8a1c-4a3a-aec6-fda42488d598",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "a568ceb1-0a98-4e45-82ac-e0317d7b454e",
+			"id": "33fb5d0c-43fd-4504-ab11-bbacbea51ace",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "115bf97d-96fc-4545-975c-ee45c964d49b",
+			"id": "968786a1-1c21-4429-a92b-49773669fc78",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "046dd27e-17b9-4630-a2e0-340353f6e31b",
+			"id": "488435b0-6698-4355-8cb5-b6e1b743d8b1",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "81c8a44d-09ce-4c95-9a73-06e38c5bb7db",
+			"id": "361a0981-59a2-4bc6-8ea2-fe36f5d17110",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
