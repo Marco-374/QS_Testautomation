@@ -1464,7 +1464,10 @@
 							"const deleteBooking = {\r",
 							"    url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
 							"    method: 'DELETE',\r",
-							"    header: 'Authorization: Basic ' + btoa('admin:password123')\r",
+							"    header: {\r",
+							"        'content-type': 'application/json',\r",
+							"        'authorization': request.headers[\"authorization\"]\r",
+							"    },\r",
 							"};\r",
 							"\r",
 							"\r",
@@ -1472,17 +1475,20 @@
 							"const updateDeletedBooking = {\r",
 							"    url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
 							"    method: 'PATCH',\r",
-							"    header: 'Authorization: Basic ' + btoa('admin:password123')\r",
+							"    header: {\r",
+							"        'content-type': 'application/json',\r",
+							"        'authorization': request.headers[\"authorization\"]\r",
+							"    },\r",
 							"};\r",
 							"\r",
-							"// pm.test(\"Update non existing booking returns 400\", function () {\r",
-							"//     pm.sendRequest(deleteBooking, function (err, response) {   \r",
-							"//         pm.sendRequest(updateDeletedBooking, function (err, response2) {            \r",
-							"//             pm.expect(response2.code).to.be.equal(405);\r",
-							"//             pm.expect(response2.status).to.be.equal(\"Method Not Allowed\")            \r",
-							"//         });\r",
-							"//     })\r",
-							"// });"
+							"pm.test(\"Update non existing booking returns 405\", function () {\r",
+							"    pm.sendRequest(deleteBooking, function (err, response) {   \r",
+							"        pm.sendRequest(updateDeletedBooking, function (err, response2) {            \r",
+							"            pm.expect(response2.code).to.be.equal(405);\r",
+							"            pm.expect(response2.status).to.be.equal(\"Method Not Allowed\")            \r",
+							"        });\r",
+							"    })\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -1664,40 +1670,40 @@
 	],
 	"variable": [
 		{
-			"id": "c4da8199-5ea0-4f81-a2e8-9ae51bc5b9ec",
+			"id": "1aa3d642-f526-4db8-9c5f-69c3cace5bb9",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "4ba8d082-9321-43ac-b6f7-185b8bda6cdc",
+			"id": "474a4d3d-6ba8-4db9-8d29-7754e3f5d3b8",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "456c56da-84a9-4c6e-97b3-ab95f7ab07c7",
+			"id": "11591104-3571-429c-b583-6674d2d026bf",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "727ce996-de2f-4f2e-a062-10b6c064ebd4",
+			"id": "96b14421-2dcd-4aaa-be12-f53dcef6e5e2",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "ed18653e-0838-4717-bfb5-5477c5523ec3",
+			"id": "66997dfe-9159-46a6-acbf-5ca584b46daa",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "498259da-de5a-4a45-8767-549582137600",
+			"id": "f35f6ded-962a-4e96-b06b-073a77bd7a12",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
 		},
 		{
-			"id": "d3dce7a6-d854-46a6-a3e2-e6d65e72f82e",
+			"id": "4422e1b8-b596-4803-8979-c9c8786e1ca1",
 			"key": "wrong_booking",
 			"value": ""
 		}
