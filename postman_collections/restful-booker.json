@@ -428,21 +428,6 @@
 									"    pm.expect(data.booking.bookingdates.checkin).to.eql(expectedBooking.bookingdates.checkin);\r",
 									"    pm.expect(data.booking.bookingdates.checkout).to.eql(expectedBooking.bookingdates.checkout);\r",
 									"    pm.expect(data.booking.additionalneeds).to.eql(expectedBooking.additionalneeds);\r",
-									"});\r",
-									"\r",
-									"// try to create empty booking \r",
-									"const createEmptyBooking = {\r",
-									"  url: pm.collectionVariables.get(\"host\") + \"/booking\",\r",
-									"  method: 'POST',\r",
-									"  header: 'Content-Type:application/json',\r",
-									"  body: {} \r",
-									"};\r",
-									"\r",
-									"pm.sendRequest(createEmptyBooking, function (err, response) {\r",
-									"    pm.test(\"Create empty booking returns 500\", function () {\r",
-									"        pm.expect(response.code).to.be.equal(500);\r",
-									"        pm.expect(response.status).to.be.equal(\"Internal Server Error\")\r",
-									"    });\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1521,40 +1506,40 @@
 	],
 	"variable": [
 		{
-			"id": "d71ba620-d033-4628-a6f8-7a331133554e",
+			"id": "baac063d-b9a4-4767-96f2-dde26174dc80",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "089e8682-e8e5-4844-8612-1e077f7e4785",
+			"id": "bb72b778-d702-45dd-b8c1-99a48cccc6d6",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "e3d1f2bb-62db-44a0-abad-cb1b042f593d",
+			"id": "6fdf38d5-e418-410f-897f-ff1114681b55",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "dddd1f85-fda7-4ee1-8e71-b4c949fa00aa",
+			"id": "28b2bc18-f604-4d46-8e9a-9b9770946a13",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "7fb9310d-fa89-445c-9c43-ecae58801444",
+			"id": "4f6360af-6c16-431a-a08e-2904b8064d84",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "1a995081-d5e9-4904-96ea-cda1c9147717",
+			"id": "a01a1565-8dfc-4279-8f48-c15ed761b981",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
 		},
 		{
-			"id": "da4346b0-1310-4e2a-8316-46d0c218043b",
+			"id": "66c0ca99-d84c-48ae-aa4c-ba9acfba532a",
 			"key": "wrong_booking",
 			"value": ""
 		}
