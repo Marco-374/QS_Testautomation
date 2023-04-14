@@ -268,7 +268,15 @@
 							"script": {
 								"id": "b90bf07c-c29f-4d9f-b08a-65c4cae9d859",
 								"exec": [
-									""
+									"// delete booking if exists\r",
+									"const deleteBooking = {\r",
+									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
+									"  method: 'DELETE',\r",
+									"  header: 'Authorization: Basic ' + btoa('admin:password123')\r",
+									"};\r",
+									"\r",
+									"pm.sendRequest(deleteBooking, function (err, response) {\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -279,7 +287,7 @@
 								"id": "b14747b0-9c87-49d3-9feb-da8507ed5f15",
 								"exec": [
 									"\r",
-									"pm.test(\"Update booking without auth returns 403\", function () {\r",
+									"pm.test(\"Update non existing booking returns 403\", function () {\r",
 									"    pm.expect(pm.response.code).to.be.equal(403);\r",
 									"    pm.expect(pm.response.status).to.be.equal(\"Forbidden\")\r",
 									"});\r",
@@ -1348,34 +1356,34 @@
 	],
 	"variable": [
 		{
-			"id": "15e4ca02-63a0-4c14-a454-e43005a391ae",
+			"id": "b141c5ec-4469-4a72-af28-1560f68e0adc",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "35cba350-de07-4565-90fa-c8c91f1821dd",
+			"id": "d195f408-d3c6-4091-a3c6-b01ada491030",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "01a18430-8a85-4232-be3a-ce2ec35df225",
+			"id": "cf13eb28-27ad-4ee1-ab62-8477c56f5141",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "ec021399-d8c5-43c1-b7ec-8be6e6f8d44e",
+			"id": "5c2e741a-bcb0-46d6-b15e-ab679ced512c",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "21aaaab5-cbd2-4cd3-8d50-dcb1aed8e4e5",
+			"id": "d37c56d6-34be-42c9-ad4b-269247b9f6c3",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "e2a81c22-6b35-41bd-99d7-91454b5cdb2e",
+			"id": "f6806bf0-a70f-42ca-8436-8f7c1ed5cd87",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
