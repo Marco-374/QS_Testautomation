@@ -1112,19 +1112,19 @@
 							"};\r",
 							"\r",
 							"pm.sendRequest(updatedBookingMissingParams, function (err, response) {\r",
-							"    // pm.test(\"Update with wrong parameters does not change booking\", function () {\r",
-							"    //     var data = response.json();\r",
-							"    //     var expectedBooking = updatedBooking;\r",
-							"    //     pm.expect(data.firstname).to.eql(expectedBooking.firstname);\r",
-							"    //     pm.expect(data.lastname).to.eql(expectedBooking.lastname);\r",
-							"    //     pm.expect(data.totalprice).to.eql(expectedBooking.totalprice);\r",
+							"    pm.test(\"Update with wrong parameters does not change booking\", function () {\r",
+							"        var data = response.json();\r",
+							"        var expectedBooking = pm.response.json();\r",
+							"        pm.expect(data.firstname).to.eql(expectedBooking.firstname);\r",
+							"        pm.expect(data.lastname).to.eql(expectedBooking.lastname);\r",
+							"        pm.expect(data.totalprice).to.eql(expectedBooking.totalprice);\r",
 							"\r",
-							"    //     expectedBooking = JSON.parse(pm.collectionVariables.get(\"new_booking\"));\r",
-							"    //     pm.expect(data.depositpaid).to.eql(expectedBooking.depositpaid);\r",
-							"    //     pm.expect(data.bookingdates.checkin).to.eql(expectedBooking.bookingdates.checkin);\r",
-							"    //     pm.expect(data.bookingdates.checkout).to.eql(expectedBooking.bookingdates.checkout);\r",
-							"    //     pm.expect(data.additionalneeds).to.eql(expectedBooking.additionalneeds);\r",
-							"    // });\r",
+							"        expectedBooking = JSON.parse(pm.collectionVariables.get(\"new_booking\"));\r",
+							"        pm.expect(data.depositpaid).to.eql(expectedBooking.depositpaid);\r",
+							"        pm.expect(data.bookingdates.checkin).to.eql(expectedBooking.bookingdates.checkin);\r",
+							"        pm.expect(data.bookingdates.checkout).to.eql(expectedBooking.bookingdates.checkout);\r",
+							"        pm.expect(data.additionalneeds).to.eql(expectedBooking.additionalneeds);\r",
+							"    });\r",
 							"\r",
 							"    pm.test(\"Update with wrong parameters is forbidden\", function () {\r",
 							"        pm.expect(response).to.be.forbidden;\r",
@@ -1412,34 +1412,34 @@
 	],
 	"variable": [
 		{
-			"id": "d121bafd-8e45-406e-9e4a-fa5d99e0ff28",
+			"id": "52b573d6-e29b-46ce-b73c-e26f55cf9746",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "15eb507c-a9bf-440b-889e-90a544720f01",
+			"id": "f21fbaeb-eb84-463a-8c90-69c8c440b1ab",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "cbdb693e-2d51-42b7-9fa1-c7c9b9898ba6",
+			"id": "4fa226f6-f01f-4054-951d-abd53546840e",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "95b1a56a-2f22-4050-831f-bf85cd1f4eb3",
+			"id": "28e45441-1d61-4a43-991a-7e71aff8ab1d",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "b88124ed-f818-4a49-a69e-1d9c8598c68e",
+			"id": "49e762b5-fdf7-4547-bf03-606db337d5d3",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "0d6c6a7a-e966-4b88-8980-82011d15f4be",
+			"id": "9ecd3c3a-31ac-4a7a-b2e0-20ed44534ea7",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
