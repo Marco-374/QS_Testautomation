@@ -8,7 +8,288 @@
 	"item": [
 		{
 			"name": "UpdateBooking",
-			"item": [],
+			"item": [
+				{
+					"name": "/booking/:id - UpdateBooking (JSON)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "5f4dea90-9a8f-403c-8418-6e649fa3b68e",
+								"exec": [
+									"const createBooking = {\r",
+									"  url: pm.collectionVariables.get(\"host\") + \"/booking\",\r",
+									"  method: 'POST',\r",
+									"  header: 'Content-Type:application/json',\r",
+									"  body: {\r",
+									"    mode: 'raw',\r",
+									"    raw: pm.collectionVariables.get(\"new_booking\")\r",
+									"  }\r",
+									"};\r",
+									"pm.sendRequest(createBooking, function (err, res) {\r",
+									"    pm.expect(err).is.null;\r",
+									"    pm.collectionVariables.set(\"booking_id\", res.json().bookingid);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "8f46b241-227c-49b9-886f-447d27cd4c0e",
+								"exec": [
+									"const updatedBooking = {\r",
+									"    \"firstname\": \"Erika\",\r",
+									"    \"lastname\": \"Musterfrau\",\r",
+									"    \"totalprice\": 222,\r",
+									"    \"depositpaid\": false,\r",
+									"    \"bookingdates\": {\r",
+									"      \"checkin\": \"2023-01-01\",\r",
+									"      \"checkout\": \"2023-01-10\"\r",
+									"    },\r",
+									"    \"additionalneeds\": \"Fastbreak\"     \r",
+									"};\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response booking is correct\", function () {\r",
+									"    var data = pm.response.json();\r",
+									"    var expectedBooking = updatedBooking;\r",
+									"    pm.expect(data.firstname).to.eql(expectedBooking.firstname);\r",
+									"    pm.expect(data.lastname).to.eql(expectedBooking.lastname);\r",
+									"    pm.expect(data.totalprice).to.eql(expectedBooking.totalprice);\r",
+									"    pm.expect(data.depositpaid).to.eql(expectedBooking.depositpaid);\r",
+									"    pm.expect(data.bookingdates.checkin).to.eql(expectedBooking.bookingdates.checkin);\r",
+									"    pm.expect(data.bookingdates.checkout).to.eql(expectedBooking.bookingdates.checkout);\r",
+									"    pm.expect(data.additionalneeds).to.eql(expectedBooking.additionalneeds);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// try to update a non existing booking \r",
+									"const deleteBooking = {\r",
+									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
+									"  method: 'DELETE',\r",
+									"  header: 'Authorization: Basic ' + btoa('admin:password123')\r",
+									"};\r",
+									"\r",
+									"pm.sendRequest(deleteBooking, function (err, response) {\r",
+									"    console.log(pm.response.code)\r",
+									"});\r",
+									"\r",
+									"const updateDeletedBooking = {\r",
+									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
+									"  method: 'PUT',\r",
+									"  header: 'Authorization: Basic ' + btoa('admin:password123')\r",
+									"};\r",
+									"\r",
+									"pm.sendRequest(updateDeletedBooking, function (err, response) {\r",
+									"    pm.test(\"Update non existing booking returns 400\", function () {\r",
+									"        pm.expect(response.code).to.be.equal(400);\r",
+									"        pm.expect(response.status).to.be.equal(\"Bad Request\")\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// try to update without authorization\r",
+									"const updateBookingWithoutAuth = {\r",
+									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
+									"  method: 'PUT'\r",
+									"};\r",
+									"\r",
+									"pm.sendRequest(updateBookingWithoutAuth, function (err, response) {\r",
+									"    pm.test(\"Update without authorization returns 403\", function () {\r",
+									"        pm.expect(response.code).to.be.equal(403);\r",
+									"        pm.expect(response.status).to.be.equal(\"Forbidden\")\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// ToDO: url + method mit reinnehmen\r",
+									"// try updating with missing paraneter\r",
+									"const updatedBookingMissingParams = {\r",
+									"    \"firstname\": \"Kevin\",\r",
+									"    \"totalprice\": 333,\r",
+									"    \"depositpaid\": true,\r",
+									"    \"additionalneeds\": \"nothing\"     \r",
+									"};\r",
+									"\r",
+									"// fails because status is 200\r",
+									"pm.sendRequest(updatedBookingMissingParams, function (err, response) {\r",
+									"    pm.test(\"Update with missing parameters does not change booking\", function () {\r",
+									"        var data = pm.response.json();\r",
+									"        var expectedBooking = updatedBooking;\r",
+									"        pm.expect(data.firstname).to.eql(expectedBooking.firstname);\r",
+									"        pm.expect(data.lastname).to.eql(expectedBooking.lastname);\r",
+									"        pm.expect(data.totalprice).to.eql(expectedBooking.totalprice);\r",
+									"        pm.expect(data.depositpaid).to.eql(expectedBooking.depositpaid);\r",
+									"        pm.expect(data.bookingdates.checkin).to.eql(expectedBooking.bookingdates.checkin);\r",
+									"        pm.expect(data.bookingdates.checkout).to.eql(expectedBooking.bookingdates.checkout);\r",
+									"        pm.expect(data.additionalneeds).to.eql(expectedBooking.additionalneeds);\r",
+									"    });\r",
+									"\r",
+									"    pm.test(\"Update with missing parameters has satus code 400\", function () {\r",
+									"        pm.response.to.have.status(400);\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "f403693e-5396-4191-946b-4f753107da07",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "password123",
+								"username": "admin"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Cookie",
+								"value": "token=abc123"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstname\": \"Erika\",\n    \"lastname\": \"Musterfrau\",\n    \"totalprice\": 222,\n    \"depositpaid\": false,\n    \"bookingdates\": {\n      \"checkin\": \"2023-01-01\",\n      \"checkout\": \"2023-01-10\"\n    },\n    \"additionalneeds\": \"Fastbreak\"     \n}\n"
+						},
+						"url": "{{host}}/booking/{{booking_id}}",
+						"description": "Request that allows you to update a complete Booking within the API. This request updates the booking using JSON.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
+					},
+					"response": []
+				},
+				{
+					"name": "/booking/:id - UpdateBooking (XML)",
+					"id": "4ed909f1-3859-45c3-97ce-26543104cb93",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "",
+								"username": ""
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml"
+							},
+							{
+								"key": "Accept",
+								"value": "application/xml"
+							},
+							{
+								"key": "Cookie",
+								"value": "token=abc123",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<booking>\n    <firstname>James</firstname>\n    <lastname>Brown</lastname>\n    <totalprice>111</totalprice>\n    <depositpaid>true</depositpaid>\n    <bookingdates>\n      <checkin>2018-01-01</checkin>\n      <checkout>2019-01-01</checkout>\n    </bookingdates>\n    <additionalneeds>Breakfast</additionalneeds>\n  </booking>"
+						},
+						"url": "{{host}}/booking/1",
+						"description": "Request that allows you to update a complete Booking within the API. This request updates the booking using XML.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
+					},
+					"response": []
+				},
+				{
+					"name": "/booking/:id - UpdateBooking (URL)",
+					"id": "84c6e9a9-6be1-4bb7-94af-dd63acd991c0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "",
+								"username": ""
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Accept",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Cookie",
+								"value": "token=abc123",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "firstname",
+									"value": "Jim",
+									"type": "text"
+								},
+								{
+									"key": "lastname",
+									"value": "Brown",
+									"type": "text"
+								},
+								{
+									"key": "totalprice",
+									"value": "111",
+									"type": "text"
+								},
+								{
+									"key": "depositpaid",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "bookingdates[checkin]",
+									"value": "2018-01-01",
+									"type": "text"
+								},
+								{
+									"key": "bookingdates[checkout]",
+									"value": "2018-01-02",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{host}}/booking/1",
+						"description": "Request that allows you to update a complete Booking within the API. This request updates the booking using URL.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
+					},
+					"response": []
+				}
+			],
 			"id": "c774f320-1888-46d7-9d44-ef6096e2339e"
 		},
 		{
@@ -621,286 +902,6 @@
 			"response": []
 		},
 		{
-			"name": "/booking/:id - UpdateBooking (JSON)",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "5f4dea90-9a8f-403c-8418-6e649fa3b68e",
-						"exec": [
-							"const createBooking = {\r",
-							"  url: pm.collectionVariables.get(\"host\") + \"/booking\",\r",
-							"  method: 'POST',\r",
-							"  header: 'Content-Type:application/json',\r",
-							"  body: {\r",
-							"    mode: 'raw',\r",
-							"    raw: pm.collectionVariables.get(\"new_booking\")\r",
-							"  }\r",
-							"};\r",
-							"pm.sendRequest(createBooking, function (err, res) {\r",
-							"    pm.expect(err).is.null;\r",
-							"    pm.collectionVariables.set(\"booking_id\", res.json().bookingid);\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "8f46b241-227c-49b9-886f-447d27cd4c0e",
-						"exec": [
-							"const updatedBooking = {\r",
-							"    \"firstname\": \"Erika\",\r",
-							"    \"lastname\": \"Musterfrau\",\r",
-							"    \"totalprice\": 222,\r",
-							"    \"depositpaid\": false,\r",
-							"    \"bookingdates\": {\r",
-							"      \"checkin\": \"2023-01-01\",\r",
-							"      \"checkout\": \"2023-01-10\"\r",
-							"    },\r",
-							"    \"additionalneeds\": \"Fastbreak\"     \r",
-							"};\r",
-							"\r",
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response booking is correct\", function () {\r",
-							"    var data = pm.response.json();\r",
-							"    var expectedBooking = updatedBooking;\r",
-							"    pm.expect(data.firstname).to.eql(expectedBooking.firstname);\r",
-							"    pm.expect(data.lastname).to.eql(expectedBooking.lastname);\r",
-							"    pm.expect(data.totalprice).to.eql(expectedBooking.totalprice);\r",
-							"    pm.expect(data.depositpaid).to.eql(expectedBooking.depositpaid);\r",
-							"    pm.expect(data.bookingdates.checkin).to.eql(expectedBooking.bookingdates.checkin);\r",
-							"    pm.expect(data.bookingdates.checkout).to.eql(expectedBooking.bookingdates.checkout);\r",
-							"    pm.expect(data.additionalneeds).to.eql(expectedBooking.additionalneeds);\r",
-							"});\r",
-							"\r",
-							"\r",
-							"// try to update a non existing booking \r",
-							"const deleteBooking = {\r",
-							"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
-							"  method: 'DELETE',\r",
-							"  header: 'Authorization: Basic ' + btoa('admin:password123')\r",
-							"};\r",
-							"\r",
-							"pm.sendRequest(deleteBooking, function (err, response) {\r",
-							"    console.log(pm.response.code)\r",
-							"});\r",
-							"\r",
-							"const updateDeletedBooking = {\r",
-							"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
-							"  method: 'PUT',\r",
-							"  header: 'Authorization: Basic ' + btoa('admin:password123')\r",
-							"};\r",
-							"\r",
-							"pm.sendRequest(updateDeletedBooking, function (err, response) {\r",
-							"    pm.test(\"Update non existing booking returns 400\", function () {\r",
-							"        pm.expect(response.code).to.be.equal(400);\r",
-							"        pm.expect(response.status).to.be.equal(\"Bad Request\")\r",
-							"    });\r",
-							"});\r",
-							"\r",
-							"\r",
-							"// try to update without authorization\r",
-							"const updateBookingWithoutAuth = {\r",
-							"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
-							"  method: 'PUT'\r",
-							"};\r",
-							"\r",
-							"pm.sendRequest(updateBookingWithoutAuth, function (err, response) {\r",
-							"    pm.test(\"Update without authorization returns 403\", function () {\r",
-							"        pm.expect(response.code).to.be.equal(403);\r",
-							"        pm.expect(response.status).to.be.equal(\"Forbidden\")\r",
-							"    });\r",
-							"});\r",
-							"\r",
-							"\r",
-							"// ToDO: url + method mit reinnehmen\r",
-							"// try updating with missing paraneter\r",
-							"const updatedBookingMissingParams = {\r",
-							"    \"firstname\": \"Kevin\",\r",
-							"    \"totalprice\": 333,\r",
-							"    \"depositpaid\": true,\r",
-							"    \"additionalneeds\": \"nothing\"     \r",
-							"};\r",
-							"\r",
-							"// fails because status is 200\r",
-							"pm.sendRequest(updatedBookingMissingParams, function (err, response) {\r",
-							"    pm.test(\"Update with missing parameters does not change booking\", function () {\r",
-							"        var data = pm.response.json();\r",
-							"        var expectedBooking = updatedBooking;\r",
-							"        pm.expect(data.firstname).to.eql(expectedBooking.firstname);\r",
-							"        pm.expect(data.lastname).to.eql(expectedBooking.lastname);\r",
-							"        pm.expect(data.totalprice).to.eql(expectedBooking.totalprice);\r",
-							"        pm.expect(data.depositpaid).to.eql(expectedBooking.depositpaid);\r",
-							"        pm.expect(data.bookingdates.checkin).to.eql(expectedBooking.bookingdates.checkin);\r",
-							"        pm.expect(data.bookingdates.checkout).to.eql(expectedBooking.bookingdates.checkout);\r",
-							"        pm.expect(data.additionalneeds).to.eql(expectedBooking.additionalneeds);\r",
-							"    });\r",
-							"\r",
-							"    pm.test(\"Update with missing parameters has satus code 400\", function () {\r",
-							"        pm.response.to.have.status(400);\r",
-							"    });\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"id": "f403693e-5396-4191-946b-4f753107da07",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": {
-						"password": "password123",
-						"username": "admin"
-					}
-				},
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"disabled": true
-					},
-					{
-						"key": "Cookie",
-						"value": "token=abc123"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"firstname\": \"Erika\",\n    \"lastname\": \"Musterfrau\",\n    \"totalprice\": 222,\n    \"depositpaid\": false,\n    \"bookingdates\": {\n      \"checkin\": \"2023-01-01\",\n      \"checkout\": \"2023-01-10\"\n    },\n    \"additionalneeds\": \"Fastbreak\"     \n}\n"
-				},
-				"url": "{{host}}/booking/{{booking_id}}",
-				"description": "Request that allows you to update a complete Booking within the API. This request updates the booking using JSON.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
-			},
-			"response": []
-		},
-		{
-			"name": "/booking/:id - UpdateBooking (XML)",
-			"id": "4ed909f1-3859-45c3-97ce-26543104cb93",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": {
-						"password": "",
-						"username": ""
-					}
-				},
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "text/xml"
-					},
-					{
-						"key": "Accept",
-						"value": "application/xml"
-					},
-					{
-						"key": "Cookie",
-						"value": "token=abc123",
-						"type": "text",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "<booking>\n    <firstname>James</firstname>\n    <lastname>Brown</lastname>\n    <totalprice>111</totalprice>\n    <depositpaid>true</depositpaid>\n    <bookingdates>\n      <checkin>2018-01-01</checkin>\n      <checkout>2019-01-01</checkout>\n    </bookingdates>\n    <additionalneeds>Breakfast</additionalneeds>\n  </booking>"
-				},
-				"url": "{{host}}/booking/1",
-				"description": "Request that allows you to update a complete Booking within the API. This request updates the booking using XML.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
-			},
-			"response": []
-		},
-		{
-			"name": "/booking/:id - UpdateBooking (URL)",
-			"id": "84c6e9a9-6be1-4bb7-94af-dd63acd991c0",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": {
-						"password": "",
-						"username": ""
-					}
-				},
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded"
-					},
-					{
-						"key": "Accept",
-						"value": "application/x-www-form-urlencoded"
-					},
-					{
-						"key": "Cookie",
-						"value": "token=abc123",
-						"type": "text",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "firstname",
-							"value": "Jim",
-							"type": "text"
-						},
-						{
-							"key": "lastname",
-							"value": "Brown",
-							"type": "text"
-						},
-						{
-							"key": "totalprice",
-							"value": "111",
-							"type": "text"
-						},
-						{
-							"key": "depositpaid",
-							"value": "true",
-							"type": "text"
-						},
-						{
-							"key": "bookingdates[checkin]",
-							"value": "2018-01-01",
-							"type": "text"
-						},
-						{
-							"key": "bookingdates[checkout]",
-							"value": "2018-01-02",
-							"type": "text"
-						}
-					]
-				},
-				"url": "{{host}}/booking/1",
-				"description": "Request that allows you to update a complete Booking within the API. This request updates the booking using URL.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
-			},
-			"response": []
-		},
-		{
 			"name": "/booking/:id - PartialUpdateBooking (JSON)",
 			"event": [
 				{
@@ -1306,17 +1307,17 @@
 	],
 	"variable": [
 		{
-			"id": "d7a8f14a-871c-4871-9fcd-032304f979bb",
+			"id": "4794b6fe-48e2-46ac-a4c9-27944b88d59e",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "999790c6-6c8e-4335-8c98-bc4efbe4d019",
+			"id": "f7eaf35a-10ba-4289-b2ca-6cf947920b75",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "aacab402-dd5b-4b30-919a-83995347f707",
+			"id": "ae8abb12-f1a4-442e-94f9-299be17e7970",
 			"key": "new_booking",
 			"value": ""
 		}
