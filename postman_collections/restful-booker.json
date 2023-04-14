@@ -69,31 +69,6 @@
 									"});\r",
 									"\r",
 									"\r",
-									"// try to update a non existing booking \r",
-									"const deleteBooking = {\r",
-									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
-									"  method: 'DELETE',\r",
-									"  header: 'Authorization: Basic ' + btoa('admin:password123')\r",
-									"};\r",
-									"\r",
-									"pm.sendRequest(deleteBooking, function (err, response) {\r",
-									"    console.log(pm.response.code)\r",
-									"});\r",
-									"\r",
-									"const updateDeletedBooking = {\r",
-									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
-									"  method: 'PUT',\r",
-									"  header: 'Authorization: Basic ' + btoa('admin:password123')\r",
-									"};\r",
-									"\r",
-									"pm.sendRequest(updateDeletedBooking, function (err, response) {\r",
-									"    pm.test(\"Update non existing booking returns 400\", function () {\r",
-									"        pm.expect(response.code).to.be.equal(400);\r",
-									"        pm.expect(response.status).to.be.equal(\"Bad Request\")\r",
-									"    });\r",
-									"});\r",
-									"\r",
-									"\r",
 									"// try to update without authorization\r",
 									"const updateBookingWithoutAuth = {\r",
 									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
@@ -149,8 +124,8 @@
 						"auth": {
 							"type": "basic",
 							"basic": {
-								"password": "password123",
-								"username": "admin"
+								"password": "{{password}}",
+								"username": "{{username}}"
 							}
 						},
 						"method": "PUT",
@@ -166,7 +141,7 @@
 							},
 							{
 								"key": "Cookie",
-								"value": "token=abc123"
+								"value": "{{token}}"
 							}
 						],
 						"body": {
@@ -1278,34 +1253,34 @@
 	],
 	"variable": [
 		{
-			"id": "1f2d3591-8814-4b23-ac8a-e8aea5e01a41",
+			"id": "188e4021-f437-4e57-899d-3e4227972ebc",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "5512ae20-1fd9-43d9-9372-d4ad24367def",
+			"id": "cbc9d2e2-4988-4f5a-aa2b-c1fbd277aaf7",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "805b0209-940c-4f27-a376-db9cd4ab84e3",
+			"id": "14426a36-4d65-4eb7-a0fd-b1eb7922fc47",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "983ca487-f2c9-4024-b00d-0ceab9144b10",
+			"id": "18ecba69-3b6a-4a7a-89a3-d9eba14f3d4c",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "937468c6-f7f4-4c09-8d39-5285edd728f5",
+			"id": "dc4d410f-f1b2-4ad5-b6bb-5003e83d7722",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "42287363-4974-4625-b413-33d74ff2d317",
+			"id": "e781af46-ac18-479a-be7a-b35735bf1f71",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
