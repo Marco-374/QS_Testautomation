@@ -250,9 +250,9 @@
 								"id": "b14747b0-9c87-49d3-9feb-da8507ed5f15",
 								"exec": [
 									"\r",
-									"pm.test(\"Update non existing booking returns 405\", function () {\r",
-									"    pm.expect(pm.response.code).to.be.equal(405);\r",
-									"    pm.expect(pm.response.status).to.be.equal(\"Method Not Allowed\")\r",
+									"pm.test(\"Update non existing booking returns 403\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(403);\r",
+									"    pm.expect(pm.response.status).to.be.equal(\"Forbidden\")\r",
 									"});\r",
 									""
 								],
@@ -266,11 +266,7 @@
 					},
 					"request": {
 						"auth": {
-							"type": "basic",
-							"basic": {
-								"password": "{{password}}",
-								"username": "{{username}}"
-							}
+							"type": "noauth"
 						},
 						"method": "PUT",
 						"header": [
@@ -1323,34 +1319,34 @@
 	],
 	"variable": [
 		{
-			"id": "5b7a85c2-c876-4472-a525-dcef51d76e71",
+			"id": "39eb45ac-62f6-485f-9e32-08ba522202f5",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "dc17befb-cc1b-4b4b-aedd-b273ccefa8bc",
+			"id": "f0feb135-58ca-414a-9701-3c01468e4916",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "2171f007-726c-4861-8ed0-2a3b6ed6e838",
+			"id": "b2aeb015-a78a-4247-8d57-f975575e3d15",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "bbd5bdd1-3502-42ab-88b2-3e9035e3185d",
+			"id": "8436e025-8911-4742-a7b7-c625d74b7a8c",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "4d137cfa-37a8-4443-b006-cace48d3d698",
+			"id": "05e815c8-2ce4-44ab-8ed6-5a7ca147255c",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "c2f25b4e-cc0e-4505-8e17-10279163cd4f",
+			"id": "00709a6f-0eeb-4d4d-9007-70ff93b83835",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
