@@ -39,6 +39,8 @@ Für die Risikoanalyse betrachtet man einerseits das **fachliche Risiko** und an
 - Die Get-Endpunkte haben ein niedriges Risiko und eine niedrige Komplexität. 
 - Create, Update und Delete haben wiederum ein hohes Risiko und eine niedrige Komplexität. Der Update-Endpunkt ist der einzige für den ein Workaround existiert. Man kann eine Buchung aktualisieren, indem man sie löscht und neu anlegt. 
 
+![Risikoanalyse](./Risikoanalyse.png)
+
 ## Toolauswahl
 * **Postman**
 * einfach benutzbar
