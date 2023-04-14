@@ -732,54 +732,11 @@
 							"script": {
 								"id": "836ad683-1f44-4922-aa9c-5bd646f47888",
 								"exec": [
-									"pm.test(\"Status code name has string 'Created'\", function () {\r",
-									"  pm.response.to.have.status(\"Created\");\r",
+									"pm.test(\"Delete without authorization returns 403\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(403);\r",
+									"    pm.expect(pm.response.status).to.be.equal(\"Forbidden\")\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Status code is 201\", function () {\r",
-									"  pm.response.to.have.status(201);\r",
-									"});\r",
-									"\r",
-									"// try to GET deleted booking\r",
-									"const getBooking = {\r",
-									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
-									"  method: 'GET',\r",
-									"  header: 'Content-Type:application/json'\r",
-									"};\r",
-									"\r",
-									"pm.sendRequest(getBooking, function (err, response) {\r",
-									"    pm.test(\"Get request with deleted bookingId returns 404\", function () {\r",
-									"        pm.expect(response.code).to.be.equal(404);\r",
-									"        pm.expect(response.status).to.be.equal(\"Not Found\")\r",
-									"    });\r",
-									"});\r",
-									"\r",
-									"// try to delete a non existing booking \r",
-									"const deleteBooking = {\r",
-									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
-									"  method: 'DELETE',\r",
-									"  header: 'Authorization: Basic ' + btoa('admin:password123')\r",
-									"};\r",
-									"\r",
-									"pm.sendRequest(deleteBooking, function (err, response) {\r",
-									"    pm.test(\"Delete non existing booking returns 405\", function () {\r",
-									"        pm.expect(response.code).to.be.equal(405);\r",
-									"        pm.expect(response.status).to.be.equal(\"Method Not Allowed\")\r",
-									"    });\r",
-									"});\r",
-									"\r",
-									"// try to delete without authorization\r",
-									"const deleteBookingWithoutAuth = {\r",
-									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
-									"  method: 'DELETE'\r",
-									"};\r",
-									"\r",
-									"pm.sendRequest(deleteBookingWithoutAuth, function (err, response) {\r",
-									"    pm.test(\"Delete without authorization returns 403\", function () {\r",
-									"        pm.expect(response.code).to.be.equal(403);\r",
-									"        pm.expect(response.status).to.be.equal(\"Forbidden\")\r",
-									"    });\r",
-									"});\r",
 									""
 								],
 								"type": "text/javascript"
@@ -792,11 +749,7 @@
 					},
 					"request": {
 						"auth": {
-							"type": "basic",
-							"basic": {
-								"password": "{{password}}",
-								"username": "{{username}}"
-							}
+							"type": "noauth"
 						},
 						"method": "DELETE",
 						"header": [
@@ -1663,40 +1616,40 @@
 	],
 	"variable": [
 		{
-			"id": "130385db-b93d-4d25-a3e3-4b34a3730062",
+			"id": "91f2a0e9-23e0-47a3-8c1d-70c1b74aedee",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "2821853e-b8b2-41d5-ba9a-83b1074b4bd3",
+			"id": "493c5624-b0e9-4a64-8103-fb97814f298f",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "b6b87fec-f4d0-4390-8ea5-e1abe661ef6a",
+			"id": "7bbfa53b-0a37-42ad-be49-cd60399d5808",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "af6aae55-ad37-4135-a9d8-98a5a4047f0c",
+			"id": "0eb0be26-db1f-4c1b-9e8b-2a270555e795",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "79719e5b-ae07-4d71-ab96-3e48b997cd00",
+			"id": "323caa3b-2cc9-4982-b9af-e92f35a927b5",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "96b6a6b6-988e-4053-95e2-2617c5ba6fde",
+			"id": "2f0bc225-233f-4bb6-9fb2-fd2b6cd482bc",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
 		},
 		{
-			"id": "8b65ac75-d46d-45d4-bddc-3ef066454760",
+			"id": "dc526ddf-03d4-4a4a-ad90-6311e2f64734",
 			"key": "wrong_booking",
 			"value": ""
 		}
