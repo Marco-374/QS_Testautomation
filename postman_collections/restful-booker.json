@@ -177,6 +177,18 @@
 						"description": "Request that allows you to update a complete Booking within the API. This request updates the booking using JSON.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
 					},
 					"response": []
+				},
+				{
+					"name": "New Request",
+					"id": "98e8a576-59aa-47eb-9670-104242900b5b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "c774f320-1888-46d7-9d44-ef6096e2339e"
@@ -1196,17 +1208,17 @@
 	],
 	"variable": [
 		{
-			"id": "ad32601d-546f-400b-95af-9512afb3d650",
+			"id": "725c9774-c1d9-4223-b3c7-23bbc8774e0a",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "54eabc59-3f93-48b5-9123-a16469634510",
+			"id": "4d584412-601c-4aa1-87e2-3c71dd492fa9",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "7a422c5f-b2ed-42ad-bba6-16514bfaf8c6",
+			"id": "80c69dc8-ea30-4704-9f13-6ea5da0d3bb0",
 			"key": "new_booking",
 			"value": ""
 		}
