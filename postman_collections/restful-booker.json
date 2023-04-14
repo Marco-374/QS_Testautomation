@@ -1396,7 +1396,7 @@
 									"    body: {\r",
 									"        \"firstname\": \"Erika\",\r",
 									"        \"lastname\": \"Musterfrau\",\r",
-									"        \"totalprice\": 333//,        \r",
+									"        \"totalprice\": 333,        \r",
 									"        \"wrongParam\": \"xyz\"\r",
 									"    }\r",
 									"};\r",
@@ -1914,40 +1914,40 @@
 	],
 	"variable": [
 		{
-			"id": "a801503a-6d1e-40e7-9599-710523552de5",
+			"id": "509b724c-477e-4a89-b400-100701474c03",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "a307cb45-4ed0-4eb5-b933-31bde04da200",
+			"id": "8cc28312-926e-44b3-b612-c677e888442c",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "e43cd282-f8ac-4cea-8160-3142a9782a53",
+			"id": "a5312394-a127-4e02-a94c-739b0a6f129b",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "9f18878c-e0ea-4a9e-bcc3-b39680a08bea",
+			"id": "f5572869-ea0d-42ec-a1ae-1ced39ab619f",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "38c44c8d-2c8a-4d14-9a01-4d1722e41a36",
+			"id": "138ff11c-0b25-4a9e-ae0a-3ee13e33e8e1",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "e0c8dcdd-8ff6-4115-86f5-7c201b0f6dab",
+			"id": "8682aaca-e602-4454-9130-39ee223fb9ad",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
 		},
 		{
-			"id": "0e409f06-f305-4686-9d8b-42a9fdfb5bb4",
+			"id": "189f18ec-cf30-45fa-8b61-695bb4a7c977",
 			"key": "wrong_booking",
 			"value": ""
 		}
