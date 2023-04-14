@@ -179,46 +179,6 @@
 					"response": []
 				},
 				{
-					"name": "/booking/:id - UpdateBooking (XML)",
-					"id": "4ed909f1-3859-45c3-97ce-26543104cb93",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": {
-								"password": "",
-								"username": ""
-							}
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "text/xml"
-							},
-							{
-								"key": "Accept",
-								"value": "application/xml"
-							},
-							{
-								"key": "Cookie",
-								"value": "token=abc123",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "<booking>\n    <firstname>James</firstname>\n    <lastname>Brown</lastname>\n    <totalprice>111</totalprice>\n    <depositpaid>true</depositpaid>\n    <bookingdates>\n      <checkin>2018-01-01</checkin>\n      <checkout>2019-01-01</checkout>\n    </bookingdates>\n    <additionalneeds>Breakfast</additionalneeds>\n  </booking>"
-						},
-						"url": "{{host}}/booking/1",
-						"description": "Request that allows you to update a complete Booking within the API. This request updates the booking using XML.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
-					},
-					"response": []
-				},
-				{
 					"name": "/booking/:id - UpdateBooking (URL)",
 					"id": "84c6e9a9-6be1-4bb7-94af-dd63acd991c0",
 					"protocolProfileBehavior": {
@@ -1307,17 +1267,17 @@
 	],
 	"variable": [
 		{
-			"id": "4794b6fe-48e2-46ac-a4c9-27944b88d59e",
+			"id": "071e9861-c889-41fd-b518-95eff816329f",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "f7eaf35a-10ba-4289-b2ca-6cf947920b75",
+			"id": "fc279244-2c4b-4ade-b35f-65ebcd64805d",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "ae8abb12-f1a4-442e-94f9-299be17e7970",
+			"id": "165fdca1-33f7-450d-8610-651ed8174fad",
 			"key": "new_booking",
 			"value": ""
 		}
