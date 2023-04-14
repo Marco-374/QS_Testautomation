@@ -1544,57 +1544,6 @@
 						"description": "Request that allows you to update a partial section of a Booking within the API. This request updates the booking using JSON.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
 					},
 					"response": []
-				},
-				{
-					"name": "/booking/:id - PartialUpdateBooking (URL)",
-					"id": "534c6e05-0ffc-4afc-a1fd-69075d9e33b3",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": {
-								"password": "",
-								"username": ""
-							}
-						},
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/x-www-form-urlencoded"
-							},
-							{
-								"key": "Accept",
-								"value": "application/x-www-form-urlencoded"
-							},
-							{
-								"key": "Cookie",
-								"value": "token=abc123",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "firstname",
-									"value": "Jim",
-									"type": "text"
-								},
-								{
-									"key": "lastname",
-									"value": "Brown",
-									"type": "text"
-								}
-							]
-						},
-						"url": "{{host}}/booking/1",
-						"description": "Request that allows you to update a partial section of a Booking within the API. This request updates the booking using URL.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
-					},
-					"response": []
 				}
 			],
 			"id": "4c5b2e49-642d-4188-98b9-74078a8ed4bc"
@@ -1684,40 +1633,40 @@
 	],
 	"variable": [
 		{
-			"id": "094eca8d-ad0a-46fc-a3e1-a24721447840",
+			"id": "7cc26b23-9b04-400c-81c7-3ae630874973",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "25f120a5-f2a8-483c-a6ef-0c9ff76e1d38",
+			"id": "eace15af-64f3-483f-9a5d-7e70ad2e93bb",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "c8b8a637-4242-44d3-a80f-46b50723746a",
+			"id": "e025b591-7334-415c-9a8f-966197259dd6",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "428427ee-f256-41cc-8183-7d5049315a7f",
+			"id": "3a373378-ea11-493a-864b-ba4e5b915c87",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "8777988c-0341-40e0-b7c9-57f82df0f4f7",
+			"id": "baca0e6d-673e-4174-b04a-b5e099ac7f41",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "357ad7c0-c154-473d-ae46-3e0a02f37043",
+			"id": "553ddf68-c06f-4942-8a7c-e23fb7382f05",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
 		},
 		{
-			"id": "c25f0391-117e-4437-89c3-e0a58d214e65",
+			"id": "44a77294-a4ed-4b8c-92c4-ebeb1ae68b6f",
 			"key": "wrong_booking",
 			"value": ""
 		}
