@@ -192,6 +192,86 @@
 					"response": []
 				},
 				{
+					"name": "/booking/:id - Update with empty parameters",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "5f4dea90-9a8f-403c-8418-6e649fa3b68e",
+								"exec": [
+									"const createBooking = {\r",
+									"  url: pm.collectionVariables.get(\"host\") + \"/booking\",\r",
+									"  method: 'POST',\r",
+									"  header: 'Content-Type:application/json',\r",
+									"  body: {\r",
+									"    mode: 'raw',\r",
+									"    raw: pm.collectionVariables.get(\"new_booking\")\r",
+									"  }\r",
+									"};\r",
+									"pm.sendRequest(createBooking, function (err, res) {\r",
+									"    pm.expect(err).is.null;\r",
+									"    pm.collectionVariables.set(\"booking_id\", res.json().bookingid);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "8f46b241-227c-49b9-886f-447d27cd4c0e",
+								"exec": [
+									"    \r",
+									"pm.test(\"Update with missing parameters has status code 400\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(400);\r",
+									"    pm.expect(pm.response.status).to.be.equal(\"Bad Request\")\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "f4537c79-d3e4-4f33-9d0e-3caa13dc4a9c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "{{password}}",
+								"username": "{{username}}"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Cookie",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstname\": \"Erika\",\n    \"depositpaid\": false,\n    \"bookingdates\": {\n      \"checkin\": \"2023-01-01\",\n      \"checkout\": \"2023-01-10\"\n    },\n    \"additionalneeds\": \"Fastbreak\"     \n}\n"
+						},
+						"url": "{{host}}/booking/{{booking_id}}",
+						"description": "Request that allows you to update a complete Booking within the API. This request updates the booking using JSON.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
+					},
+					"response": []
+				},
+				{
 					"name": "/booking/:id - Update deleted Booking",
 					"event": [
 						{
@@ -1349,34 +1429,34 @@
 	],
 	"variable": [
 		{
-			"id": "d1be76f4-c495-455b-938a-1e87b0f6d43e",
+			"id": "caf81682-f6ba-4068-8007-c796735eb508",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "a545db40-db25-4424-9e06-70b7b5319e5d",
+			"id": "92e8cdac-6377-4b96-9a0a-c852b47a2fe3",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "e3383ca2-5984-4e99-9b8a-e79fbed7a973",
+			"id": "8c8c11de-65de-4cbe-8afe-beac0607629f",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "fe3a773c-8ed1-4723-9147-844ac9c926dd",
+			"id": "12d52d1f-0094-4a64-affd-dc610cf02c55",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "facc8d9b-cec0-4043-af9b-57152946a1cc",
+			"id": "43fe8882-1cf2-40c8-afba-1434316204bc",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "be2e4442-f886-46b2-b3d3-256fbe67a272",
+			"id": "7bd12390-ef9f-4efe-bc5e-d569ae7f8426",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
