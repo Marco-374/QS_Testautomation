@@ -1199,29 +1199,7 @@
 							"});\r",
 							"\r",
 							"\r",
-							"// try to update a non existing booking \r",
-							"const deleteBooking = {\r",
-							"    url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
-							"    method: 'DELETE',\r",
-							"    header: 'Authorization: Basic ' + btoa('admin:password123')\r",
-							"};\r",
 							"\r",
-							"pm.sendRequest(deleteBooking, function (err, response) {\r",
-							"    console.log(pm.response.code)\r",
-							"});\r",
-							"\r",
-							"const updateDeletedBooking = {\r",
-							"    url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
-							"    method: 'PUT',\r",
-							"    header: 'Authorization: Basic ' + btoa('admin:password123')\r",
-							"};\r",
-							"\r",
-							"pm.sendRequest(updateDeletedBooking, function (err, response) {\r",
-							"    pm.test(\"Update non existing booking returns 400\", function () {\r",
-							"        pm.expect(response.code).to.be.equal(400);\r",
-							"        pm.expect(response.status).to.be.equal(\"Bad Request\")\r",
-							"    });\r",
-							"});\r",
 							"\r",
 							"\r",
 							"// try to update without authorization\r",
@@ -1259,9 +1237,9 @@
 							"                'Content-Type': 'application/json',\r",
 							"                },\r",
 							"            body: {}  \r",
-							"        }, function (err, response) {\r",
+							"        }, function (err, response2) {\r",
 							"    pm.test(\"Update with wrong parameters does not change booking\", function () {\r",
-							"        var data = response.json();\r",
+							"        var data = response2.json();\r",
 							"        var expectedBooking = pm.response.json();\r",
 							"        pm.expect(data.firstname).to.eql(expectedBooking.firstname);\r",
 							"        pm.expect(data.lastname).to.eql(expectedBooking.lastname);\r",
@@ -1279,7 +1257,30 @@
 							"        pm.expect(response).to.be.forbidden;\r",
 							"    });\r",
 							"});\r",
-							""
+							"\r",
+							"// try to update a non existing booking \r",
+							"const deleteBooking = {\r",
+							"    url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
+							"    method: 'DELETE',\r",
+							"    header: 'Authorization: Basic ' + btoa('admin:password123')\r",
+							"};\r",
+							"\r",
+							"pm.sendRequest(deleteBooking, function (err, response) {\r",
+							"    console.log(pm.response.code)\r",
+							"});\r",
+							"\r",
+							"const updateDeletedBooking = {\r",
+							"    url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
+							"    method: 'PUT',\r",
+							"    header: 'Authorization: Basic ' + btoa('admin:password123')\r",
+							"};\r",
+							"\r",
+							"pm.sendRequest(updateDeletedBooking, function (err, response) {\r",
+							"    pm.test(\"Update non existing booking returns 400\", function () {\r",
+							"        pm.expect(response.code).to.be.equal(400);\r",
+							"        pm.expect(response.status).to.be.equal(\"Bad Request\")\r",
+							"    });\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -1574,40 +1575,40 @@
 	],
 	"variable": [
 		{
-			"id": "1189e840-be6b-4e01-86e7-54ad9d92297c",
+			"id": "188b4039-3b80-4649-bd0b-9e2579038fac",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "98856f53-7243-4b8d-af07-8bd60d6d6538",
+			"id": "9fd35232-542f-4d4b-93cb-3e7941e6636e",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "31025cbd-ac41-4075-8a74-032c865fa62d",
+			"id": "0353cfe3-c2ff-48e6-8878-d92704423943",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "75550666-f37a-4d02-945b-69f6705e9e1d",
+			"id": "56c5782a-c8ff-4d51-bec4-8401d56b0f96",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "3a8d471e-9180-4ca4-80e3-08f7f80848a9",
+			"id": "c7de12ff-04e6-40f8-82d4-a13cfb2a50a2",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "c53320f0-4cb2-43cb-9ce1-f65455c494ba",
+			"id": "1bca178e-d126-4f50-a7fe-b7027d38f37e",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
 		},
 		{
-			"id": "05e9b2d8-0b4b-4451-bca9-187847a06a83",
+			"id": "f90e466b-085b-48b3-a654-246cbbadc19b",
 			"key": "wrong_booking",
 			"value": ""
 		}
