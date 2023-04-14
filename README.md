@@ -6,10 +6,8 @@
  * Robin Wollenschläger
 
 ## Testscope
-https://restful-booker.herokuapp.com/apidoc/index.html
- * User <--> PC <--> System <--> DB
- * Scope <--> System <--> DB
-
+Wir testen die REST-Api des durch https://restful-booker.herokuapp.com/apidoc/index.html bereitgestellten Webservices. Dies beinhaltet keinerlei GUI und der Webclient zum Testen wird durch Postman realisiert.
+![Scope](./Scope.png "Scope")
 Wir haben uns darauf festgelegt, nur die Endpunkte zu testen, bei denen Daten im JSON-Format ausgetauscht werden. Die XML-Datenübertragung wird nicht getestet. 
 
 ## Testziele
