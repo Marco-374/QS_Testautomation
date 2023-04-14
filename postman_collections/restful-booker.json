@@ -180,10 +180,11 @@
 								"id": "b14747b0-9c87-49d3-9feb-da8507ed5f15",
 								"exec": [
 									"\r",
-									"    pm.test(\"Update non existing booking returns 400\", function () {\r",
-									"        pm.expect(response.code).to.be.equal(400);\r",
-									"        pm.expect(response.status).to.be.equal(\"Bad Request\")\r",
-									"    });\r",
+									"pm.test(\"Update non existing booking returns 405\", function () {\r",
+									"    console.log(pm.response)\r",
+									"    pm.expect(pm.response.code).to.be.equal(405);\r",
+									"    pm.expect(pm.response.status).to.be.equal(\"Method Not Allowed\")\r",
+									"});\r",
 									""
 								],
 								"type": "text/javascript"
@@ -198,8 +199,8 @@
 						"auth": {
 							"type": "basic",
 							"basic": {
-								"password": "password123",
-								"username": "admin"
+								"password": "{{password}}",
+								"username": "{{username}}"
 							}
 						},
 						"method": "PUT",
@@ -211,7 +212,7 @@
 							},
 							{
 								"key": "Cookie",
-								"value": "token=abc123",
+								"value": "{{token}}",
 								"type": "text"
 							}
 						],
@@ -1253,34 +1254,34 @@
 	],
 	"variable": [
 		{
-			"id": "a2e994f7-2beb-4dff-a6ea-b0b58b99e82d",
+			"id": "1dc6bd56-3f48-4ed2-8d50-136a842c4397",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "fc4b8b17-8ed0-48f3-88b1-108bfd49ea85",
+			"id": "346de1af-5df3-4e7f-8384-c9a78b742df9",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "efbd4373-6b7d-48c3-a92d-882335e0468e",
+			"id": "cad351dc-7b56-4876-9808-6de92d14b31e",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "2d774aec-4df1-42ef-84ba-d1e7d66394b5",
+			"id": "d9c7ee7f-1029-46dc-a798-5ba1f41c8cb0",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "fd91ff75-4e52-463e-b370-ac0cd8e37849",
+			"id": "d2497130-0370-4d10-afdd-f8fb46d2fa71",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "d7f94fbc-862b-4330-94a9-e57e4e4f47a1",
+			"id": "16bf90c6-eae1-4482-a57e-1a3d1c94c3fb",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
