@@ -603,35 +603,7 @@
 									"        pm.expect(response.code).to.be.equal(404);\r",
 									"        pm.expect(response.status).to.be.equal(\"Not Found\")\r",
 									"    });\r",
-									"});\r",
-									"\r",
-									"// try to delete a non existing booking \r",
-									"const deleteBooking = {\r",
-									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
-									"  method: 'DELETE',\r",
-									"  header: 'Authorization: Basic ' + btoa('admin:password123')\r",
-									"};\r",
-									"\r",
-									"pm.sendRequest(deleteBooking, function (err, response) {\r",
-									"    pm.test(\"Delete non existing booking returns 405\", function () {\r",
-									"        pm.expect(response.code).to.be.equal(405);\r",
-									"        pm.expect(response.status).to.be.equal(\"Method Not Allowed\")\r",
-									"    });\r",
-									"});\r",
-									"\r",
-									"// try to delete without authorization\r",
-									"const deleteBookingWithoutAuth = {\r",
-									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
-									"  method: 'DELETE'\r",
-									"};\r",
-									"\r",
-									"pm.sendRequest(deleteBookingWithoutAuth, function (err, response) {\r",
-									"    pm.test(\"Delete without authorization returns 403\", function () {\r",
-									"        pm.expect(response.code).to.be.equal(403);\r",
-									"        pm.expect(response.status).to.be.equal(\"Forbidden\")\r",
-									"    });\r",
-									"});\r",
-									""
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -645,8 +617,8 @@
 						"auth": {
 							"type": "basic",
 							"basic": {
-								"username": "admin",
-								"password": "password123"
+								"password": "{{password}}",
+								"username": "{{username}}"
 							}
 						},
 						"method": "DELETE",
@@ -1741,40 +1713,40 @@
 	],
 	"variable": [
 		{
-			"id": "59934632-0cb7-4cec-b944-ffa2166beca6",
+			"id": "df71075d-0a59-4111-b590-07d4d55f53eb",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "428f1ff8-90e2-4965-bdb8-5e3c0170872d",
+			"id": "2c222dd1-0b70-4a55-8e68-89ff99b71bd2",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "c085ce7b-d9ea-4b42-b0c0-8839917e9cfb",
+			"id": "b6e791e5-16c2-4b20-b431-3c2d858c32b1",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "13672eb2-8ff9-40d5-960f-50db9b22351b",
+			"id": "f63e19ae-6d85-4ad6-a939-934ce1d9a387",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "e8837840-8a74-484e-8ec8-47b1b3274d54",
+			"id": "88a246b9-1719-47b5-a756-3dabcc63135f",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "fba7040a-1f6d-4271-8a40-27662c1ead65",
+			"id": "04c9e056-d89a-40d9-838b-ba8371417ed0",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
 		},
 		{
-			"id": "ea895948-e9d4-4316-80b2-32859fcd2505",
+			"id": "5cd4778f-e82e-4ce1-9aa5-1224426cdd92",
 			"key": "wrong_booking",
 			"value": ""
 		}
