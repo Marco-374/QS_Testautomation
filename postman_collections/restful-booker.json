@@ -483,36 +483,9 @@
 							"script": {
 								"id": "a1085f03-344b-49ae-9504-04db92170763",
 								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Response booking is correct\", function () {\r",
-									"    var data = pm.response.json();\r",
-									"    pm.expect(data.bookingid).to.be.a(\"number\");\r",
-									"    var expectedBooking = JSON.parse(pm.collectionVariables.get(\"new_booking\"));\r",
-									"    pm.expect(data.booking.firstname).to.eql(expectedBooking.firstname);\r",
-									"    pm.expect(data.booking.lastname).to.eql(expectedBooking.lastname);\r",
-									"    pm.expect(data.booking.totalprice).to.eql(expectedBooking.totalprice);\r",
-									"    pm.expect(data.booking.depositpaid).to.eql(expectedBooking.depositpaid);\r",
-									"    pm.expect(data.booking.bookingdates.checkin).to.eql(expectedBooking.bookingdates.checkin);\r",
-									"    pm.expect(data.booking.bookingdates.checkout).to.eql(expectedBooking.bookingdates.checkout);\r",
-									"    pm.expect(data.booking.additionalneeds).to.eql(expectedBooking.additionalneeds);\r",
-									"});\r",
-									"\r",
-									"// try to create empty booking \r",
-									"const createEmptyBooking = {\r",
-									"  url: pm.collectionVariables.get(\"host\") + \"/booking\",\r",
-									"  method: 'POST',\r",
-									"  header: 'Content-Type:application/json',\r",
-									"  body: {} \r",
-									"};\r",
-									"\r",
-									"pm.sendRequest(createEmptyBooking, function (err, response) {\r",
-									"    pm.test(\"Create empty booking returns 500\", function () {\r",
-									"        pm.expect(response.code).to.be.equal(500);\r",
-									"        pm.expect(response.status).to.be.equal(\"Internal Server Error\")\r",
-									"    });\r",
+									"pm.test(\"Creation with wrong parameters has status code 400\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.equal(400);\r",
+									"    pm.expect(pm.response.status).to.be.equal(\"Bad Request\")\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -533,7 +506,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{{new_booking}}",
+							"raw": "{{wrong_booking}}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1575,40 +1548,40 @@
 	],
 	"variable": [
 		{
-			"id": "578a4aae-373d-4eeb-9a24-51e636554c9a",
+			"id": "fe164af8-50b8-4c6b-9d66-799ffea0025c",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "19f129b0-a400-44b3-b24c-1772a5ca148d",
+			"id": "5bffadd8-c1e0-468b-b89a-d4b9cbddf147",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "153d4b92-b218-41aa-bfdf-2d975369ea83",
+			"id": "23326103-0d93-4c91-a933-a786456e6136",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "5a20c60e-608c-4316-998d-1f413c6605a4",
+			"id": "db2e0bdc-258e-4554-ad89-eaaa4542bf0c",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "d6c6b30c-abd8-4446-bc0f-becf06c344f7",
+			"id": "823aa1b9-f314-415d-8009-fa9485b354cf",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "915d92bc-e080-41b9-8dcc-0b07f5126126",
+			"id": "d02dfa19-dee5-4d99-b9ea-5b683d5508c5",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
 		},
 		{
-			"id": "2a4f40e6-48ae-4a14-a3ca-9d93b5dc605d",
+			"id": "803a44ff-65a3-4b08-8e8a-a2e9523edeee",
 			"key": "wrong_booking",
 			"value": ""
 		}
