@@ -956,65 +956,6 @@
 			"response": []
 		},
 		{
-			"name": "/booking - CreateBooking (URL)",
-			"id": "38c72576-e166-40a0-aa47-e47f6aee25a7",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded"
-					},
-					{
-						"key": "Accept",
-						"value": "application/x-www-form-urlencoded",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "firstname",
-							"value": "Jim",
-							"type": "text"
-						},
-						{
-							"key": "lastname",
-							"value": "Brown",
-							"type": "text"
-						},
-						{
-							"key": "totalprice",
-							"value": "111",
-							"type": "text"
-						},
-						{
-							"key": "depositpaid",
-							"value": "true",
-							"type": "text"
-						},
-						{
-							"key": "bookingdates[checkin]",
-							"value": "2018-01-01",
-							"type": "text"
-						},
-						{
-							"key": "bookingdates[checkout]",
-							"value": "2018-01-02",
-							"type": "text"
-						}
-					]
-				},
-				"url": "{{host}}/booking",
-				"description": "Request that allows you to create a Booking within the API. This request creates the booking using urlencoded."
-			},
-			"response": []
-		},
-		{
 			"name": "/auth - CreateToken",
 			"event": [
 				{
@@ -1470,34 +1411,34 @@
 	],
 	"variable": [
 		{
-			"id": "4ed53d4b-8ff2-4aaf-b914-5c76a41a3b44",
+			"id": "93aa8fca-108c-4a34-938c-7772c90bf766",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "17e9156f-b837-44fb-938a-d53e4d7ab031",
+			"id": "aeba0da1-f368-4098-a549-745e512bc4a1",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "7b99085d-0eba-43a3-baac-065b4aeb7205",
+			"id": "c8018ef2-3f65-41c4-ad4f-6db42397a36c",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "7106b7ae-c8cb-4a9d-8ffc-9f1efdd299ba",
+			"id": "9aeacfad-9d02-4c28-84dc-f90a296d2f24",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "d52f25c3-b8c3-4cb5-9967-15d9ddd2129e",
+			"id": "9a35a7f5-bc95-4d32-b273-fba203d36076",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "b0321e82-c404-4357-817c-777d34f79b3e",
+			"id": "290f2fe1-2ff3-4e9a-bfda-c31430687bd6",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
