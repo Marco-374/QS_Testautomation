@@ -180,13 +180,71 @@
 				},
 				{
 					"name": "/booking/:id - Update deleted Booking",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b90bf07c-c29f-4d9f-b08a-65c4cae9d859",
+								"exec": [
+									"// delete booking if exists\r",
+									"const deleteBooking = {\r",
+									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
+									"  method: 'DELETE',\r",
+									"  header: 'Authorization: Basic ' + btoa('admin:password123')\r",
+									"};\r",
+									"\r",
+									"pm.sendRequest(deleteBooking, function (err, response) {\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "b14747b0-9c87-49d3-9feb-da8507ed5f15",
+								"exec": [
+									"\r",
+									"    pm.test(\"Update non existing booking returns 400\", function () {\r",
+									"        pm.expect(response.code).to.be.equal(400);\r",
+									"        pm.expect(response.status).to.be.equal(\"Bad Request\")\r",
+									"    });\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"id": "98e8a576-59aa-47eb-9670-104242900b5b",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
-						"header": []
+						"auth": {
+							"type": "basic",
+							"basic": {
+								"password": "password123",
+								"username": "admin"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "token=abc123",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstname\": \"Erika\",\r\n    \"lastname\": \"Musterfrau\",\r\n    \"totalprice\": 222,\r\n    \"depositpaid\": false,\r\n    \"bookingdates\": {\r\n      \"checkin\": \"2023-01-01\",\r\n      \"checkout\": \"2023-01-10\"\r\n    },\r\n    \"additionalneeds\": \"Fastbreak\"     \r\n}"
+						},
+						"url": "{{host}}/booking/{{booking_id}}"
 					},
 					"response": []
 				}
@@ -1220,17 +1278,17 @@
 	],
 	"variable": [
 		{
-			"id": "0601d555-e2c5-4ccb-aa0b-6fd4207919e4",
+			"id": "1c4048f5-327d-40ae-bed0-857c74aa56bc",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "52be666a-b64d-4cf0-8ef2-a8a680b8e52d",
+			"id": "46612ee5-a2e5-4779-8213-6a88e67078d0",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "c7ff8b0c-be68-458c-8c9c-ed36428413c6",
+			"id": "c51a2b48-0ac6-4c60-aca8-f509af138ff5",
 			"key": "new_booking",
 			"value": ""
 		}
