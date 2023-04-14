@@ -860,8 +860,456 @@
 		},
 		{
 			"name": "GetBooking",
-			"item": [],
+			"item": [
+				{
+					"name": "/booking - GetBookingIds (Query all IDs)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ee56ad3e-f360-42af-a248-1a018af354dd",
+								"exec": [
+									"pm.test(\"Response has to be status 200\", function () {\r",
+									"    pm.response.to.be.success;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has to be an array\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response array length has to be > 0\", function () {\r",
+									"    pm.expect(pm.response.json().length).to.be.greaterThan(0);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response array elements have to inlcude only one key\", function () {\r",
+									"    for(const element of pm.response.json()){\r",
+									"        pm.expect(Object.keys(element).length).to.be.equal(1);\r",
+									"    }    \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response array elements have to inlcude the key bookingid\", function () {\r",
+									"    for(const element of pm.response.json()){\r",
+									"        pm.expect(element).to.have.property('bookingid');\r",
+									"    }    \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response array elements values have to be numbers\", function () {\r",
+									"    for(const element of pm.response.json()){\r",
+									"        pm.expect(element.bookingid).to.be.a('number');\r",
+									"    }    \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response array has to be empty\", ()=>{\r",
+									"  for(const element of pm.response.json()){\r",
+									"        pm.sendRequest({            \r",
+									"            url: 'https://restful-booker.herokuapp.com/booking/' + element.bookingid,\r",
+									"            method: 'DELETE',\r",
+									"            header: {\r",
+									"                'Content-Type': 'application/json',\r",
+									"                },\r",
+									"            body: {}    \r",
+									"        }, function (err, response) {    \r",
+									"           \r",
+									"        })\r",
+									"    }\r",
+									"     pm.sendRequest({            \r",
+									"                url: 'https://restful-booker.herokuapp.com/booking',\r",
+									"                method: 'GET',\r",
+									"                header: {\r",
+									"                    'Content-Type': 'application/json',\r",
+									"                    },\r",
+									"                body: {}    \r",
+									"            }, function (err, response) {    \r",
+									"                pm.expect(response.json().length).to.be.eq(0)\r",
+									"            })\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "c5d78c4d-ecaa-4014-8f75-05f4d1842b3f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/booking",
+						"description": "Requests the IDs for all existing bookings that exist within the API"
+					},
+					"response": []
+				},
+				{
+					"name": "/booking - GetBookingIds (Filter by name)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c3aa41c1-9192-4518-8229-e0ead4913e50",
+								"exec": [
+									"pm.sendRequest({\r",
+									"    url: 'https://restful-booker.herokuapp.com/booking',\r",
+									"    method: 'POST',\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json',\r",
+									"          },\r",
+									"    body: {\r",
+									"        mode: 'raw',\r",
+									"        raw: JSON.stringify({    \"firstname\": \"Harry\",\r",
+									"    \"lastname\": \"Potter\",\r",
+									"    \"totalprice\": 999,\r",
+									"    \"depositpaid\": true,\r",
+									"    \"bookingdates\": {\r",
+									"      \"checkin\": \"2018-01-01\",\r",
+									"      \"checkout\": \"2019-01-01\"\r",
+									"    },\r",
+									"    \"additionalneeds\": \"Winkelgasse\"})\r",
+									"    }    \r",
+									"}, function (err, response) {\r",
+									"    //console.error(err);\r",
+									"    //console.log(response.json());\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "25c791fa-f077-4f2f-9929-747f7bdaa7fb",
+								"exec": [
+									"pm.test(\"Response has to be status 200\", function () {\r",
+									"    pm.response.to.be.success;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has to be an array\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response array elements have to inlcude only one key\", function () {\r",
+									"    for(const element of pm.response.json()){\r",
+									"        pm.expect(Object.keys(element).length).to.be.equal(1);\r",
+									"    }    \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response array elements have to inlcude the key bookingid\", function () {\r",
+									"    for(const element of pm.response.json()){\r",
+									"        pm.expect(element).to.have.property('bookingid');\r",
+									"    }    \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response array elements have values have to be numbers\", function () {\r",
+									"    for(const element of pm.response.json()){\r",
+									"        pm.expect(element.bookingid).to.be.a('number');\r",
+									"    }    \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response array elements have to have corresponding bookings with data 'Harry Potter'\", function () {    \r",
+									"    for(const element of pm.response.json()){\r",
+									"        //console.log(element.bookingid);\r",
+									"        pm.sendRequest({            \r",
+									"    url: 'https://restful-booker.herokuapp.com/booking/' + element.bookingid,\r",
+									"    method: 'GET',\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json',\r",
+									"          },\r",
+									"    body: {}    \r",
+									"}, function (err, response) {    \r",
+									"    pm.expect((response.json()).firstname).to.be.equal(\"Harry\");\r",
+									"    pm.expect((response.json()).lastname).to.be.equal(\"Potter\");\r",
+									"})\r",
+									"    }    \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response array has to be empty\", ()=>{\r",
+									"    pm.sendRequest({            \r",
+									"            url: 'https://restful-booker.herokuapp.com/booking?firstname=*&lastname=§',\r",
+									"            method: 'GET',\r",
+									"            header: {\r",
+									"                'Content-Type': 'application/json',\r",
+									"                },\r",
+									"            body: {}    \r",
+									"        }, function (err, response) { \r",
+									"            pm.expect(response.json().length).to.be.equal(0);\r",
+									"  })\r",
+									"   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response array has to be empty\", ()=>{\r",
+									"    const fail = {abc: 123}\r",
+									"    pm.sendRequest({            \r",
+									"            url: `https://restful-booker.herokuapp.com/booking?firstname=${fail}&lastname=${fail}`,\r",
+									"            method: 'GET',\r",
+									"            header: {\r",
+									"                'Content-Type': 'application/json',\r",
+									"                },\r",
+									"            body: {}    \r",
+									"        }, function (err, response) { \r",
+									"             pm.expect(response.json().length).to.be.equal(0);\r",
+									"  })\r",
+									"   \r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "b9dc92d0-3bfc-4113-bac7-57ad5f75c22a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/booking?firstname=Harry&lastname=Potter",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"booking"
+							],
+							"query": [
+								{
+									"key": "firstname",
+									"value": "Harry"
+								},
+								{
+									"key": "lastname",
+									"value": "Potter"
+								}
+							]
+						},
+						"description": "Requests all Booking IDs that match the firstname AND lastname provided in the query string. You can also query by firstname or lastname alone."
+					},
+					"response": []
+				},
+				{
+					"name": "/booking - GetBookingIds (Filter by date)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea28f26f-4f01-4ac6-b48a-0d00d266d165",
+								"exec": [
+									"pm.test(\"Response has to be status 200\", function () {\r",
+									"    pm.response.to.be.success;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has to be an array\", function () {\r",
+									"    pm.expect(pm.response.json()).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response array elements have to inlcude only one key\", function () {\r",
+									"    for(const element of pm.response.json()){\r",
+									"        pm.expect(Object.keys(element).length).to.be.equal(1);\r",
+									"    }    \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response array elements have to inlcude the key bookingid\", function () {\r",
+									"    for(const element of pm.response.json()){\r",
+									"        pm.expect(element).to.have.property('bookingid');\r",
+									"    }    \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response array elements have values have to be numbers\", function () {\r",
+									"    for(const element of pm.response.json()){\r",
+									"        pm.expect(element.bookingid).to.be.a('number');\r",
+									"    }    \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response array elements have to have corresponding bookings with data 'Harry Potter'\", function () {    \r",
+									"    for(const element of pm.response.json()){\r",
+									"        console.log(element.bookingid);\r",
+									"        pm.sendRequest({            \r",
+									"    url: 'https://restful-booker.herokuapp.com/booking/' + element.bookingid,\r",
+									"    method: 'GET',\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json',\r",
+									"          },\r",
+									"    body: {}    \r",
+									"}, function (err, response) {    \r",
+									"    pm.expect((response.json()).firstname).to.be.equal(\"Harry\");\r",
+									"    pm.expect((response.json()).lastname).to.be.equal(\"Potter\");\r",
+									"})\r",
+									"    }    \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response array has to be empty\", ()=>{\r",
+									"    pm.sendRequest({            \r",
+									"            url: 'https://restful-booker.herokuapp.com/booking?checkin=1-01-01&checkout=1-01-02',\r",
+									"            method: 'GET',\r",
+									"            header: {\r",
+									"                'Content-Type': 'application/json',\r",
+									"                },\r",
+									"            body: {}    \r",
+									"        }, function (err, response) { \r",
+									"            pm.expect(response.json().length).to.be.equal(0);\r",
+									"  })   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response array has to be empty\", ()=>{\r",
+									"    const fail = {abc: 123}\r",
+									"    pm.sendRequest({            \r",
+									"            url: `https://restful-booker.herokuapp.com/booking?checkin=1-01-01&checkout=1-01-02`,\r",
+									"            method: 'GET',\r",
+									"            header: {\r",
+									"                'Content-Type': 'application/json',\r",
+									"                },\r",
+									"            body: {}    \r",
+									"        }, function (err, response) { \r",
+									"             pm.expect(response.json().length).to.be.equal(0);\r",
+									"  })\r",
+									"   \r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "e24f6a3f-5022-4754-9c23-5d44ac9e6629",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/booking?checkin=2022-01-01&checkout=2022-01-31",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"booking"
+							],
+							"query": [
+								{
+									"key": "checkin",
+									"value": "2022-01-01"
+								},
+								{
+									"key": "checkout",
+									"value": "2022-01-31"
+								}
+							]
+						},
+						"description": "Requests all Booking IDs that are within the checkin AND checkout provided in the query string. You can also query by checking or checkout alone."
+					},
+					"response": []
+				},
+				{
+					"name": "/booking/:id - GetBooking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "644db54b-1929-4bc9-a15e-9419e09ff2bb",
+								"exec": [
+									"pm.test(\"Response has to be status 200\", function () {\r",
+									"    pm.response.to.be.success;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has to be json\", function () {\r",
+									"    pm.response.to.be.an('object');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has to have the corresponding name 'Harry Potter'\", function () {\r",
+									"   pm.expect((pm.response.json()).firstname).to.be.equal(\"Harry\");\r",
+									"   pm.expect((pm.response.json()).lastname).to.be.equal(\"Potter\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has to fail\", ()=>{\r",
+									"    pm.sendRequest({            \r",
+									"            url: 'https://restful-booker.herokuapp.com/booking/-1',\r",
+									"            method: 'GET',\r",
+									"            header: {\r",
+									"                'Content-Type': 'application/json',\r",
+									"                },\r",
+									"            body: {}    \r",
+									"        }, function (err, response) { \r",
+									"            //console.log(response.json())\r",
+									"            pm.expect(response).to.be.notFound;\r",
+									"  })   \r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has to fail\", ()=>{\r",
+									"    pm.sendRequest({            \r",
+									"            url: 'https://restful-booker.herokuapp.com/booking/abc',\r",
+									"            method: 'GET',\r",
+									"            header: {\r",
+									"                'Content-Type': 'application/json',\r",
+									"                },\r",
+									"            body: {}    \r",
+									"        }, function (err, response) { \r",
+									"            //console.log(response.json())\r",
+									"            pm.expect(response).to.be.notFound;\r",
+									"  })   \r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "36a9830d-5391-4e17-abc4-68ddce32a986",
+								"exec": [
+									"pm.sendRequest({\r",
+									"    url: 'https://restful-booker.herokuapp.com/booking',\r",
+									"    method: 'POST',\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json',\r",
+									"          },\r",
+									"    body: {\r",
+									"        mode: 'raw',\r",
+									"        raw: JSON.stringify({    \"firstname\": \"Harry\",\r",
+									"    \"lastname\": \"Potter\",\r",
+									"    \"totalprice\": 999,\r",
+									"    \"depositpaid\": true,\r",
+									"    \"bookingdates\": {\r",
+									"      \"checkin\": \"1972-01-01\",\r",
+									"      \"checkout\": \"1973-01-01\"\r",
+									"    },\r",
+									"    \"additionalneeds\": \"Winkelgasse\"})\r",
+									"    }    \r",
+									"}, function (err, response) {\r",
+									"    //console.error(err);\r",
+									"    //console.log(response.json());\r",
+									"    pm.environment.set(\"booking_id\", response.json().bookingid);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "5666caf6-9e57-465a-bb4e-11311c3cab60",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{host}}/booking/{{booking_id}}",
+						"description": "Requests a specific booking that exists within the API. To get a list of valid booking IDs using GetBookingIds calls."
+					},
+					"response": []
+				}
+			],
 			"id": "922c5ad0-b190-4cac-90d8-d345af8f4548"
+		},
+		{
+			"name": "New Folder",
+			"item": [],
+			"id": "4c5b2e49-642d-4188-98b9-74078a8ed4bc"
 		},
 		{
 			"name": "/ping - HealthCheck",
@@ -896,448 +1344,6 @@
 				"header": [],
 				"url": "{{host}}/ping",
 				"description": "A simple GET request that informs us whether the API is up and running."
-			},
-			"response": []
-		},
-		{
-			"name": "/booking - GetBookingIds (Query all IDs)",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "ee56ad3e-f360-42af-a248-1a018af354dd",
-						"exec": [
-							"pm.test(\"Response has to be status 200\", function () {\r",
-							"    pm.response.to.be.success;\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response has to be an array\", function () {\r",
-							"    pm.expect(pm.response.json()).to.be.an('array');\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response array length has to be > 0\", function () {\r",
-							"    pm.expect(pm.response.json().length).to.be.greaterThan(0);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response array elements have to inlcude only one key\", function () {\r",
-							"    for(const element of pm.response.json()){\r",
-							"        pm.expect(Object.keys(element).length).to.be.equal(1);\r",
-							"    }    \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response array elements have to inlcude the key bookingid\", function () {\r",
-							"    for(const element of pm.response.json()){\r",
-							"        pm.expect(element).to.have.property('bookingid');\r",
-							"    }    \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response array elements values have to be numbers\", function () {\r",
-							"    for(const element of pm.response.json()){\r",
-							"        pm.expect(element.bookingid).to.be.a('number');\r",
-							"    }    \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response array has to be empty\", ()=>{\r",
-							"  for(const element of pm.response.json()){\r",
-							"        pm.sendRequest({            \r",
-							"            url: 'https://restful-booker.herokuapp.com/booking/' + element.bookingid,\r",
-							"            method: 'DELETE',\r",
-							"            header: {\r",
-							"                'Content-Type': 'application/json',\r",
-							"                },\r",
-							"            body: {}    \r",
-							"        }, function (err, response) {    \r",
-							"           \r",
-							"        })\r",
-							"    }\r",
-							"     pm.sendRequest({            \r",
-							"                url: 'https://restful-booker.herokuapp.com/booking',\r",
-							"                method: 'GET',\r",
-							"                header: {\r",
-							"                    'Content-Type': 'application/json',\r",
-							"                    },\r",
-							"                body: {}    \r",
-							"            }, function (err, response) {    \r",
-							"                pm.expect(response.json().length).to.be.eq(0)\r",
-							"            })\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"id": "c5d78c4d-ecaa-4014-8f75-05f4d1842b3f",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": "{{host}}/booking",
-				"description": "Requests the IDs for all existing bookings that exist within the API"
-			},
-			"response": []
-		},
-		{
-			"name": "/booking - GetBookingIds (Filter by name)",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "c3aa41c1-9192-4518-8229-e0ead4913e50",
-						"exec": [
-							"pm.sendRequest({\r",
-							"    url: 'https://restful-booker.herokuapp.com/booking',\r",
-							"    method: 'POST',\r",
-							"    header: {\r",
-							"        'Content-Type': 'application/json',\r",
-							"          },\r",
-							"    body: {\r",
-							"        mode: 'raw',\r",
-							"        raw: JSON.stringify({    \"firstname\": \"Harry\",\r",
-							"    \"lastname\": \"Potter\",\r",
-							"    \"totalprice\": 999,\r",
-							"    \"depositpaid\": true,\r",
-							"    \"bookingdates\": {\r",
-							"      \"checkin\": \"2018-01-01\",\r",
-							"      \"checkout\": \"2019-01-01\"\r",
-							"    },\r",
-							"    \"additionalneeds\": \"Winkelgasse\"})\r",
-							"    }    \r",
-							"}, function (err, response) {\r",
-							"    //console.error(err);\r",
-							"    //console.log(response.json());\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "25c791fa-f077-4f2f-9929-747f7bdaa7fb",
-						"exec": [
-							"pm.test(\"Response has to be status 200\", function () {\r",
-							"    pm.response.to.be.success;\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response has to be an array\", function () {\r",
-							"    pm.expect(pm.response.json()).to.be.an('array');\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response array elements have to inlcude only one key\", function () {\r",
-							"    for(const element of pm.response.json()){\r",
-							"        pm.expect(Object.keys(element).length).to.be.equal(1);\r",
-							"    }    \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response array elements have to inlcude the key bookingid\", function () {\r",
-							"    for(const element of pm.response.json()){\r",
-							"        pm.expect(element).to.have.property('bookingid');\r",
-							"    }    \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response array elements have values have to be numbers\", function () {\r",
-							"    for(const element of pm.response.json()){\r",
-							"        pm.expect(element.bookingid).to.be.a('number');\r",
-							"    }    \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response array elements have to have corresponding bookings with data 'Harry Potter'\", function () {    \r",
-							"    for(const element of pm.response.json()){\r",
-							"        //console.log(element.bookingid);\r",
-							"        pm.sendRequest({            \r",
-							"    url: 'https://restful-booker.herokuapp.com/booking/' + element.bookingid,\r",
-							"    method: 'GET',\r",
-							"    header: {\r",
-							"        'Content-Type': 'application/json',\r",
-							"          },\r",
-							"    body: {}    \r",
-							"}, function (err, response) {    \r",
-							"    pm.expect((response.json()).firstname).to.be.equal(\"Harry\");\r",
-							"    pm.expect((response.json()).lastname).to.be.equal(\"Potter\");\r",
-							"})\r",
-							"    }    \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response array has to be empty\", ()=>{\r",
-							"    pm.sendRequest({            \r",
-							"            url: 'https://restful-booker.herokuapp.com/booking?firstname=*&lastname=§',\r",
-							"            method: 'GET',\r",
-							"            header: {\r",
-							"                'Content-Type': 'application/json',\r",
-							"                },\r",
-							"            body: {}    \r",
-							"        }, function (err, response) { \r",
-							"            pm.expect(response.json().length).to.be.equal(0);\r",
-							"  })\r",
-							"   \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response array has to be empty\", ()=>{\r",
-							"    const fail = {abc: 123}\r",
-							"    pm.sendRequest({            \r",
-							"            url: `https://restful-booker.herokuapp.com/booking?firstname=${fail}&lastname=${fail}`,\r",
-							"            method: 'GET',\r",
-							"            header: {\r",
-							"                'Content-Type': 'application/json',\r",
-							"                },\r",
-							"            body: {}    \r",
-							"        }, function (err, response) { \r",
-							"             pm.expect(response.json().length).to.be.equal(0);\r",
-							"  })\r",
-							"   \r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"id": "b9dc92d0-3bfc-4113-bac7-57ad5f75c22a",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/booking?firstname=Harry&lastname=Potter",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"booking"
-					],
-					"query": [
-						{
-							"key": "firstname",
-							"value": "Harry"
-						},
-						{
-							"key": "lastname",
-							"value": "Potter"
-						}
-					]
-				},
-				"description": "Requests all Booking IDs that match the firstname AND lastname provided in the query string. You can also query by firstname or lastname alone."
-			},
-			"response": []
-		},
-		{
-			"name": "/booking - GetBookingIds (Filter by date)",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "ea28f26f-4f01-4ac6-b48a-0d00d266d165",
-						"exec": [
-							"pm.test(\"Response has to be status 200\", function () {\r",
-							"    pm.response.to.be.success;\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response has to be an array\", function () {\r",
-							"    pm.expect(pm.response.json()).to.be.an('array');\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response array elements have to inlcude only one key\", function () {\r",
-							"    for(const element of pm.response.json()){\r",
-							"        pm.expect(Object.keys(element).length).to.be.equal(1);\r",
-							"    }    \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response array elements have to inlcude the key bookingid\", function () {\r",
-							"    for(const element of pm.response.json()){\r",
-							"        pm.expect(element).to.have.property('bookingid');\r",
-							"    }    \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response array elements have values have to be numbers\", function () {\r",
-							"    for(const element of pm.response.json()){\r",
-							"        pm.expect(element.bookingid).to.be.a('number');\r",
-							"    }    \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response array elements have to have corresponding bookings with data 'Harry Potter'\", function () {    \r",
-							"    for(const element of pm.response.json()){\r",
-							"        console.log(element.bookingid);\r",
-							"        pm.sendRequest({            \r",
-							"    url: 'https://restful-booker.herokuapp.com/booking/' + element.bookingid,\r",
-							"    method: 'GET',\r",
-							"    header: {\r",
-							"        'Content-Type': 'application/json',\r",
-							"          },\r",
-							"    body: {}    \r",
-							"}, function (err, response) {    \r",
-							"    pm.expect((response.json()).firstname).to.be.equal(\"Harry\");\r",
-							"    pm.expect((response.json()).lastname).to.be.equal(\"Potter\");\r",
-							"})\r",
-							"    }    \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response array has to be empty\", ()=>{\r",
-							"    pm.sendRequest({            \r",
-							"            url: 'https://restful-booker.herokuapp.com/booking?checkin=1-01-01&checkout=1-01-02',\r",
-							"            method: 'GET',\r",
-							"            header: {\r",
-							"                'Content-Type': 'application/json',\r",
-							"                },\r",
-							"            body: {}    \r",
-							"        }, function (err, response) { \r",
-							"            pm.expect(response.json().length).to.be.equal(0);\r",
-							"  })   \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response array has to be empty\", ()=>{\r",
-							"    const fail = {abc: 123}\r",
-							"    pm.sendRequest({            \r",
-							"            url: `https://restful-booker.herokuapp.com/booking?checkin=1-01-01&checkout=1-01-02`,\r",
-							"            method: 'GET',\r",
-							"            header: {\r",
-							"                'Content-Type': 'application/json',\r",
-							"                },\r",
-							"            body: {}    \r",
-							"        }, function (err, response) { \r",
-							"             pm.expect(response.json().length).to.be.equal(0);\r",
-							"  })\r",
-							"   \r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"id": "e24f6a3f-5022-4754-9c23-5d44ac9e6629",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/booking?checkin=2022-01-01&checkout=2022-01-31",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"booking"
-					],
-					"query": [
-						{
-							"key": "checkin",
-							"value": "2022-01-01"
-						},
-						{
-							"key": "checkout",
-							"value": "2022-01-31"
-						}
-					]
-				},
-				"description": "Requests all Booking IDs that are within the checkin AND checkout provided in the query string. You can also query by checking or checkout alone."
-			},
-			"response": []
-		},
-		{
-			"name": "/booking/:id - GetBooking",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "644db54b-1929-4bc9-a15e-9419e09ff2bb",
-						"exec": [
-							"pm.test(\"Response has to be status 200\", function () {\r",
-							"    pm.response.to.be.success;\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response has to be json\", function () {\r",
-							"    pm.response.to.be.an('object');\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response has to have the corresponding name 'Harry Potter'\", function () {\r",
-							"   pm.expect((pm.response.json()).firstname).to.be.equal(\"Harry\");\r",
-							"   pm.expect((pm.response.json()).lastname).to.be.equal(\"Potter\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response has to fail\", ()=>{\r",
-							"    pm.sendRequest({            \r",
-							"            url: 'https://restful-booker.herokuapp.com/booking/-1',\r",
-							"            method: 'GET',\r",
-							"            header: {\r",
-							"                'Content-Type': 'application/json',\r",
-							"                },\r",
-							"            body: {}    \r",
-							"        }, function (err, response) { \r",
-							"            //console.log(response.json())\r",
-							"            pm.expect(response).to.be.notFound;\r",
-							"  })   \r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response has to fail\", ()=>{\r",
-							"    pm.sendRequest({            \r",
-							"            url: 'https://restful-booker.herokuapp.com/booking/abc',\r",
-							"            method: 'GET',\r",
-							"            header: {\r",
-							"                'Content-Type': 'application/json',\r",
-							"                },\r",
-							"            body: {}    \r",
-							"        }, function (err, response) { \r",
-							"            //console.log(response.json())\r",
-							"            pm.expect(response).to.be.notFound;\r",
-							"  })   \r",
-							"});\r",
-							"\r",
-							"\r",
-							"\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "36a9830d-5391-4e17-abc4-68ddce32a986",
-						"exec": [
-							"pm.sendRequest({\r",
-							"    url: 'https://restful-booker.herokuapp.com/booking',\r",
-							"    method: 'POST',\r",
-							"    header: {\r",
-							"        'Content-Type': 'application/json',\r",
-							"          },\r",
-							"    body: {\r",
-							"        mode: 'raw',\r",
-							"        raw: JSON.stringify({    \"firstname\": \"Harry\",\r",
-							"    \"lastname\": \"Potter\",\r",
-							"    \"totalprice\": 999,\r",
-							"    \"depositpaid\": true,\r",
-							"    \"bookingdates\": {\r",
-							"      \"checkin\": \"1972-01-01\",\r",
-							"      \"checkout\": \"1973-01-01\"\r",
-							"    },\r",
-							"    \"additionalneeds\": \"Winkelgasse\"})\r",
-							"    }    \r",
-							"}, function (err, response) {\r",
-							"    //console.error(err);\r",
-							"    //console.log(response.json());\r",
-							"    pm.environment.set(\"booking_id\", response.json().bookingid);\r",
-							"});\r",
-							"\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"id": "5666caf6-9e57-465a-bb4e-11311c3cab60",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": "{{host}}/booking/{{booking_id}}",
-				"description": "Requests a specific booking that exists within the API. To get a list of valid booking IDs using GetBookingIds calls."
 			},
 			"response": []
 		},
@@ -1675,40 +1681,40 @@
 	],
 	"variable": [
 		{
-			"id": "3f37bf31-6aab-4601-accd-5ed270aa815b",
+			"id": "ee4388cf-af6c-4dfd-b6ca-01f3e89ac86a",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "8e6b85c7-ed8d-44ba-a24a-7e280a427f7f",
+			"id": "3b562e86-2fdd-4079-bc41-ae6232516558",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "a5872b14-689e-434c-a5d2-c067d23a144b",
+			"id": "9326f802-625b-4ecf-9438-9c7fb38b9787",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "4d37e93a-2026-4df5-be48-c445057aa6a4",
+			"id": "471f0a97-7c07-4c3a-826b-e42634f2aaef",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "ffed4c5c-8cb1-4856-96ce-1688548a67b0",
+			"id": "5c0ece44-e545-4780-bb62-bad64d0be645",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "d630c429-09f5-4ac8-a283-e7b4d5e63ec3",
+			"id": "66e5197a-3e0b-48e1-9d57-727040405210",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
 		},
 		{
-			"id": "b4b12d73-2fe8-4947-a6f2-db3541bd65dd",
+			"id": "35b5a602-3391-4ae9-8282-51b505bf63b9",
 			"key": "wrong_booking",
 			"value": ""
 		}
