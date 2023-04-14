@@ -1546,46 +1546,6 @@
 					"response": []
 				},
 				{
-					"name": "/booking/:id - PartialUpdateBooking (XML)",
-					"id": "5fc5762d-9a85-4429-88ec-101fce99aaae",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": {
-								"password": "",
-								"username": ""
-							}
-						},
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "text/xml"
-							},
-							{
-								"key": "Accept",
-								"value": "application/xml"
-							},
-							{
-								"key": "Cookie",
-								"value": "token=abc123",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "<booking>\n    <firstname>James</firstname>\n    <lastname>Brown</lastname>\n  </booking>"
-						},
-						"url": "{{host}}/booking/1",
-						"description": "Request that allows you to update a partial section of a Booking within the API. This request updates the booking using XML.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
-					},
-					"response": []
-				},
-				{
 					"name": "/booking/:id - PartialUpdateBooking (URL)",
 					"id": "534c6e05-0ffc-4afc-a1fd-69075d9e33b3",
 					"protocolProfileBehavior": {
@@ -1724,40 +1684,40 @@
 	],
 	"variable": [
 		{
-			"id": "67350146-4589-40aa-9aaf-088b77194e1c",
+			"id": "094eca8d-ad0a-46fc-a3e1-a24721447840",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "670acd25-ec49-46d5-afe4-8aaf44699af8",
+			"id": "25f120a5-f2a8-483c-a6ef-0c9ff76e1d38",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "5231b193-a946-467c-9888-c4b4c6a5908b",
+			"id": "c8b8a637-4242-44d3-a80f-46b50723746a",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "422922c9-393a-4cf6-b8ee-a6652a6fa8b5",
+			"id": "428427ee-f256-41cc-8183-7d5049315a7f",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "b257c83a-ea52-436d-bb9a-fbf4cec7938c",
+			"id": "8777988c-0341-40e0-b7c9-57f82df0f4f7",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "081da493-b0c4-4193-8c49-81a8c944a8d9",
+			"id": "357ad7c0-c154-473d-ae46-3e0a02f37043",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
 		},
 		{
-			"id": "c5095e21-57d6-4d6f-a632-735a501141ea",
+			"id": "c25f0391-117e-4437-89c3-e0a58d214e65",
 			"key": "wrong_booking",
 			"value": ""
 		}
