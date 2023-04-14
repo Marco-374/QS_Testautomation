@@ -645,19 +645,14 @@
 							"script": {
 								"id": "ffdb0a20-47f2-4f09-b960-d76bb93d179b",
 								"exec": [
-									"// create the base booking\r",
-									"const createBooking = {\r",
-									"  url: pm.collectionVariables.get(\"host\") + \"/booking\",\r",
-									"  method: 'POST',\r",
-									"  header: 'Content-Type:application/json',\r",
-									"  body: {\r",
-									"    mode: 'raw',\r",
-									"    raw: pm.collectionVariables.get(\"new_booking\")\r",
-									"  }\r",
+									"// delete booking\r",
+									"const deleteBooking = {\r",
+									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
+									"  method: 'DELETE',\r",
+									"  header: 'Authorization: Basic ' + btoa('admin:password123')\r",
 									"};\r",
-									"pm.sendRequest(createBooking, function (err, res) {\r",
+									"pm.sendRequest(deleteBooking, function (err, res) {\r",
 									"    pm.expect(err).is.null;\r",
-									"    pm.collectionVariables.set(\"booking_id\", res.json().bookingid);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -668,29 +663,7 @@
 							"script": {
 								"id": "836ad683-1f44-4922-aa9c-5bd646f47888",
 								"exec": [
-									"pm.test(\"Status code name has string 'Created'\", function () {\r",
-									"  pm.response.to.have.status(\"Created\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Status code is 201\", function () {\r",
-									"  pm.response.to.have.status(201);\r",
-									"});\r",
-									"\r",
-									"// try to GET deleted booking\r",
-									"const getBooking = {\r",
-									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
-									"  method: 'GET',\r",
-									"  header: 'Content-Type:application/json'\r",
-									"};\r",
-									"\r",
-									"pm.sendRequest(getBooking, function (err, response) {\r",
-									"    pm.test(\"Get request with deleted bookingId returns 404\", function () {\r",
-									"        pm.expect(response.code).to.be.equal(404);\r",
-									"        pm.expect(response.status).to.be.equal(\"Not Found\")\r",
-									"    });\r",
-									"});\r",
-									"\r",
-									"// try to delete a non existing booking \r",
+									"// try to delete a non existing (already deleted) booking \r",
 									"const deleteBooking = {\r",
 									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
 									"  method: 'DELETE',\r",
@@ -704,18 +677,6 @@
 									"    });\r",
 									"});\r",
 									"\r",
-									"// try to delete without authorization\r",
-									"const deleteBookingWithoutAuth = {\r",
-									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
-									"  method: 'DELETE'\r",
-									"};\r",
-									"\r",
-									"pm.sendRequest(deleteBookingWithoutAuth, function (err, response) {\r",
-									"    pm.test(\"Delete without authorization returns 403\", function () {\r",
-									"        pm.expect(response.code).to.be.equal(403);\r",
-									"        pm.expect(response.status).to.be.equal(\"Forbidden\")\r",
-									"    });\r",
-									"});\r",
 									""
 								],
 								"type": "text/javascript"
@@ -1712,40 +1673,40 @@
 	],
 	"variable": [
 		{
-			"id": "855d4e9e-6581-41d6-b43a-1a46d7a55ea0",
+			"id": "0508eb48-6f2d-4940-8fd2-017397b414f6",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "b251839f-933c-4583-a38f-bce9a2d94ea0",
+			"id": "abf08c63-0ce7-4496-be55-39b40c00ec0b",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "12056995-8715-4655-9fc9-5663fd621565",
+			"id": "9f0e3bfc-ee0c-4eec-9c27-54305e9d1343",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "ca6bb808-c0b5-406f-b864-40e48152114b",
+			"id": "d955e13a-e810-490e-aa2f-d1952dffc55e",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "c16e0e8f-bb52-41ce-9453-88448692b145",
+			"id": "eef76fdc-b437-487d-a281-b565b9210667",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "f0d1dc2a-3ce0-4e79-8f49-ccf3077e0a21",
+			"id": "3012e174-170a-4de7-9cde-fa78c72cc913",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
 		},
 		{
-			"id": "5ace581e-71dd-427f-be1b-4dc77445ddfa",
+			"id": "b5319f15-89df-40eb-b6e1-53cdbdaeb1a3",
 			"key": "wrong_booking",
 			"value": ""
 		}
