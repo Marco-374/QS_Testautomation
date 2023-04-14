@@ -179,7 +179,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "/booking/:id - Update deleted Booking",
 					"id": "98e8a576-59aa-47eb-9670-104242900b5b",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -1208,17 +1208,17 @@
 	],
 	"variable": [
 		{
-			"id": "725c9774-c1d9-4223-b3c7-23bbc8774e0a",
+			"id": "6a710ece-3ec7-4cf9-a637-50d193aca34c",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "4d584412-601c-4aa1-87e2-3c71dd492fa9",
+			"id": "b07b95a5-6ec6-46f0-a885-ef009cd410a1",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "80c69dc8-ea30-4704-9f13-6ea5da0d3bb0",
+			"id": "03876ca8-1e32-49a0-8d83-8e3a61879338",
 			"key": "new_booking",
 			"value": ""
 		}
