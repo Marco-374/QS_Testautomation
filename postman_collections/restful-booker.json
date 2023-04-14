@@ -1377,8 +1377,8 @@
 									"    var expectedBooking = updatedBooking;\r",
 									"    pm.expect(data.firstname).to.eql(expectedBooking.firstname);\r",
 									"    pm.expect(data.lastname).to.eql(expectedBooking.lastname);\r",
-									"    expectedBooking = JSON.parse(pm.collectionVariables.get(\"new_booking\"));\r",
 									"    pm.expect(data.totalprice).to.eql(expectedBooking.totalprice);\r",
+									"    expectedBooking = JSON.parse(pm.collectionVariables.get(\"new_booking\"));\r",
 									"    pm.expect(data.depositpaid).to.eql(expectedBooking.depositpaid);\r",
 									"    pm.expect(data.bookingdates.checkin).to.eql(expectedBooking.bookingdates.checkin);\r",
 									"    pm.expect(data.bookingdates.checkout).to.eql(expectedBooking.bookingdates.checkout);\r",
@@ -1776,40 +1776,40 @@
 	],
 	"variable": [
 		{
-			"id": "e38aa144-2cc2-4256-800c-51f6b4870f34",
+			"id": "15f5c130-9eba-4102-b9e8-38a4b0ae394f",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "2a889cd0-fe11-4d01-ba4c-997683f238e4",
+			"id": "6b6f9a1b-11dc-4378-b1c3-ad379464fd1b",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "83a89fc0-393e-4c78-a541-6e2eee591fe9",
+			"id": "7a7e77be-544c-43d7-9d67-bdbaeabb70c3",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "b0c5d6f0-09e3-493a-85d5-0d9d34732706",
+			"id": "618efef8-8d52-40d8-a115-44fb2c8ce209",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "f78fddac-a8ac-49a7-a9ff-0d5d18d1b3ff",
+			"id": "27aab1ab-ec36-4236-9be1-b0fecd838e8f",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "de961523-1254-4cb8-b559-cd36f5113f29",
+			"id": "78e01144-e405-4f58-ad5d-8742daaac38c",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
 		},
 		{
-			"id": "01761b9d-d6cf-49ea-84ec-362140a4d48d",
+			"id": "d00e2960-21c9-4cb8-b869-b243fbe13bf5",
 			"key": "wrong_booking",
 			"value": ""
 		}
