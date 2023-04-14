@@ -617,15 +617,14 @@
 							"pm.test(\"Request should fail\", ()=>{\r",
 							"    const fail = {abc: 123}\r",
 							"    pm.sendRequest({            \r",
-							"            url: 'https://restful-booker.herokuapp.com/booking?firstname={\"abc\": 123}&lastname={\"abc\": 123}',\r",
+							"            url: `https://restful-booker.herokuapp.com/booking?firstname=${fail}&lastname=${fail}`,\r",
 							"            method: 'GET',\r",
 							"            header: {\r",
 							"                'Content-Type': 'application/json',\r",
 							"                },\r",
 							"            body: {}    \r",
 							"        }, function (err, response) { \r",
-							"            console.log(response.json())\r",
-							"            //pm.expect(response).to.be.equal(0);\r",
+							"             pm.expect(response.json().length).to.be.equal(0);\r",
 							"  })\r",
 							"   \r",
 							"});\r",
@@ -1444,34 +1443,34 @@
 	],
 	"variable": [
 		{
-			"id": "6a7da5fc-81f7-4c1b-943f-f06928bb1f87",
+			"id": "37f87747-24aa-4d0a-b28f-ac2633ea4c34",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "e358289c-5b3d-4491-a9e5-4d39f527a481",
+			"id": "4138ff17-0ea8-4645-bf3b-7b883e0d6512",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "55c205b6-e049-4e54-8d73-0571e7ec2fb0",
+			"id": "ed1aab53-57c1-4947-a28a-3579e10a7694",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "eae6bdc3-a1d9-4493-b918-dc250889aa32",
+			"id": "d5efd6ec-5117-4c3e-9688-26e071c6a1c7",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "3c3cfb5a-14b8-48bd-a7ee-ea7588b7dde7",
+			"id": "275324e1-e102-4218-a089-6a57d63ef6a0",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "218cf867-f018-44e0-83ca-7370d8371b2c",
+			"id": "6d464808-310c-46fc-9aa3-8c0c6954228c",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
