@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "New Folder",
+			"name": "UpdateBooking",
 			"item": [],
 			"id": "c774f320-1888-46d7-9d44-ef6096e2339e"
 		},
@@ -1306,17 +1306,17 @@
 	],
 	"variable": [
 		{
-			"id": "9a1d45c5-543d-4e19-82ec-189ee8aec493",
+			"id": "d7a8f14a-871c-4871-9fcd-032304f979bb",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "531b79af-c140-4c8d-97fb-bc6bfab9d9f9",
+			"id": "999790c6-6c8e-4335-8c98-bc4efbe4d019",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "61322611-e393-4686-a84c-c46de8892f32",
+			"id": "aacab402-dd5b-4b30-919a-83995347f707",
 			"key": "new_booking",
 			"value": ""
 		}
