@@ -268,15 +268,7 @@
 							"script": {
 								"id": "b90bf07c-c29f-4d9f-b08a-65c4cae9d859",
 								"exec": [
-									"// delete booking if exists\r",
-									"const deleteBooking = {\r",
-									"  url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
-									"  method: 'DELETE',\r",
-									"  header: 'Authorization: Basic ' + btoa('admin:password123')\r",
-									"};\r",
-									"\r",
-									"pm.sendRequest(deleteBooking, function (err, response) {\r",
-									"});"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -287,7 +279,7 @@
 								"id": "b14747b0-9c87-49d3-9feb-da8507ed5f15",
 								"exec": [
 									"\r",
-									"pm.test(\"Update non existing booking returns 403\", function () {\r",
+									"pm.test(\"Update booking without auth returns 403\", function () {\r",
 									"    pm.expect(pm.response.code).to.be.equal(403);\r",
 									"    pm.expect(pm.response.status).to.be.equal(\"Forbidden\")\r",
 									"});\r",
@@ -1356,34 +1348,34 @@
 	],
 	"variable": [
 		{
-			"id": "32ceb9a3-a0e2-473e-b7a7-6494361cbdb3",
+			"id": "15e4ca02-63a0-4c14-a454-e43005a391ae",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "1208d222-63e1-43b9-8636-cfbfda798142",
+			"id": "35cba350-de07-4565-90fa-c8c91f1821dd",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "c22f83cc-60b4-460f-a4e9-29f086b7f032",
+			"id": "01a18430-8a85-4232-be3a-ce2ec35df225",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "a914a0e4-e012-4261-91f9-1f8a7733dc9a",
+			"id": "ec021399-d8c5-43c1-b7ec-8be6e6f8d44e",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "c1700521-14f2-4325-9f4c-5c15e77226c9",
+			"id": "21aaaab5-cbd2-4cd3-8d50-dcb1aed8e4e5",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "621bb1b8-5529-4542-a2ff-deb09dcfedb9",
+			"id": "e2a81c22-6b35-41bd-99d7-91454b5cdb2e",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
