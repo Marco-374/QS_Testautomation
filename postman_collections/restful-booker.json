@@ -670,7 +670,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "3ee8ea25-4a14-4df5-bf5b-7c4132cb53f8",
+						"id": "ea28f26f-4f01-4ac6-b48a-0d00d266d165",
 						"exec": [
 							"pm.test(\"Response has to be status 200\", function () {\r",
 							"    pm.response.to.be.success;\r",
@@ -713,6 +713,34 @@
 							"    pm.expect((response.json()).lastname).to.be.equal(\"Potter\");\r",
 							"})\r",
 							"    }    \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response array has to be empty\", ()=>{\r",
+							"    pm.sendRequest({            \r",
+							"            url: 'https://restful-booker.herokuapp.com/booking?checkin=1-01-01&checkout=1-01-02',\r",
+							"            method: 'GET',\r",
+							"            header: {\r",
+							"                'Content-Type': 'application/json',\r",
+							"                },\r",
+							"            body: {}    \r",
+							"        }, function (err, response) { \r",
+							"            pm.expect(response.json().length).to.be.equal(0);\r",
+							"  })   \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response array has to be empty\", ()=>{\r",
+							"    const fail = {abc: 123}\r",
+							"    pm.sendRequest({            \r",
+							"            url: `https://restful-booker.herokuapp.com/booking?checkin=1-01-01&checkout=1-01-02`,\r",
+							"            method: 'GET',\r",
+							"            header: {\r",
+							"                'Content-Type': 'application/json',\r",
+							"                },\r",
+							"            body: {}    \r",
+							"        }, function (err, response) { \r",
+							"             pm.expect(response.json().length).to.be.equal(0);\r",
+							"  })\r",
+							"   \r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -1443,34 +1471,34 @@
 	],
 	"variable": [
 		{
-			"id": "e4880d4a-7f06-4d1f-89e1-5044f7e47bc1",
+			"id": "77228c04-eb06-4476-8052-0c3ced56e3e8",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "2a6def3c-fcdb-4924-90de-e025ea0ac9d0",
+			"id": "bdf57030-1a44-4f6a-a5d4-a64b9a3ba677",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "8261df3b-988a-49fd-84b3-fee6a7aa3b7a",
+			"id": "8b8d5eb5-1b34-4d1e-a872-115104ac621b",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "ed8a9592-65e7-4bbe-9b3a-1b254af32d47",
+			"id": "49155d03-3041-41d2-87ae-ad9ca9923798",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "cc32aba0-a0bc-44b2-bab6-a2572254311c",
+			"id": "4c93c949-15b0-4fae-96c4-3f350b2c3dc4",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "8bc0b6eb-c652-4103-b28c-657b9f1e7e26",
+			"id": "e850d775-5538-46e2-80b8-6de220e74938",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
