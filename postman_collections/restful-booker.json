@@ -177,77 +177,6 @@
 						"description": "Request that allows you to update a complete Booking within the API. This request updates the booking using JSON.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
 					},
 					"response": []
-				},
-				{
-					"name": "/booking/:id - UpdateBooking (URL)",
-					"id": "84c6e9a9-6be1-4bb7-94af-dd63acd991c0",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": {
-								"password": "",
-								"username": ""
-							}
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/x-www-form-urlencoded"
-							},
-							{
-								"key": "Accept",
-								"value": "application/x-www-form-urlencoded"
-							},
-							{
-								"key": "Cookie",
-								"value": "token=abc123",
-								"type": "text",
-								"disabled": true
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "firstname",
-									"value": "Jim",
-									"type": "text"
-								},
-								{
-									"key": "lastname",
-									"value": "Brown",
-									"type": "text"
-								},
-								{
-									"key": "totalprice",
-									"value": "111",
-									"type": "text"
-								},
-								{
-									"key": "depositpaid",
-									"value": "true",
-									"type": "text"
-								},
-								{
-									"key": "bookingdates[checkin]",
-									"value": "2018-01-01",
-									"type": "text"
-								},
-								{
-									"key": "bookingdates[checkout]",
-									"value": "2018-01-02",
-									"type": "text"
-								}
-							]
-						},
-						"url": "{{host}}/booking/1",
-						"description": "Request that allows you to update a complete Booking within the API. This request updates the booking using URL.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
-					},
-					"response": []
 				}
 			],
 			"id": "c774f320-1888-46d7-9d44-ef6096e2339e"
@@ -1267,17 +1196,17 @@
 	],
 	"variable": [
 		{
-			"id": "071e9861-c889-41fd-b518-95eff816329f",
+			"id": "ad32601d-546f-400b-95af-9512afb3d650",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "fc279244-2c4b-4ade-b35f-65ebcd64805d",
+			"id": "54eabc59-3f93-48b5-9123-a16469634510",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "165fdca1-33f7-450d-8610-651ed8174fad",
+			"id": "7a422c5f-b2ed-42ad-bba6-16514bfaf8c6",
 			"key": "new_booking",
 			"value": ""
 		}
