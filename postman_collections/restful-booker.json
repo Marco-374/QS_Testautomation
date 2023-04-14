@@ -1359,7 +1359,7 @@
 									"const updatedBooking = {\r",
 									"    \"firstname\": \"Erika\",\r",
 									"    \"lastname\": \"Musterfrau\",\r",
-									"    \"totalprice\": 111,\r",
+									"    \"totalprice\": 222,\r",
 									"    \"depositpaid\": true,\r",
 									"    \"bookingdates\": {\r",
 									"        \"checkin\":\"2022-01-01\",\r",
@@ -1419,7 +1419,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"firstname\" : \"Erika\",\n    \"lastname\" : \"Musterfrau\"\n}"
+							"raw": "{\n    \"firstname\" : \"Erika\",\n    \"lastname\" : \"Musterfrau\",\n    \"totalprice\": 222\n\n}"
 						},
 						"url": "{{host}}/booking/{{booking_id}}",
 						"description": "Request that allows you to update a partial section of a Booking within the API. This request updates the booking using JSON.\n\n**Authorisation**\n\nThis request requires you to be authorised. Which can be done in one of two ways:\n\n1.  **Basic Auth -** Create a basic authorization header using Basic Auth with the credentials admin/password123\n2.  **Cookie based -** Create a cookie header with the value `token=abc123`. To get a valid token, send a request to `POST /auth`"
@@ -1776,40 +1776,40 @@
 	],
 	"variable": [
 		{
-			"id": "8279ffad-61c8-4438-848d-72f5535a51c2",
+			"id": "33cf972e-5856-4646-96cb-7e0b902e5388",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "8a3cfbfd-0a11-4565-a461-9910d1e2b0af",
+			"id": "bc08f8dd-b082-4d93-b9e8-d4e59fbccafa",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "c1cd6fac-d288-4d68-af99-9e4e0ff67b4d",
+			"id": "f303d170-e2e9-4422-86c0-2ef15658470e",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "68ae7f07-7102-4c68-a303-f4c348904408",
+			"id": "3e640c71-ff7e-4e7e-b8ae-d17d8b9c7f41",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "f7e5af71-8cea-480f-aa3f-5b07290db523",
+			"id": "c30d6e62-741f-4c60-95b3-96167c4537e4",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "224a4f97-1032-4b3a-ae72-f52e55107f32",
+			"id": "b9ed1bff-8cd2-4f41-9b38-1623cf30fd2e",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
 		},
 		{
-			"id": "3f3bd5c9-2ff1-456c-9aa9-6c872cf1b5a7",
+			"id": "2d4d3f07-6907-4b4c-bfd5-3a2961a45331",
 			"key": "wrong_booking",
 			"value": ""
 		}
