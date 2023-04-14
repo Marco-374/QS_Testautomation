@@ -770,7 +770,92 @@
 		},
 		{
 			"name": "CreateToken",
-			"item": [],
+			"item": [
+				{
+					"name": "/auth - CreateToken",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7c95eb4d-be9e-4ea0-b656-ecefa07ab78b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains token\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"token\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "f0937860-1da1-47d6-b8f7-0274a070dc83",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\" : \"admin\",\n    \"password\" : \"password123\"\n}"
+						},
+						"url": "{{host}}/auth",
+						"description": "Sending a request to this endpoint will generate a token that can be used in the Cookie header for PUT /booking/{id} and DELETE /booking/{id}"
+					},
+					"response": []
+				},
+				{
+					"name": "/auth - CreateToken Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7c95eb4d-be9e-4ea0-b656-ecefa07ab78b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains token\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"token\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "57892ab8-dfdd-4956-b1de-a766ea99f9f5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\" : \"admin\",\n    \"password\" : \"password123\"\n}"
+						},
+						"url": "{{host}}/auth",
+						"description": "Sending a request to this endpoint will generate a token that can be used in the Cookie header for PUT /booking/{id} and DELETE /booking/{id}"
+					},
+					"response": []
+				}
+			],
 			"id": "11320d55-20cd-4fc1-979b-e1cc5efde2b2"
 		},
 		{
@@ -1252,48 +1337,6 @@
 			"response": []
 		},
 		{
-			"name": "/auth - CreateToken",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "7c95eb4d-be9e-4ea0-b656-ecefa07ab78b",
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Response contains token\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData).to.have.property(\"token\");\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"id": "f0937860-1da1-47d6-b8f7-0274a070dc83",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"username\" : \"admin\",\n    \"password\" : \"password123\"\n}"
-				},
-				"url": "{{host}}/auth",
-				"description": "Sending a request to this endpoint will generate a token that can be used in the Cookie header for PUT /booking/{id} and DELETE /booking/{id}"
-			},
-			"response": []
-		},
-		{
 			"name": "/booking/:id - PartialUpdateBooking (JSON)",
 			"event": [
 				{
@@ -1619,40 +1662,40 @@
 	],
 	"variable": [
 		{
-			"id": "0566dab7-43ff-480e-9596-cc750d438513",
+			"id": "72e9ca81-67bb-4e68-b509-ce1edf00f954",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "656bdfaf-44c1-4328-bd67-152c0e7239f2",
+			"id": "b059581b-b75d-4388-91a4-438e2bd1e01a",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "80026903-1d8f-4edf-b166-8cc353c80e70",
+			"id": "4fdbab11-de77-4fff-86b3-ec9b34dd17ce",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "bf2a064a-69d6-4ea4-bc8f-61e9576324a2",
+			"id": "c407e591-9147-4cbf-a3c4-124a2ec490fe",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "af3375a7-156b-41cd-86fb-d45fc71e0843",
+			"id": "7392eacb-7b0f-40d7-8325-11ab05f36b45",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "6932b10b-244a-4343-842c-c012615ee6a7",
+			"id": "8f336f0b-0dfe-40cb-aa12-01ff2add1617",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
 		},
 		{
-			"id": "0961e01b-af8c-4184-a650-a9eb6dac3faf",
+			"id": "52c0a0df-5ae0-4df8-a842-896f03738b67",
 			"key": "wrong_booking",
 			"value": ""
 		}
