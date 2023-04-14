@@ -1188,7 +1188,7 @@
 							"// try updating with wrong paraneter\r",
 							"const updatedBookingMissingParams = {\r",
 							"    url: pm.collectionVariables.get(\"host\") + \"/booking/\" + pm.collectionVariables.get(\"booking_id\"),\r",
-							"    method: 'POST',\r",
+							"    method: 'PATCH',\r",
 							"    body: {\r",
 							"        \"firstname\": \"Erika\",\r",
 							"        \"lastname\": \"Musterfrau\",\r",
@@ -1199,7 +1199,7 @@
 							"\r",
 							"pm.sendRequest(updatedBookingMissingParams, function (err, response) {\r",
 							"    pm.test(\"Update with wrong parameters does not change booking\", function () {\r",
-							"        var data = pm.response.json();\r",
+							"        var data = response.json();\r",
 							"        var expectedBooking = updatedBooking;\r",
 							"        pm.expect(data.firstname).to.eql(expectedBooking.firstname);\r",
 							"        pm.expect(data.lastname).to.eql(expectedBooking.lastname);\r",
@@ -1213,7 +1213,7 @@
 							"    });\r",
 							"\r",
 							"    pm.test(\"Update with wrong parameters has satus code 200\", function () {\r",
-							"        pm.response.to.have.status(200);\r",
+							"        pm.expect(response).to.be.forbidden;\r",
 							"    });\r",
 							"});\r",
 							""
@@ -1498,34 +1498,34 @@
 	],
 	"variable": [
 		{
-			"id": "b2b7810c-b1c3-47e2-b64b-2b34f3dc00b6",
+			"id": "d4e6d9d5-d1fc-49f3-9029-af1762da2fbc",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "63e095fc-f1a0-4c17-a2a6-65c8d02c7d3b",
+			"id": "03211a3a-8249-4b1c-b352-ac814d704512",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "677f38e7-69e7-4483-b58b-13885c02a6a7",
+			"id": "235e3578-b9f5-4994-ae27-0c9b28fb35db",
 			"key": "new_booking",
 			"value": ""
 		},
 		{
-			"id": "cd091e23-c615-4cbd-8c5b-123d87c1dd21",
+			"id": "c56183df-8c4e-4735-945e-787782430596",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "04205e11-89ae-4cd3-a02e-a90728d12463",
+			"id": "7c709bfd-340b-4b6e-b74c-eef62b98ea72",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "27e39f66-6f1d-4411-bccd-16c55f232b15",
+			"id": "36a9bce5-7080-4b85-81ea-3a6266f729a5",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
