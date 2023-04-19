@@ -7,6 +7,7 @@
 
 ## Testscope
 Wir testen die REST-Api des durch https://restful-booker.herokuapp.com/apidoc/index.html bereitgestellten Webservices. Dies beinhaltet keinerlei GUI und der Webclient zum Testen wird durch Postman realisiert.
+
 ![Scope](./Scope.png "Scope")
 
 Wir haben uns darauf festgelegt, nur die Endpunkte zu testen, bei denen Daten im JSON-Format ausgetauscht werden. Die XML-Datenübertragung wird nicht getestet. 
@@ -41,6 +42,8 @@ Für die Risikoanalyse betrachtet man einerseits das **fachliche Risiko** und an
 - Create, Update und Delete haben wiederum ein hohes Risiko und eine niedrige Komplexität. Der Update-Endpunkt ist der einzige für den ein Workaround existiert. Man kann eine Buchung aktualisieren, indem man sie löscht und neu anlegt. 
 
 ![Risikoanalyse](./Risikoanalyse.png)
+
+Bei der Automation haben wir links unten in der Matrix (hohes Risiko + niedrige Komplexität) begonnen und anschließend Stück für Stück alle Endpunkte getestet.
 
 ## Toolauswahl
 * **Postman**
