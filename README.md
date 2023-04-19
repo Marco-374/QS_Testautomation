@@ -52,7 +52,7 @@ Für die Risikoanalyse betrachtet man einerseits das **fachliche Risiko** und an
 * für funktionale Tests geeignet
 
 ## Framework
-* TF-Design erfolgt mitostman 
+* TF-Design erfolgt mit Postman 
 * Ausführung (TEX) erfolgt in Postman 
 * Testreporting mit Postman
 * Testdatenmanagement erfolgt mit Postman
