@@ -43,6 +43,8 @@ Für die Risikoanalyse betrachtet man einerseits das **fachliche Risiko** und an
 
 ![Risikoanalyse](./Risikoanalyse.png)
 
+Bei der Automation haben wir links unten in der Matrix (hohes Risiko + niedrige Komplexität) begonnen und anschließend Stück für Stück alle Endpunkte getestet.
+
 ## Toolauswahl
 * **Postman**
 * einfach benutzbar
