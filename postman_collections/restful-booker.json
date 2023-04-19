@@ -370,19 +370,6 @@
 							"script": {
 								"id": "5f4dea90-9a8f-403c-8418-6e649fa3b68e",
 								"exec": [
-									"const createBooking = {\r",
-									"  url: pm.collectionVariables.get(\"host\") + \"/booking\",\r",
-									"  method: 'POST',\r",
-									"  header: 'Content-Type:application/json',\r",
-									"  body: {\r",
-									"    mode: 'raw',\r",
-									"    raw: pm.collectionVariables.get(\"new_booking\")\r",
-									"  }\r",
-									"};\r",
-									"pm.sendRequest(createBooking, function (err, res) {\r",
-									"    pm.expect(err).is.null;\r",
-									"    pm.collectionVariables.set(\"booking_id\", res.json().bookingid);\r",
-									"});\r",
 									""
 								],
 								"type": "text/javascript"
@@ -1781,40 +1768,40 @@
 	],
 	"variable": [
 		{
-			"id": "7f106f4f-f1cb-4df7-98cd-e64bbcf3c4d6",
+			"id": "30f601fb-f1cc-4bfe-9f04-050811b1178c",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "c8a42ace-8f1c-4b74-8a8c-ba7d558e81a6",
+			"id": "ed5eedeb-1f90-47e1-8419-8501db80b310",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "2e82fa98-e76a-40fa-93b5-6a1f2809d76e",
+			"id": "f4af2f60-9d32-4900-90a6-d9fac72a7ce1",
 			"key": "new_booking",
 			"value": "{\"firstname\":\"Max\",\"lastname\":\"Mustermann\",\"totalprice\":111,\"depositpaid\":true,\"bookingdates\":{\"checkin\":\"2022-01-01\",\"checkout\":\"2022-01-10\"},\"additionalneeds\":\"Breakfast\"}"
 		},
 		{
-			"id": "e9d19be7-0558-4aa6-ab83-f32e3c71b322",
+			"id": "7b7b91ae-ee43-4a90-98d4-4116725f2dc0",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "73b356af-a53b-4fb5-b128-bcf399fa639e",
+			"id": "287667a3-243c-4b08-a073-b816fcb45325",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "ff365cc3-ceb0-426b-9d84-8ac04d6891a8",
+			"id": "120356c0-c34d-4c16-8fb7-03f9c5d71b39",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
 		},
 		{
-			"id": "0be91593-fc70-4dd2-b204-fcc32327d0fe",
+			"id": "3a556536-b06f-4bed-b066-2c922958194f",
 			"key": "wrong_booking",
 			"value": "{\"firstname\":\"Max\",\"lastname\":\"Mustermann\",\"totalprice\":111,\"depositpaid\":true,\"bookingdates\":{\"checkin\":\"wrongFormat\",\"checkout\":\"2022-01-10\"},\"additionalneeds\":\"Breakfast\"}"
 		}
