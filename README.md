@@ -60,3 +60,9 @@ Bei der Automation haben wir links unten in der Matrix (hohes Risiko + niedrige 
 * Testdatenmanagement erfolgt mit Postman
 * Toolsetup: Konfigurationsmanagement mit Postman + Github Integration (Versionsverwaltung)
 
+## Testergebnisse 
+siehe [Ergebnisse](./Restful-Booker.postman_test_run.json)
+
+Aufgrund von fehlerhaftem Verhalten in der API schlagen drei Testfälle fehl. 
+
+
