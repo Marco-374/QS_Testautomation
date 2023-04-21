@@ -45,6 +45,8 @@ Für die Risikoanalyse betrachtet man einerseits das **fachliche Risiko** und an
 
 Bei der Automation haben wir links unten in der Matrix (hohes Risiko + niedrige Komplexität) begonnen und anschließend Stück für Stück alle Endpunkte getestet.
 
+Eine Metrik zur Bewertung einer Testautomation kann die Risikoabdeckung sein. Durch unsere erstellte Testautomation wird das gesamte, in der Risikoanalyse bewertete, Risiko abgedeckt, da zu allen Testobjekten die entsprechenden Testfälle implementiert wurden.
+
 ## Toolauswahl
 * **Postman**
 * einfach benutzbar
@@ -61,7 +63,9 @@ Bei der Automation haben wir links unten in der Matrix (hohes Risiko + niedrige 
 * Toolsetup: Konfigurationsmanagement mit Postman + Github Integration (Versionsverwaltung)
 
 ## Testergebnisse 
-siehe [Ergebnisse](./Restful-Booker.postman_test_run.json)
+Testergebnisse der Automation siehe [Restful-Booker.postman_test_run.json](https://github.com/Marco-374/QS_Testautomation/blob/26a94df385a77edc97683e98a1050f6f57f5b43a/Restful-Booker.postman_test_run.json) 
+
+Die Ergebnisse können (wie die [Collection](https://github.com/Marco-374/QS_Testautomation/blob/26a94df385a77edc97683e98a1050f6f57f5b43a/postman_collections/restful-booker.json) auch) in Postman importiert werden. Siehe dazu: https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#importing-postman-data
 
 Aufgrund von fehlerhaftem Verhalten in der API schlagen drei Testfälle fehl. 
 
