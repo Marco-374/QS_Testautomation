@@ -1717,40 +1717,40 @@
 	],
 	"variable": [
 		{
-			"id": "75608c43-b189-43e7-be1a-670361ba024f",
+			"id": "601f472f-6be4-4b70-8636-fe9092228c98",
 			"key": "host",
 			"value": "https://restful-booker.herokuapp.com"
 		},
 		{
-			"id": "d0c75a73-a5e7-4bf1-9188-a8d033ee1e17",
+			"id": "c0d441c2-067a-4a3f-a4ee-c6f280f9c297",
 			"key": "booking_id",
 			"value": "1"
 		},
 		{
-			"id": "81706e09-2c50-4eea-9b8c-77579446598c",
+			"id": "c27fccb4-cfcf-485e-bfb3-6c001f57dd27",
 			"key": "new_booking",
 			"value": "{\"firstname\":\"Max\",\"lastname\":\"Mustermann\",\"totalprice\":111,\"depositpaid\":true,\"bookingdates\":{\"checkin\":\"2022-01-01\",\"checkout\":\"2022-01-10\"},\"additionalneeds\":\"Breakfast\"}"
 		},
 		{
-			"id": "addcf958-8c60-4e87-94bd-448984610bf4",
+			"id": "900f9801-e0f5-4ab5-bbad-dbffd56a3d36",
 			"key": "username",
 			"value": "admin",
 			"type": "string"
 		},
 		{
-			"id": "85510820-1323-491c-8424-d5cbf546f199",
+			"id": "2f8ac70c-7550-4657-9ef3-477863f6dc4a",
 			"key": "password",
 			"value": "password123",
 			"type": "string"
 		},
 		{
-			"id": "66e7adca-c963-4b1c-a01e-0170e0405b0b",
+			"id": "07c4b887-c461-48b2-b249-9795a3545b46",
 			"key": "token",
 			"value": "token=abc123",
 			"type": "string"
 		},
 		{
-			"id": "be7f5f2b-279d-4b90-a4b4-82a8d64203da",
+			"id": "a18c5911-46ae-4fc7-aa4f-dc9723ec7435",
 			"key": "wrong_booking",
 			"value": "{\"firstname\":\"Max\",\"lastname\":\"Mustermann\",\"totalprice\":111,\"depositpaid\":true,\"bookingdates\":{\"checkin\":\"wrongFormat\",\"checkout\":\"2022-01-10\"},\"additionalneeds\":\"Breakfast\"}"
 		}
